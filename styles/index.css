@@ -2,6 +2,7 @@
 
 :root {
   --gray-text: #8b8b8b;
+  --green-text: #46d369;
 }
 
 /* -------- VARIABLES ENDS --------  */
@@ -92,7 +93,7 @@ header .header--profile-container {
   /* width: 30%; */
   min-width: 200px;
   max-width: 600px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 header .header--profile-container ul {
@@ -129,12 +130,13 @@ header .header--profile-container ul li form .search {
   cursor: pointer;
   margin-right: 15px;
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("https://www.iconsdb.com/icons/preview/white/search-13-xxl.png");
+  /* background-image: url("https://www.iconsdb.com/icons/preview/white/search-13-xxl.png"); */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png");
 }
 
 header .header--profile-container ul li form input {
@@ -189,28 +191,74 @@ header .header--profile-container ul li a .my-list {
   background-image: url("https://icon-library.com/images/what-is-the-white-shopping-bag-icon/what-is-the-white-shopping-bag-icon-3.jpg");
 }
 
-header .header--profile-container ul li a .notifications {
+header .header--profile-container ul li .notifications {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-top: 3px;
-  background-image: url("https://www.iconsdb.com/icons/preview/white/bell-3-xxl.png");
+  /* background-image: url("https://www.iconsdb.com/icons/preview/white/bell-3-xxl.png"); */
+  background-image: url("https://flaticons.net/icon.php?slug_category=miscellaneous&slug_icon=bell");
 }
 
-header .header--profile-container ul li:last-child a {
+header .header--profile-container ul li:last-child {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-header .header--profile-container ul li:last-child a img {
+header .header--profile-container ul li:last-child img {
+  cursor: pointer;
   border-radius: 50%;
   width: 25px;
   height: 25px;
   margin-right: 8px;
 }
 
-header .header--profile-container ul li a .arrow-down {
+header .header--profile-container ul li .arrow-down {
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 10px;
   width: 15px;
   background-image: url("https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-9.jpg");
+}
+
+.header--profile-container ul li ul {
+  display: none;
+  list-style: none;
+  height: auto;
+  width: auto;
+  margin: 0px 0px -85px -20px;
+  padding: 5px 10px;
+  position: absolute;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* border-top: 10px solid transparent; */
+}
+
+.header--profile-container ul li .header--hide-menu li:last-child {
+  display: block;
+  text-align: right;
+}
+
+.header--profile-container ul li:hover .header--hide-menu,
+.header--profile-container ul li .header--hide-menu:hover {
+  display: block;
+}
+
+.header--profile-container ul li .header--hide-menu li {
+  margin: 10px 0px;
+}
+
+.header--profile-container ul li .header--hide-menu li a {
+  font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.header--profile-container ul li ul li a:hover {
+  text-decoration: underline;
 }
 
 /* --- HEADER RIGHT PART ENDS --- */
@@ -283,10 +331,11 @@ main {
   opacity: 0.3;
 }
 
-.carousel:hover .movie-card:hover {
+.carousel .movie-card:hover {
   -webkit-transform: scale(1.4);
   transform: scale(1.4);
   opacity: 1;
+  z-index: 1;
 }
 
 /* --- MAIN CAROUSEL ENDS --- */
@@ -303,7 +352,7 @@ main {
   height: 200px;
   margin-right: 10px;
   font-size: 20px;
-  border-radius: 2px;
+  border-radius: 1px;
   transition: 450ms all;
   /* -webkit-transform-origin: center left;
   transform-origin: center left; */
@@ -319,11 +368,50 @@ main {
   transform: translate3d(125px, 0, 0);
 } */
 
-.movie-card img:first-child {
-  max-width: 100%;
+.movie-card .movie-card--main-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-card .movie-card--main-image img {
+  width: 100%;
 }
 
 .movie-card--details {
+  display: none;
+  width: 100%;
+  height: 100px;
+  background-color: pink;
+}
+
+.movie-card:hover .movie-card--details {
+  display: block;
+  z-index: 1;
+  /* transform: 1000ms display; */
+  /* Animation for the details container */
+}
+
+.movie-card--details .movie-card--details--images-container {
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+
+.movie-card--details .movie-card--details--images-container img {
+  display: inherit;
+  width: 48px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-right: 5px;
+}
+
+.movie-card--details .green-text {
+  color: var(--green-text);
+}
+
+/* .movie-card--details {
   align-items: flex-start;
   background: linear-gradient(
     to top,
@@ -342,7 +430,7 @@ main {
   position: absolute;
   right: 0;
   top: 0;
-}
+} */
 
 /* --- MAIN MOVIE-CARD ENDS --- */
 
