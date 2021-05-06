@@ -8,15 +8,1731 @@
   <meta name="keywords" content="Netflix, Webflix, Fakeflix, Kevin J. Zea, kevinjzea" />
   <title>Fakeflix</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
   <link rel="stylesheet" href="../styles/index.css" />
   <link rel="stylesheet" href="../styles/media.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+
+/* -------- VARIABLES STARTS --------  */
+
+:root {
+  --gray-text: #8b8b8b;
+  --green-text: #46d369;
+  --header-size: 60px;
+}
+
+/* -------- VARIABLES ENDS --------  */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Lato", "Netflix Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* body {
+  position: static;
+} */
+
+a,
+button {
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* -------- GENERAL CLASSES STARTS --------  */
+
+.icon:hover {
+  opacity: 0.75;
+}
+
+.hide {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.show-input {
+  transition: all 0.5s;
+}
+
+.active {
+  background-color: rgb(0, 0, 0);
+}
+
+/* -------- GENERAL CLASSES ENDS --------  */
+
+/* -------- HEADER STARTS --------  */
+
+header {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-size);
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* --- HEADER LEFT PART STARTS --- */
+
+.header--nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  max-width: 520px;
+  height: 100%;
+}
+
+header .header--nav-container a .fakeflix-logo {
+  height: 26px;
+  margin-right: 30px;
+}
+
+header .header--nav-container nav ul {
+  width: 380px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .header--nav-container nav ul li {
+  list-style: none;
+}
+
+header .header--nav-container nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+}
+
+header .header--nav-container nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* --- HEADER LEFT PART ENDS --- */
+
+/* --- HEADER RIGHT PART STARTS --- */
+
+header .header--profile-container {
+  height: 100%;
+  /* width: 30%; */
+  min-width: 200px;
+  max-width: 600px;
+  margin-right: 10px;
+}
+
+header .header--profile-container ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header--profile-container ul li {
+  list-style: none;
+  margin-left: 30px;
+}
+
+header .header--profile-container ul li .material-icons {
+  cursor: pointer;
+  color: #fff;
+  font-size: 3rem;
+}
+
+header .header--profile-container ul li .material-icons:hover {
+  opacity: 0.7;
+}
+
+header .header--profile-container ul li:first-child form {
+  margin-right: -25px;
+  width: auto;
+  height: 35px;
+  padding: 0 10px;
+  /* border: 1px solid white; */
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 1500ms all;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+header .header--profile-container ul li form .search {
+  cursor: pointer;
+  margin-right: 15px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url("https://www.iconsdb.com/icons/preview/white/search-13-xxl.png"); */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png");
+}
+
+header .header--profile-container ul li form input {
+  outline: none;
+  height: 100%;
+  padding: 2px 0 2px 5px;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+header .header--profile-container ul li form input:nth-child(2) {
+  margin-right: 10px;
+  padding: 2px 0 2px 5px;
+  width: 200px;
+}
+
+header .header--profile-container ul li form input:nth-child(2)::placeholder {
+  width: 100%;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+header .header--profile-container ul li form input:nth-child(3) {
+  cursor: pointer;
+  color: white;
+}
+
+header .header--profile-container ul li form input:nth-child(3):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+header .header--profile-container ul li a {
+  text-decoration: none;
+}
+
+header .header--profile-container ul li a span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+header .header--profile-container ul li a .icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header .header--profile-container ul li a .my-list {
+  height: 24px;
+  width: 19px;
+  background-image: url("https://icon-library.com/images/what-is-the-white-shopping-bag-icon/what-is-the-white-shopping-bag-icon-3.jpg");
+}
+
+header .header--profile-container ul li .notifications {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 3px;
+  /* background-image: url("https://www.iconsdb.com/icons/preview/white/bell-3-xxl.png"); */
+  background-image: url("https://flaticons.net/icon.php?slug_category=miscellaneous&slug_icon=bell");
+}
+
+header .header--profile-container ul li:last-child {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header .header--profile-container ul li:last-child img {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+header .header--profile-container ul li .arrow-down {
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 10px;
+  width: 15px;
+  background-image: url("https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-9.jpg");
+}
+
+.header--profile-container ul li ul {
+  display: none;
+  list-style: none;
+  height: auto;
+  width: auto;
+  margin: 0px 0px -85px -20px;
+  padding: 5px 10px;
+  position: absolute;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* border-top: 10px solid transparent; */
+}
+
+.header--profile-container ul li .header--hide-menu li:last-child {
+  display: block;
+  text-align: right;
+}
+
+.header--profile-container ul li:hover .header--hide-menu,
+.header--profile-container ul li .header--hide-menu:hover {
+  display: block;
+}
+
+.header--profile-container ul li .header--hide-menu li {
+  margin: 10px 0px;
+}
+
+.header--profile-container ul li .header--hide-menu li a {
+  font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.header--profile-container ul li ul li a:hover {
+  text-decoration: underline;
+}
+
+/* --- HEADER RIGHT PART ENDS --- */
+
+/* -------- HEADER ENDS -------- */
+
+/* -------- MAIN STARTS -------- */
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000;
+  position: relative;
+}
+
+/* --- MAIN VIDEO STARTS --- */
+
+.main-video-container {
+  /* background-color: rgba(0, 0, 0, 1); */
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 30px;
+  color: white;
+  display: grid;
+  grid-template-rows: var(--header-size) repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.main-video-shadow {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  filter: brightness(0.9) drop-shadow(0 50px 50px black);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0%),
+    rgba(0, 0, 0, 0%),
+    rgba(0, 0, 0, 0%),
+    rgba(0, 0, 0, 0%),
+    rgba(0, 0, 0, 90%)
+  );
+  z-index: 1;
+}
+
+.main-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  filter: brightness(0.9) drop-shadow(0 50px 50px black);
+}
+
+.main-video-info,
+.main-video-image {
+  position: relative;
+  grid-column: 1/2;
+  margin-left: 3vw;
+}
+
+.main-video-info {
+  grid-row: 3/4;
+  z-index: 2;
+}
+
+.main-video-image {
+  grid-row: 2/3;
+  margin-top: 28px;
+}
+
+.main-video-image img {
+  width: 85rem;
+}
+
+.main-video-title,
+.main-video-details,
+.main-video-synopsis {
+  font-weight: 400;
+  text-shadow: 2px 2px 4px #000;
+  line-height: 36px;
+}
+
+.main-video-title {
+  margin: 20px 0;
+  font-size: 3rem;
+}
+
+.main-video-details {
+  display: none;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.main-video-details p:not(:last-child) {
+  margin-right: 10px;
+}
+
+.main-video-synopsis {
+  font-size: 2.6rem;
+}
+
+.main-video-controls {
+  display: flex;
+  position: relative;
+  grid-row: 4/5;
+  grid-column: 1/-1;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+.main-controls-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: auto;
+  left: 3vw;
+}
+
+.main-controls-wrapper button {
+  display: flex;
+  align-items: center;
+}
+
+.main-controls-wrapper a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.main-controls-wrapper--play {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  justify-content: space-between;
+  padding: 12px 28px;
+  font-size: 22px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-right: 14px;
+}
+
+.main-controls-wrapper--play:hover {
+  background-color: #c5c5c5;
+}
+
+.main-controls-wrapper--play i {
+  margin-right: 15px;
+  color: #141414;
+  font-weight: 600;
+  font-size: 34px;
+}
+
+.main-controls-wrapper--play span {
+  color: #141414;
+  font-weight: 600;
+}
+
+.main-controls-wrapper--more-info {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  justify-content: space-between;
+  padding: 12px 28px;
+  font-size: 22px;
+  border-radius: 4px;
+  background: rgba(89, 89, 89, 0.78);
+  color: #fff;
+}
+
+.main-controls-wrapper--more-info:hover {
+  opacity: 0.7;
+}
+
+.main-controls-wrapper--more-info i {
+  margin-right: 15px;
+  font-size: 34px;
+}
+
+.main-controls-player {
+  display: flex;
+}
+
+.main-controls-player button {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 12px;
+  font-weight: 300;
+  margin-right: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 22px;
+  background: none;
+  outline: none;
+}
+
+.main-controls-player button:hover {
+  background-color: rgba(20, 20, 20, 0.6);
+}
+
+.main-controls-player span {
+  width: 7vw;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 2.2rem;
+  border-left: 2px solid #e5e5e5;
+  background-color: rgba(20, 20, 20, 0.6);
+  color: #fff;
+}
+
+/* --- MAIN VIDEO ENDS --- */
+
+/* --- MAIN SECTION STARTS --- */
+
+.movie-cards-main-container {
+  margin-top: -180px;
+  padding-bottom: 60px;
+  z-index: 2;
+}
+
+.movie-cards-container {
+  z-index: 2;
+  /* overflow: scroll; */
+  max-height: 400px;
+  margin-bottom: 40px;
+  padding-left: 30px;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+
+  /* For not having functional scroll on the movie-cards-container  */
+  /* overflow-y: hidden; */
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.movie-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-cards-container:hover {
+  z-index: 3;
+}
+
+/* .movie-cards-container:not(:last-of-type) {
+  margin-bottom: 20px;
+} */
+
+.movie-cards-container h3 {
+  color: white;
+  font-size: 2.4rem;
+  margin: 15px 0 -5px;
+}
+
+/* --- MAIN SECTION ENDS --- */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  max-height: 300px;
+}
+
+/* --- CAROUSEL BUTTON STARTS --- */
+
+.carousel-button-left,
+.carousel-button-right {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  visibility: hidden;
+  z-index: 4;
+  position: absolute;
+  color: white;
+  background-color: rgba(20, 20, 20, 0.7);
+  max-height: 100%;
+  top: 50px;
+  font-size: 54px;
+  text-align: center;
+  line-height: normal;
+  bottom: 50px;
+}
+
+.carousel-button-left {
+  left: 0;
+}
+
+.carousel-button-right {
+  right: 0;
+}
+
+.carousel-button-left:hover,
+.carousel-button-right:hover {
+  background-color: rgba(20, 20, 20, 0.9);
+  opacity: 1;
+}
+
+.movie-cards-container:hover .carousel-button-left,
+.movie-cards-container:hover .carousel-button-right {
+  visibility: visible;
+}
+
+/* --- CAROUSEL BUTTON ENDS --- */
+
+/* --- MAIN CAROUSEL STARTS --- */
+
+.movie-cards-container .carousel {
+  min-height: 300px;
+  width: inherit;
+  display: flex;
+  white-space: nowrap;
+  transition: all 1s;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  margin-top: 10px;
+  padding: 50px 0;
+
+  /* padding-top: 10px;
+  position: relative;
+  height: 100%;
+  font-size: 0;
+  align-items: flex-start; */
+}
+
+.carousel {
+  /* transition: 450ms -webkit-transform;
+  transition: 450ms transform;
+  transition: 450ms transform, 450ms -webkit-transform;
+  transition: all 1s;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  width: inherit;
+  display: inline-table;
+  overflow-x: scroll;
+  */
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/*
+
+  https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png
+  https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b4f85340664543.5787e03bf1133.jpg
+  https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg
+
+  */
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel:hover .movie-card {
+  opacity: 0.4;
+}
+
+.carousel .movie-card:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  opacity: 1;
+  z-index: 3;
+  overflow: visible;
+}
+
+/* --- MAIN CAROUSEL ENDS --- */
+
+/* --- MAIN MOVIE-CARD STARTS --- */
+
+.movie-card {
+  /* background-color: rgba(255, 255, 255, 1); */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 16.6%;
+  min-width: 16.6%;
+  height: fit-content;
+  margin-right: 10px;
+  font-size: 20px;
+  border-radius: 1px;
+  transition: 450ms all;
+  /* -webkit-transform-origin: center left;
+    transform-origin: center left; */
+}
+
+.carousel .movie-card:nth-child(1) {
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+/* .movie-card:hover ~ .movie-card {
+    -webkit-transform: translate3d(125px, 0, 0);
+    transform: translate3d(125px, 0, 0);
+  } */
+
+/* .movie-card .movie-card--main-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+} */
+
+/* .movie-card--main-image {
+  position: relative;
+  width: 100%;
+  height: inherit;
+  padding: 28.125%;
+} */
+
+.movie-card .movie-card--main-image {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding: 37% 0;
+}
+
+.movie-card:hover .movie-card--main-image {
+  padding: 37% 0;
+}
+
+.movie-card .movie-card--main-image picture {
+  width: 100%;
+  height: 100%;
+}
+
+.movie-card .movie-card--main-image picture img {
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  object-position: 0 10%;
+  vertical-align: top;
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+}
+
+.movie-card .movie-card--main-image img {
+  width: 100%;
+}
+
+.movie-card--details {
+  /* border: 1px solid white; */
+  display: none;
+  width: 100%;
+  height: 78px;
+  padding: 10px 10px 6px;
+  background-color: #000;
+}
+
+.movie-card:hover .movie-card--details {
+  display: block;
+  /* z-index: 1; */
+  /* transform: 1000ms display; */
+  /* Animation for the details container */
+}
+
+.movie-card--details .movie-card--details--icons-container {
+  /* padding: 0 5px; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  height: 36px;
+}
+
+.movie-card--details--icons-container .material-icons {
+  cursor: pointer;
+  /* margin-right: 9px; */
+  font-size: 22px;
+  color: #fff;
+  padding: 6px;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.movie-card--details--icons-container .material-icons:hover {
+  opacity: 0.7;
+}
+
+/* .movie-card--details .movie-card--details--icons-container img {
+  cursor: pointer;
+  display: inherit;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-right: 5px;
+}
+
+.movie-card--details .movie-card--details--icons-container .play-icon {
+  border: none;
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  margin-top: -3px;
+}
+
+.movie-card--details .movie-card--details--icons-container .plus-icon {
+  /* border: none;
+  width: 80px;
+  height: 80px;
+  margin-top: -3px;
+  background-color: white;
+}
+
+.movie-card--details .movie-card--details--icons-container img:hover {
+  opacity: 0.75;
+} */
+
+.movie-card--details--text-container {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-card--details .green-text {
+  color: var(--green-text);
+}
+
+.movie-card--details .tv-ma-text {
+  padding: 1px 6px;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+
+.movie-card--details p {
+  color: white;
+  font-size: 1.4rem;
+  display: inline-block;
+  margin: 5px 5px 0 0;
+}
+
+/* .movie-card--details {
+    align-items: flex-start;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    bottom: 0;
+    display: flex;
+    font-size: 1rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    left: 0;
+    opacity: 0;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  } */
+
+/* --- MAIN MOVIE-CARD ENDS --- */
+
+/* -------- MAIN ENDS -------- */
+
+/* -------- FOOTER STARTS -------- */
+
+footer {
+  width: 100%;
+  height: auto;
+  padding: 60px 0 20px 0;
+  background-color: rgb(0, 0, 0);
+  border-top: 10px solid #222222;
+  color: var(--gray-text);
+  letter-spacing: 0.5px;
+}
+
+footer p:first-child {
+  font-size: 1.6rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+footer ul {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+footer ul li {
+  list-style: none;
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 18px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: var(--gray-text);
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.languages-social-media-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.languages-social-media-container select {
+  cursor: pointer;
+  margin: 20px 0 10px;
+  padding: 10px 5px 10px 20px;
+  background-color: transparent;
+  color: #999;
+  font-size: 1.6rem;
+  border: 1px solid #333;
+  border-radius: 3px;
+}
+
+/* .languages-social-media-container select::before {
+  background-image: url("https://www.pngkey.com/png/full/167-1670247_white-globe-icon-png-holy-bible-new-international.png");
+  height: 10px;
+  width: 20px;
+} */
+
+.languages-social-media-container select option {
+  /* margin: 20px 0 10px;
+  padding: 10px 10px 10px 50px; */
+  background-color: #000;
+  color: #999;
+  font-size: 1.6rem;
+  border: 1px solid #333;
+  outline: none;
+}
+
+.languages-social-media-container .social-media-icons {
+  height: 40px;
+  width: 270px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.languages-social-media-container .social-media-icons a {
+  width: 35px;
+  height: 32px;
+}
+
+.languages-social-media-container .social-media-icons a span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.languages-social-media-container .social-media-icons a .icon {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.languages-social-media-container .social-media-icons a .facebook {
+  height: 32px;
+  width: 34px;
+  background-image: url("https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/facebook-icon-18-256.png");
+}
+
+.languages-social-media-container .social-media-icons a .instagram {
+  margin-top: -15px;
+  height: 65px;
+  background-image: url("https://i.pinimg.com/originals/63/9b/3d/639b3dafb544d6f061fcddd2d6686ddb.png");
+}
+
+.languages-social-media-container .social-media-icons a .twitter {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAgVBMVEUAAAD////6+vr29vb8/Pzx8fHr6+tLS0s0NDSzs7MoKCjZ2dno6Oipqanv7++8vLzj4+NEREQuLi7S0tKWlpbIyMgUFBSQkJB7e3tYWFhkZGQfHx9tbW2xsbEZGRmioqJmZmZ9fX2FhYVzc3NISEgLCwtbW1s7OzszMzMjIyPBwcEc+A17AAAJFElEQVR4nO2d6XqyOhCAKwjKHjYRRRFw+eT+L/DYVisqgQCZEJ6T928rYcgya5KvL4FAIBAIBAKBQCAQCAQCgeD/y2q5iDc3zvFxuR/7Zehy0i+FZs7eQFp+1E9jvxsNLpvIf5fugREc3KkLeQ5CCSffD36arMZ+yQEkO9Qo3g+2lm1JHxgHkK/bmY3zMfnqUcKcaOlJHORDv3QHvJ1NJt83sh+3PrDwldnszODNCVl3kO8bKW1+XmLMb/9lsnl5Arywm3zfKPj+uT6+F+5fsiWMHDj2RccO/GUeXOue5sXB43EGRrW4s9KFFOidf6ncR8CbiNrne8Z5+XxagmnRmc3CBaxQVVynWQM28bbgLDPLqPy11Otb9L4bDJn1ottjCj5Bm78HXYvd9+r5xMZ1ofX7df6xEfBi1L45MWr28xhvXaL3ybzDKM3VXe0aTIyjFYER04wURpGDlM+pjHAqM3rMCpOBiN5gAfGSYw22p2GPLuACYr2I4Ti4Ro+Vr+ofYQXUtTmYgAZWp0fVAU1g/Q1gFfTUgwSoeIPHeflHUBETQleiB3KBbfXyNjMMuIH63hRFpBzf7OZ9cUNgNmoKJuAsamg2+vhvxYMRcAG2yszf9cS+ar3VfFgZxoscaMvgkV8EXF0Sp2qBb7WanyhrAN2fQQmoVIboyS3S27RzKk7Usqz7kR0Rh35I0aGMGfVvkdkvsvRnMUNVL2JRv74pKcYP6U0ANAvRXU14SeoYv/an/aI5zhgVJTl0RfSAZqHzrb+356A0zMcnlNKXOXZQcL81qIoYwVgz5WaRWb5pV13q8nWGJfiWVYpu/3WQ14tnLs3fR/97zxQNP5ciaktqocJI+Al6H3pNEtYGfnpxslgJ+Dnw1s0/8HGRj264gG7hC+rn+yYti7iZ0tCMBXY9o4udfbaNX0vvzMPh/tQpYCLfTMlrAsKb9iXAbDLcifhXazhRR47qIt5nAmNqPjSWuoALP1XARKIWRLaGFAxS/xu44MUTGTPU6i3vT4xkQHVEo0qihIzz8vc70kdY5976P4cU7RcbH8YgDy2Yac9VlcFSitb45iNyr2ZupL1iOCtwi8Y4NDSfdLEYJaNPqcPeaX/yIJpTgx1DfHPUELfDsAVyLB5oLaGzzh/YzDuqjiuoVYpdRP/o4ZuqwaKL7gCVUG73YnsZHIp1II+q6mBxxBskFUL9ZoniRKQxAFAJQ4IXiHrWDUjGriAyAkAlLAle4No/wqD6KUFHgkqokXxjYsOtBsn2o7YShyukhBaJhMuBjcz9oDE9DqoPW6rd7lB4A2QdXB0zK0FtGjIj60Il4m6HQREva6RcASYOZ4QmFjXTGJVWVJzf7fPPHCU9amJPdbg0E+wKCrU0unXn3+MhPWB8/v4F+h6crCLDL60gX59dvQCMYmzapfthCbPczSVZsVVThauiIa96/ihYmArk6SOg9Bc45IHOU11CfwJ0KMW7AHviMChdIkfMEkQ0QZ2KfxZwZWdg+N0iKgRpGt4o25J/19SpLkbT0xlWmw9+1b4LNp7/dZzaXKxNqL1I+OP9huvFYzi7JaD9AUCr4b2/exWmkx+OPxFCb9d/u8cItNYZVExu1deC9cbdQ5YqU0dqN0tfXLe5jfzQ2U1oRUXtZmn2+auPKiOOCduNNhbpWUC02u16L+BqEydC2r6VfZLG6BOCQhgdOnsJikISpYGM9IFjkHj4+YS03wclie9EVjLEKTsCAXtkufnhYydJPRmjykgAzAORhPvp6gufMIQRTMqZqEKS//3Gm6pZ03ZSxpOpqkSVNGfxdZ3oMEXkxZIT7UTs5u1P9pPsRKmh4vKDll0XfCJ3qTyDPAgAjG4nQiUTNGy6DNJH3HRadCytn56LYXQTsPvRW6PTvVYZaqMuFD3OYZmW3nf67P6YVCafsFLoDWc6AxX1O6BkO528k9Vz46fe96g41nSySV+4RtMwbgYc93TqtEtoNIhqn3EsJ2DdIGLvvh6L+8nYwfet5+DzvaYqvdeZPy4p10PVp3GeeRzwK6M0ePv8L8fc59TEUdtT24T8O2hcrjnEgWASvHXInQkwp30M/X7NmQ0w8NT1Y3E4x3fOm0ORRSVnnTj0wLzClG1VNW+oqq3IHOrFobNwyXvk1Bx8cqXFqYp4kA4+uyrmbF15A3sacgf43pRAQxceudTyd3wqZzlzHHJrPz+BCJ1DFXEnpHQkJ7ehYeVAR8CvJa+7Loj23hORjS1KPQq9uw2ufC42/QL59XBZOTw4/PTCgb+paFK+1oC7wtqmU9d7cUo5s8Ad6ueob/nSigjgFPUVT+UZCu0x+sOWIxE1mEsQQc8k6YQPdgMOJ9lEG/D+mzUXenF4IqaBMwfVC2S7KnpzDcYuA8ddpkaPDZtzjnH4DO6804sRM21DE9qErNZjDdW6M8iBSPwxbHHcAc8wxJphM15Y54OqSnrgFVaIWHYlsJ6oZbvJU81nJKYz1pXcW/dc5AF8Bpy+S9gJHdzYKcFvY2wkBjdYfaYX+L6jw9+qMqqAVwY2DsGBF3AsdvAracn4Gu0q24iBkUq0zx6IQ8hAFbYdIw/IRWOR5bdGE3DFxBmWAhq1lX3QAyZhKRU0KINn7+Zswm6MHN53vCRlVGUTAl8qXc8ichiFTeUdtdpYcvS1ZrCqzUD0biMkZVvc3HpG4t0s0Q1jd3BVhCZTf56poXbdWIht3ZB9YCPZae+58XrHPFkhhdQH6Om4ePJb8JwU6zywRilcRwAxw1VWIuMBQshWxitmUzQKNaM1Iha81JH6a+o3ZN9Z5jzkBuUIMlpx6XCrHBAOyACtwCCi1IR/ZqDjPW2sVL1k0KzEa8LVxpiPssEyq7TYsc6Ayn4AtYDiZExZ7jWUy5xeLSwxx5xVtl7eFSMFQ70NiyovM4gZj88qpwt0sMkowCtHWolDKAtVMqMRe6/KPvOpe75zG+2grZdOuEFp0BuvcxRaB+YRmFbczAppRLhtXwvisdLxbSw3eRoOCUTJoRUlLq/i/bJaxknk9OlL5ETF+cLf2Kxl613izCI2emR/l8cXb8t339WjL4pA802pHtXX0iweX98JBAKBQCAQCAQCgUAgEAgELPkPbz/Gzku8Ro8AAAAASUVORK5CYII=");
+}
+
+.languages-social-media-container .social-media-icons a .youtube {
+  background-image: url("https://www.chilequetequiero.cl/wp-content/uploads/2019/02/youtube-logo-white.png");
+}
+
+footer p:last-child {
+  font-size: 1.25rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+footer p:last-child a {
+  font-size: 1.25rem;
+  color: var(--gray-text);
+  text-decoration: underline;
+}
+
+footer p:last-child a:hover {
+  color: #c5c5c5;
+}
+
+/* -------- FOOTER ENDS --------  */
+
+/* -------- PORTAL STARTS --------  */
+
+.portal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  overflow-y: scroll;
+
+  /* Display: flex; */
+}
+
+.portal-main-container {
+  position: relative;
+  width: 100%;
+  /* min-height: 1500px; */
+  height: auto;
+  margin: auto auto;
+  background-color: #181818;
+  z-index: 11;
+  border-radius: 8px;
+}
+
+.background-portal {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.portal-main-container-background {
+  width: 80%;
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+
+.portal-main-container .close-portal {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 3.2rem;
+  padding: 2.5px;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  z-index: 12;
+}
+
+.portal-main-container .close-portal:hover {
+  color: black;
+  background-color: white;
+}
+
+.portal-video-container {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-top: 56.3925%;
+}
+
+/* -------- PORTAL VIDEO STARTS --------  */
+
+.portal-main-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  object-fit: cover;
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
+  vertical-align: middle;
+}
+
+.portal-video-details {
+  width: 40%;
+  position: absolute;
+  bottom: 10%;
+  left: 2.5em;
+}
+
+.portal-video-details picture {
+  margin-bottom: 34px;
+  height: 100px;
+  width: 100%;
+  display: block;
+}
+
+.portal-video-details picture img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.portal-video-duration {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  font-weight: 700;
+}
+
+.portal-video-duration .progress {
+  height: 2px;
+  display: block;
+  background-color: hsla(0, 0%, 100%, 0.3);
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.portal-video-duration .progress .fill {
+  width: 80%;
+  height: 100%;
+  background-color: #e50914;
+}
+
+.portal-video-duration p {
+  display: inline-block;
+  margin: 0;
+  color: hsla(0, 0%, 100%, 0.7);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.portal-video-actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.portal-video-actions button {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #141414;
+  padding: 4px 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.portal-video-actions button:hover {
+  background-color: #c5c5c5;
+}
+
+.portal-video-actions button span {
+  margin-right: 6px;
+  color: #141414;
+  font-size: 34px;
+}
+
+.portal-video-actions > span {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 3rem;
+  padding: 8px;
+  margin-right: 7px;
+}
+
+.portal-video-actions > span:hover {
+  opacity: 0.7;
+}
+
+.portal-video-button {
+  position: absolute;
+  right: 4.8rem;
+  bottom: 10%;
+  margin-bottom: 16px;
+}
+
+.portal-video-button button {
+  outline: none;
+  background: none;
+  font-size: 24px;
+  padding: 8px;
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.portal-video-button button:hover {
+  background-color: rgba(20, 20, 20, 0.6);
+}
+
+/* -------- PORTAL VIDEO ENDS --------  */
+
+/* -------- PORTAL DESCRIPTION STARTS --------  */
+
+.portal-description-container {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  padding: 15px 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.portal-description-synopsis {
+  height: 100%;
+  width: calc(90% - 280px);
+}
+
+.portal-description-synopsis span {
+  margin-right: 15px;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.portal-description-synopsis .green-text {
+  color: #46d369;
+}
+
+.portal-description-synopsis .tv-ma-text {
+  padding: 1.5px 6px;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+
+.portal-description-container p {
+  color: white;
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.portal-description-metadata {
+  height: 100%;
+  width: 265px;
+}
+
+.portal-description-metadata ul li {
+  font-size: 1.6rem;
+  list-style: none;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.portal-description-metadata ul li span {
+  color: #777;
+  font-weight: 400;
+}
+
+.portal-description-metadata ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.portal-description-metadata ul li a:hover {
+  text-decoration: underline;
+}
+
+/* -------- PORTAL DESCRIPTION ENDS --------  */
+
+/* -------- PORTAL EPISODES STARTS --------  */
+
+.portal-episodes-container {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  padding: 15px 3vw;
+}
+
+.portal-episodes--title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.portal-episodes--title h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.portal-episodes--title select {
+  cursor: pointer;
+  background-color: #242424;
+  border: 2px solid #4d4d4d;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.portal-episodes--title select:hover {
+  background-color: #333333;
+}
+
+.episode-card {
+  cursor: pointer;
+  border-bottom: 2px solid #404040;
+  height: auto;
+  min-height: 100px;
+  padding: 35px 25px;
+  display: grid;
+  grid-template-columns: 30px 150px 1fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.episode-card:first-child {
+  border-top: 2px solid #404040;
+}
+
+.episode-card h4 {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.episode-card picture {
+  width: 100%;
+  max-height: 100px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.episode-card picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-fit: contain;
+}
+
+.episode-card picture .progress {
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.episode-card picture .fill {
+  width: 80%;
+  height: 100%;
+  background-color: #e50914;
+}
+
+.episode-card picture span {
+  display: none;
+  position: absolute;
+  font-size: 3rem;
+  color: #fff;
+  background-color: rgba(20, 20, 20, 0.7);
+  border-radius: 50%;
+  border: 1px solid #fff;
+  z-index: 13;
+  padding: 8px;
+  width: 50px;
+  height: 50px;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+}
+
+.episode-card picture span:hover {
+  opacity: 0.7;
+}
+
+.episode-card:hover picture span {
+  display: block;
+}
+
+.episode-card--details {
+  width: 100%;
+  height: 100%;
+}
+
+.episode-card--title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.episode-card--title span {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.episode-card--details p {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+/* -------- PORTAL EPISODES ENDS --------  */
+
+/* -------- PORTAL MORE-LIKE-THIS STARTS --------  */
+
+.portal-more-like-this {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  margin-top: 30px;
+  padding: 0 3vw 25px 3vw;
+}
+
+.portal-more-like-this h3 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.portal-mlt--movie-cards-container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.portal-movie-card {
+  height: 330px;
+  width: 100%;
+  background-color: #2f2f2f;
+
+  /* max-width: 255px;
+  max-height: 355px;
+  flex: 0 0 31%; */
+
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hide-pmc {
+  display: none;
+}
+
+.portal-movie-card--preview {
+  height: 150px;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.portal-movie-card--preview-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    195deg,
+    rgba(24, 24, 24, 0.7),
+    rgba(24, 24, 24, 0.5) 10%,
+    transparent 25%
+  );
+  z-index: 14;
+}
+
+.portal-movie-card--preview > span {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  z-index: 15;
+}
+
+.portal-movie-card--preview picture {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.portal-movie-card--preview picture img {
+  width: 100%;
+}
+
+.portal-movie-card--preview > button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  background: rgba(20, 20, 20, 0.7);
+  visibility: hidden;
+  transition: opacity 0.2s ease-in;
+  padding: 6px;
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.portal-movie-card:hover .portal-movie-card--preview > button {
+  visibility: visible;
+}
+
+.portal-movie-card--preview > button:hover {
+  opacity: 0.7;
+}
+
+.portal-movie-card--details {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  color: #fff;
+}
+
+.portal-movie-card--details .green-text {
+  display: block;
+  color: #46d369;
+  margin-bottom: 7px;
+}
+
+.portal-movie-card--details .tv-ma-text {
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  padding: 1px 6px;
+  margin-right: 8px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.portal-movie-card--details span {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.portal-movie-card--details p {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: justify;
+}
+
+.portal-mlt--divider {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  border-bottom: 2px solid #404040;
+  display: flex;
+  justify-content: center;
+  box-shadow: none;
+  margin: auto;
+  margin-top: -80px;
+  background-image: linear-gradient(
+    0deg,
+    #181818 0,
+    rgba(24, 24, 24, 0.7) 20%,
+    rgba(24, 24, 24, 0.4) 30%,
+    transparent 50%
+  );
+}
+
+.portal-mlt--divider button {
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  font-size: 22px;
+  transform: translateY(50%);
+  position: absolute;
+  bottom: 0;
+  border-width: 2px;
+  background-color: rgba(42, 42, 42, 0.6);
+  border-color: hsla(0, 0%, 100%, 0.5);
+  padding: 8px;
+}
+
+.portal-mlt--divider button:hover {
+  opacity: 0.7;
+}
+
+/* -------- PORTAL MORE-LIKE-THIS ENDS --------  */
+
+/* -------- PORTAL ABOUT STARTS --------  */
+
+.portal-about {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  margin-top: 48px;
+  padding: 0 3vw 25px 3vw;
+}
+
+.portal-about h3 {
+  font-size: 2.4rem;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.portal-about ul {
+  padding: 0;
+}
+
+.portal-about ul li {
+  list-style: none;
+  color: #fff;
+  margin: 7px 0;
+  font-size: 1.5rem;
+  line-height: 22px;
+}
+
+.portal-about ul li > span {
+  color: #777;
+}
+
+.portal-about ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.portal-about ul li a:hover {
+  text-decoration: underline;
+}
+
+.portal-about ul li:last-child {
+  display: flex;
+}
+
+.portal-about ul li:last-child > span {
+  margin-right: 5px;
+}
+
+.portal-about ul li:last-child p span {
+  border: 1px solid #fff;
+  padding: 2px 6px;
+  margin-right: 5px;
+}
+
+/* -------- PORTAL ABOUT ENDS --------  */
+
+/* -------- PORTAL ENDS --------  */
+
+
+@media (max-width: 1450px) {
+  .carousel-container {
+    max-height: 280px;
+  }
+
+  .movie-cards-container .carousel {
+    min-height: 200px;
+  }
+
+  .movie-card {
+    width: 20%;
+    min-width: 20%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .movie-card {
+    width: 25%;
+    min-width: 25%;
+  }
+}
+
+
+  </style>
+
 </head>
 <body>
 
 <!-- Inspired on https://webflix-nine.vercel.app/ -->
 
 <noscript>
-        Debes habilitar JavaScript para correr esta aplicaci&oacute;n correctamente.
+  Debes habilitar JavaScript para correr esta aplicaci&oacute;n correctamente.
 </noscript>
 
 <!-- HEADER STARTS -->
@@ -42,7 +1758,7 @@
         <!-- <label onclick="handleSearchBar()" for="search-input" title="Buscar" class="icon search"></label> -->
         <i onclick="handleSearchBar()" for="search-input" title="Buscar" class="material-icons">search</i>
         <input style="display: none;" class="hide" name="search-input" id="search-input" type="search" placeholder="T&iacute;tulos, personas, g&eacute;neros" />
-        <input id="search-button" class="hide" type="submit" value="Buscar" />
+        <input id="search-button" class="hide" type="submit" value="Buscar..." />
       </form></li>
       <li><a href="#">
         <!-- <span title="Mi lista" class="icon my-list"></span> -->
@@ -73,13 +1789,13 @@
 <main>
 
   <section class="main-video-container">
-    <div class="main-video-cover"></div>
-    <video poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
-      <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4" />
+    <div class="main-video-shadow"></div>
+    <video id="main-video" autoplay muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
+      <source src="https://webflix-nine.vercel.app/static/media/test-video-2.ddb9b8b9.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <picture class="main-video-image">
-      <img src="https://occ-0-1068-1723.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABauvr9_GMwFxcow4pmUAKm2GRhBCkf0e4NjnB7-eI9jd_X9VDP28Z5FQAMP4Au65tcULNLyXUFEi4CpssSd7gQegUrR9eD6gbgGTW76cekS-Jf0oLi5HVzaClwuh6_6pprVTHzRrzx_8FPNnZShYFbBSei4pi8nRxEFXLjQTQVpqQw.png" alt="Lupin">
+      <img src="https://occ-0-1068-1723.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABauvr9_GMwFxcow4pmUAKm2GRhBCkf0e4NjnB7-eI9jd_X9VDP28Z5FQAMP4Au65tcULNLyXUFEi4CpssSd7gQegUrR9eD6gbgGTW76cekS-Jf0oLi5HVzaClwuh6_6pprVTHzRrzx_8FPNnZShYFbBSei4pi8nRxEFXLjQTQVpqQw.png" alt="Lupin" />
     </picture>
     <div class="main-video-info">
       <h2 class="main-video-title">N° 6 en M&eacute;xico hoy</h2>
@@ -89,14 +1805,14 @@
         <p>1 Temporada</p>
       </div>
       <p class="main-video-synopsis">
-        Inspirado por las aventuras de Arsène Lupin,
-        el ladrón de guante blanco Assane Diop se propone vengar
+        Inspirado por las aventuras de Ars&egrave;ne Lupin,
+        el ladr&oacute;n de guante blanco Assane Diop se propone vengar
         la injusticia sufrida por su padre a manos de una familia rica.
       </p>
     </div>
     <div class="main-video-controls">
       <div class="main-controls-wrapper">
-        <a href="/public/index.html">
+        <a href="/">
           <button class="main-controls-wrapper--play">
             <i class="material-icons">play_arrow</i>
             <span>Reproducir</span>
@@ -108,7 +1824,7 @@
         </button>
       </div>
       <div class="main-controls-player">
-        <button class="material-icons">replay</button>
+        <button onclick="handleVolumeButton(mainVolumeButton, mainVideo)" id="main-volume-button" class="material-icons">volume_off</button>
         <span>TV-MA</span>
       </div>
     </div>
@@ -125,7 +1841,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Dark" />
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why"/>
               </picture>
             </div>
             <div class="movie-card--details">
@@ -134,7 +1850,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -155,7 +1871,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -176,7 +1892,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -197,7 +1913,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -218,7 +1934,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -230,7 +1946,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -239,7 +1955,112 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -260,7 +2081,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -281,7 +2102,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -302,7 +2123,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -323,7 +2144,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -335,7 +2156,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -344,7 +2165,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -356,7 +2177,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -365,7 +2186,28 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -386,7 +2228,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -407,7 +2249,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -428,7 +2270,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -440,7 +2282,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -449,7 +2291,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -461,7 +2303,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -470,70 +2312,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -555,7 +2334,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -564,7 +2343,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -576,7 +2355,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -585,7 +2364,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -597,7 +2376,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/017/952/282/large/hans-park-untitled-3-copy.jpg" alt="Kingdom" />
+                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -606,7 +2385,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -618,7 +2397,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
+                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -627,70 +2406,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png" alt="Stranger Things" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/017/952/282/large/hans-park-untitled-3-copy.jpg" alt="Kingdom" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -711,7 +2427,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -723,7 +2439,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png" alt="Stranger Things" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -732,7 +2448,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -744,7 +2460,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -753,7 +2469,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -765,7 +2481,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/017/952/282/large/hans-park-untitled-3-copy.jpg" alt="Kingdom" />
+                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -774,91 +2490,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png" alt="Stranger Things" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/017/952/282/large/hans-park-untitled-3-copy.jpg" alt="Kingdom" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -879,7 +2511,175 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -901,7 +2701,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="Stranger Things" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -910,7 +2710,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -922,7 +2722,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png" alt="Stranger Things" />
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Dark" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -931,7 +2731,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -943,7 +2743,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/017/952/282/large/hans-park-untitled-3-copy.jpg" alt="Kingdom" />
+                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -952,7 +2752,28 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -973,7 +2794,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -994,7 +2815,28 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1015,28 +2857,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1057,7 +2878,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1069,7 +2890,7 @@
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -1078,28 +2899,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1120,7 +2920,28 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1141,7 +2962,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1162,7 +2983,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1183,7 +3004,28 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">96% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 50min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1204,7 +3046,7 @@
                 <i class="material-icons" title="Agregar a favoritos">add</i>
                 <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
                 <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button class="material-icons" title="Ver m&aacute;s">expand_more</button>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
                 <p class="green-text">96% para ti</p>
@@ -1255,16 +3097,16 @@
       <option value="en">English</option>
     </select>
     <div class="social-media-icons">
-      <a href="https://facebook.com/Fakeflix">
+      <a href="https://facebook.com/Fakeflix" target="_blank">
         <span title="Facebook" class="icon facebook"></span>
       </a>
-      <a href="https://instagram.com/Fakeflix">
+      <a href="https://instagram.com/Fakeflix" target="_blank">
         <span title="Instagram" class="icon instagram"></span>
       </a>
-      <a href="https://twitter.com/Fakeflix">
+      <a href="https://twitter.com/Fakeflix" target="_blank">
         <span title="Twitter" class="icon twitter"></span>
       </a>
-      <a href="https://youtube.com/Fakeflix">
+      <a href="https://youtube.com/Fakeflix" target="_blank">
         <span title="YouTube" class="icon youtube"></span>
       </a>
     </div>
@@ -1280,7 +3122,598 @@
 
 <!-- FOOTER ENDS -->
 
+<!-- PORTAL STARTS -->
+
+<div id="portal" class="portal">
+  <div onclick="handlePortalDisplayNone()" class="background-portal"></div>
+
+  <div class="portal-main-container-background">
+    <section class="portal-main-container">
+      <span onclick="handlePortalDisplayNone()" class="close-portal material-icons">clear</span>
+      <section class="portal-video-container">
+        <video id="portal-main-video" autoplay muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
+          <source src="https://webflix-nine.vercel.app/static/media/test-video-2.ddb9b8b9.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="portal-video-details">
+          <picture class="portal-video-image">
+            <img src="https://occ-0-1068-1723.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABauvr9_GMwFxcow4pmUAKm2GRhBCkf0e4NjnB7-eI9jd_X9VDP28Z5FQAMP4Au65tcULNLyXUFEi4CpssSd7gQegUrR9eD6gbgGTW76cekS-Jf0oLi5HVzaClwuh6_6pprVTHzRrzx_8FPNnZShYFbBSei4pi8nRxEFXLjQTQVpqQw.png" alt="Lupin" />
+          </picture>
+          <div class="portal-video-duration">
+            <div class="progress"><div class="fill"></div></div>
+            <p>40 de 50 min.</p>
+          </div>
+          <div class="portal-video-actions">
+            <button><span title="Reproducir" class="material-icons">play_arrow</span>Reanudar</button>
+            <span title="A&ntilde;adir" class="material-icons">add</span>
+            <span title="Me gusta" class="material-icons">thumb_up_off_alt</span>
+            <span title="No me gusta" class="material-icons">thumb_down_off_alt</span>
+          </div>
+        </div>
+        <div class="portal-video-button">
+          <button id="portal-volume-button" onclick="handleVolumeButton(portalVolumeButton, portalVideo)" class="material-icons">volume_off</button>
+        </div>
+      </section>
+      <section class="portal-description-container">
+        <div class="portal-description-synopsis">
+          <span class="green-text">98% para ti</span>
+            <span>2019</span>
+            <span class="tv-ma-text">TV-MA</span>
+            <span>4 temporadas</span>
+            <p>Inspirado por las aventuras de Ars&egrave;ne Lupin, el ladr&oacute;n de guante blanco Assane Diop se propone venga la injusticia sufrida por su padre a manos de una familia rica.</p>
+        </div>
+        <div class="portal-description-metadata">
+          <ul>
+            <li><span>Elenco:</span> <a href="#">Omar Sy</a>, <a href="#">Ludivine Sagnier</a>, <a href="#">Clotilde Hesme</a>, <a href="#">Vincent Londez</a></li>
+            <li><span>G&eacute;neros:</span> <a href="#">Serie de TV</a>, <a href="#">Series francesas</a></li>
+            <li><span>Este t&iacute;tulo es:</span> <a href="#">Misterio</a>, <a href="#">Acci&oacute;n</a>, <a href="#">Comedia</a>, <a href="#">Fantas&iacute;a</a>, <a href="#">Aventura</a></li>
+          </ul>
+        </div>
+      </section>
+      <section class="portal-episodes-container">
+        <div class="portal-episodes--title">
+          <h3>Episodios</h3>
+          <select name="episodes" id="episodes">
+            <option value="temporada-1">Temporada 1</option>
+            <option value="temporada-2">Temporada 2</option>
+            <option value="temporada-3">Temporada 3</option>
+            <option value="temporada-4">Temporada 4</option>
+          </select>
+        </div>
+        <section class="portal-episodes--list">
+          <article class="episode-card">
+            <h4>1</h4>
+            <picture>
+              <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              <div class="progress"><div class="fill"></div></div>
+              <span class="material-icons">play_arrow</span>
+            </picture>
+            <div class="episode-card--details">
+              <div class="episode-card--title">
+                <span>The Umbrella Academy</span>
+                <span>56 min.</span>
+              </div>
+              <p>Una familia disfuncional de superh&eacute;roes trabajan juntos para descubrir c&oacute;mo falleci&oacute; su padre. La misi&oacute;n no resulta sencilla debido a que todos tienen personalidades y poderes diferentes.</p>
+            </div>
+          </article>
+          <article class="episode-card">
+            <h4>2</h4>
+            <picture>
+              <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              <div class="progress"><div class="fill"></div></div>
+              <span class="material-icons">play_arrow</span>
+            </picture>
+            <div class="episode-card--details">
+              <div class="episode-card--title">
+                <span>Stranger Things</span>
+                <span>49 min.</span>
+              </div>
+              <p>Despu&eacute;s de la extra&ntildea desaparici&oacute;n de un ni&ntilde;o, un pueblo se encuentra ante un misterio que revela experimentos secretos, fuerzas sobrenaturales y a una ni&ntilde;a muy especial.</p>
+            </div>
+          </article>
+          <article class="episode-card">
+            <h4>3</h4>
+            <picture>
+              <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
+              <div class="progress"><div class="fill"></div></div>
+              <span class="material-icons">play_arrow</span>
+            </picture>
+            <div class="episode-card--details">
+              <div class="episode-card--title">
+                <span>Dark</span>
+                <span>48 min.</span>
+              </div>
+              <p>Un ni&ntilde;o desaparecido expone los secretos y las conexiones ocultas entre cuatro familias mientras desentra&ntilde;an lentamente una siniestra conspiraci&oacute;n de viaje en el tiempo que abarca tres generaciones.</p>
+            </div>
+          </article>
+          <article class="episode-card">
+            <h4>4</h4>
+            <picture>
+              <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why" />
+              <div class="progress"><div class="fill"></div></div>
+              <span class="material-icons">play_arrow</span>
+            </picture>
+            <div class="episode-card--details">
+              <div class="episode-card--title">
+                <span>13 Reasons Why</span>
+                <span>51 min.</span>
+              </div>
+              <p>El adolescente Clay Jensen se halla en medio de una serie de misterios desgarradores accionados por el tr&aacute;gico suicidio de una de sus amigas.</p>
+            </div>
+          </article>
+          <article class="episode-card">
+            <h4>5</h4>
+            <picture>
+              <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
+              <div class="progress"><div class="fill"></div></div>
+              <span class="material-icons">play_arrow</span>
+            </picture>
+            <div class="episode-card--details">
+              <div class="episode-card--title">
+                <span>La Casa de Papel</span>
+                <span>56 min.</span>
+              </div>
+              <p>Un grupo de asaltantes busca realizar el atraco del siglo al internarse en la F&aacute;brica de Moneda y Timbre de Espa&ntilde;a, guiados por el personaje conocido como El Profesor.</p>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section class="portal-more-like-this">
+        <h3>M&aacute;s t&iacute;tulos como &eacute;ste</h3>
+        <section class="portal-mlt--movie-cards-container">
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">91% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Una familia disfuncional de superh&eacute;roes trabajan juntos para descubrir c&oacute;mo falleci&oacute; su padre. La misi&oacute;n no resulta sencilla debido a que todos tienen personalidades y poderes diferentes.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Un grupo de asaltantes busca realizar el atraco del siglo al internarse en la F&aacute;brica de Moneda y Timbre de Espa&ntilde;a, guiados por el personaje conocido como El Profesor.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">79% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>Un ni&ntilde;o desaparecido expone los secretos y las conexiones ocultas entre cuatro familias mientras desentra&ntilde;an lentamente una siniestra conspiraci&oacute;n de viaje en el tiempo que abarca tres generaciones.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Despu&eacute;s de la extra&ntildea desaparici&oacute;n de un ni&ntilde;o, un pueblo se encuentra ante un misterio que revela experimentos secretos, fuerzas sobrenaturales y a una ni&ntilde;a muy especial.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>4 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">96% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>El adolescente Clay Jensen se halla en medio de una serie de misterios desgarradores accionados por el tr&aacute;gico suicidio de una de sus amigas.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">91% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Una familia disfuncional de superh&eacute;roes trabajan juntos para descubrir c&oacute;mo falleci&oacute; su padre. La misi&oacute;n no resulta sencilla debido a que todos tienen personalidades y poderes diferentes.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Un grupo de asaltantes busca realizar el atraco del siglo al internarse en la Fábrica de Moneda y Timbre de España, guiados por el personaje conocido como El Profesor.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">79% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>Un ni&ntilde;o desaparecido expone los secretos y las conexiones ocultas entre cuatro familias mientras desentra&ntilde;an lentamente una siniestra conspiraci&oacute;n de viaje en el tiempo que abarca tres generaciones.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Despu&eacute;s de la extra&ntildea desaparici&oacute;n de un ni&ntilde;o, un pueblo se encuentra ante un misterio que revela experimentos secretos, fuerzas sobrenaturales y a una ni&ntilde;a muy especial.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>4 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">96% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>El adolescente Clay Jensen se halla en medio de una serie de misterios desgarradores accionados por el tr&aacute;gico suicidio de una de sus amigas.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">91% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Una familia disfuncional de superh&eacute;roes trabajan juntos para descubrir c&oacute;mo falleci&oacute; su padre. La misi&oacute;n no resulta sencilla debido a que todos tienen personalidades y poderes diferentes.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Un grupo de asaltantes busca realizar el atraco del siglo al internarse en la F&aacute;brica de Moneda y Timbre de Espa&ntilde;a, guiados por el personaje conocido como El Profesor.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">79% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>Un ni&ntilde;o desaparecido expone los secretos y las conexiones ocultas entre cuatro familias mientras desentra&ntilde;an lentamente una siniestra conspiraci&oacute;n de viaje en el tiempo que abarca tres generaciones.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Stranger Things" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Despu&eacute;s de la extra&ntildea desaparici&oacute;n de un ni&ntilde;o, un pueblo se encuentra ante un misterio que revela experimentos secretos, fuerzas sobrenaturales y a una ni&ntilde;a muy especial.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>4 Temporadas</span>
+              <picture>
+                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">96% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>El adolescente Clay Jensen se halla en medio de una serie de misterios desgarradores accionados por el tr&aacute;gico suicidio de una de sus amigas.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">91% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Una familia disfuncional de superh&eacute;roes trabajan juntos para descubrir c&oacute;mo falleci&oacute; su padre. La misi&oacute;n no resulta sencilla debido a que todos tienen personalidades y poderes diferentes.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>5 Temporadas</span>
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">84% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2021</span>
+              <p>Un grupo de asaltantes busca realizar el atraco del siglo al internarse en la F&aacute;brica de Moneda y Timbre de Espa&ntilde;a, guiados por el personaje conocido como El Profesor.</p>
+            </div>
+          </article>
+          <article class="portal-movie-card hide-pmc">
+            <div class="portal-movie-card--preview">
+              <div class="portal-movie-card--preview-overlay"></div>
+              <span>3 Temporadas</span>
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+              </picture>
+              <button class="material-icons">play_arrow</button>
+            </div>
+            <div class="portal-movie-card--details">
+              <span class="green-text">79% para ti</span>
+              <span class="tv-ma-text">TV-MA</span>
+              <span>2020</span>
+              <p>Un ni&ntilde;o desaparecido expone los secretos y las conexiones ocultas entre cuatro familias mientras desentra&ntilde;an lentamente una siniestra conspiraci&oacute;n de viaje en el tiempo que abarca tres generaciones.</p>
+            </div>
+          </article>
+        </section>
+        <div id="expand-movie-divider" class="portal-mlt--divider">
+          <button id="expand-movie-cards-button" onclick="handlePortalMovieCards()" class="material-icons">expand_more</button>
+        </div>
+      </section>
+      <section class="portal-about">
+        <h3>Acerca de <strong>Lupin</strong></h3>
+        <ul>
+          <li><span>Creado por:</span> <a href="#">George Kay</a>, <a href="#">Fran&ccedil;ois Uzan</a></li>
+          <li><span>Elenco:</span> <a href="#">Omar Sy</a>, <a href="#">Ludivine Sagnier</a>, <a href="#">Clotilde Hesme</a>, <a href="#">Vincent Londez</a></li>
+          <li><span>G&eacute;neros:</span> <a href="#">Serie de TV</a>, <a href="#">Series francesas</a></li>
+          <li><span>Este t&iacute;tulo es:</span> <a href="#">Misterio</a>, <a href="#">Acci&oacute;n</a>, <a href="#">Comedia</a>, <a href="#">Fantas&iacute;a</a>, <a href="#">Aventura</a></li>
+          <li><span>Clasificaci&oacute;n por edad:</span> <p><span>TV-MA</span> Lenguaje inapropiado. Consumo de tabaco.<br />Recomendada para p&uacute;blico adulto. No apta para menores de 17 a&ntilde;os.</p></li>
+        </ul>
+      </section>
+    </section>
+  </div>
+
+  <!-- <div onclick="handlePortalDisplayNone()" class="background-portal"></div> -->
+</div>
+
+<!-- PORTAL ENDS -->
+
 <script src="../script/index.js"></script>
-<!-- <script></script> -->
+<script>
+
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+const searchForm = document.getElementById("search-form");
+
+function handleSearchBar() {
+  if (searchInput.style.display === "none") {
+    searchForm.style.border = "1px solid white";
+    searchForm.style.marginRight = "0";
+
+    searchButton.style.display = "block";
+    searchInput.style.display = "block";
+  } else if (searchButton.style.display === "block") {
+    searchForm.style.border = "none";
+    searchForm.style.marginRight = "-25px";
+
+    searchButton.style.display = "none";
+    searchInput.style.display = "none";
+  }
+}
+
+/* Header Background */
+
+$(window).on("scroll", function () {
+  if ($(window).scrollTop() > 50) {
+    $(".header").addClass("active");
+  } else {
+    //remove the background property so it comes transparent again (defined in your css)
+    $(".header").removeClass("active");
+  }
+});
+
+/* Event Listener for Carousel Scrolling */
+
+const carousels = document.querySelectorAll(".carousel");
+const rightButtons = document.querySelectorAll(".carousel-button-right");
+const leftButtons = document.querySelectorAll(".carousel-button-left");
+
+rightButtons[0].addEventListener("click", () => {
+  carousels[0].scrollLeft += carousels[0].offsetWidth;
+});
+rightButtons[1].addEventListener("click", () => {
+  carousels[1].scrollLeft += carousels[1].offsetWidth;
+});
+rightButtons[2].addEventListener("click", () => {
+  carousels[2].scrollLeft += carousels[2].offsetWidth;
+});
+
+leftButtons[0].addEventListener("click", () => {
+  carousels[0].scrollLeft -= carousels[0].offsetWidth;
+});
+leftButtons[1].addEventListener("click", () => {
+  carousels[1].scrollLeft -= carousels[1].offsetWidth;
+});
+leftButtons[2].addEventListener("click", () => {
+  carousels[2].scrollLeft -= carousels[2].offsetWidth;
+});
+
+
+
+/* Volume Button */
+
+const mainVolumeButton = document.getElementById("main-volume-button");
+const mainVideo = document.getElementById("main-video");
+
+const portalVolumeButton = document.getElementById("portal-volume-button");
+const portalVideo = document.getElementById("portal-main-video");
+
+const handleVolumeButton = (volumeButton, video) => {
+  if (volumeButton.innerHTML === "volume_off") {
+    volumeButton.innerHTML = "volume_up";
+    video.muted = !video.muted;
+  } else if (volumeButton.innerHTML === "volume_up") {
+    volumeButton.innerHTML = "volume_off";
+    video.muted = !video.muted;
+  } else if (volumeButton.innerHTML === "replay") {
+    volumeButton.innerHTML = "volume_off";
+    video.play();
+    video.muted = true;
+  }
+};
+
+mainVideo.addEventListener("pause", () => {
+  mainVolumeButton.innerHTML = "replay";
+});
+
+portalVideo.addEventListener("pause", () => {
+  portalVolumeButton.innerHTML = "replay";
+});
+
+// $(document).on("click",".containerVolume",function(e){
+//   if(isMuted){
+//       $('video').prop('muted', false);
+//   }
+//   else{
+//       $('video').prop('muted',true);
+//   }
+// });
+
+/* handlePortalDisplay */
+
+const portal = document.getElementById("portal");
+// const backgroundPortal = document.getElementById("background-portal");
+
+const handlePortalDisplayBlock = () => {
+  portal.style.display = "flex";
+};
+
+const handlePortalDisplayNone = () => {
+  portal.style.display = "none";
+};
+
+/* handlePortalMovieCards */
+
+const expandMovieCardsButton = document.getElementById(
+  "expand-movie-cards-button"
+);
+const expandMovieDivider = document.getElementById("expand-movie-divider");
+const hideablePortalMovieCards = document.getElementsByClassName("hide-pmc");
+
+const handlePortalMovieCards = () => {
+  if (expandMovieCardsButton.innerHTML === "expand_more") {
+    expandMovieCardsButton.innerHTML = "expand_less";
+    expandMovieDivider.style.marginTop = "0px";
+
+    for (let i = 0; i < hideablePortalMovieCards.length; i++) {
+      hideablePortalMovieCards[i].style.display = "block";
+    }
+  } else if (expandMovieCardsButton.innerHTML === "expand_less") {
+    expandMovieCardsButton.innerHTML = "expand_more";
+    expandMovieDivider.style.marginTop = "-80px";
+
+    for (let i = 0; i < hideablePortalMovieCards.length; i++) {
+      hideablePortalMovieCards[i].style.display = "none";
+    }
+  }
+};
+
+
+</script>
+
 </body>
 </html>

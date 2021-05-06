@@ -331,7 +331,7 @@ main {
   -webkit-user-select: none;
 }
 
-.main-video-cover {
+.main-video-shadow {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -524,7 +524,7 @@ main {
 
 .movie-cards-main-container {
   margin-top: -180px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   z-index: 2;
 }
 
@@ -550,6 +550,10 @@ main {
 /* Hide scrollbar for Chrome, Safari and Opera */
 .movie-cards-container::-webkit-scrollbar {
   display: none;
+}
+
+.movie-cards-container:hover {
+  z-index: 3;
 }
 
 /* .movie-cards-container:not(:last-of-type) {
@@ -581,19 +585,14 @@ main {
   visibility: hidden;
   z-index: 4;
   position: absolute;
-  /* top: calc(
-    50% - (100px / 2)
-  ); Half of the container - Half of button's height */
-  /* height: 100px; */
-  /* width: 50px; */
   color: white;
   background-color: rgba(20, 20, 20, 0.7);
-  max-height: 172px;
+  max-height: 100%;
   top: 50px;
   font-size: 54px;
   text-align: center;
   line-height: normal;
-  bottom: 0;
+  bottom: 50px;
 }
 
 .carousel-button-left {
@@ -761,8 +760,8 @@ main {
   /* border: 1px solid white; */
   display: none;
   width: 100%;
-  height: 90px;
-  padding: 12px 10px;
+  height: 78px;
+  padding: 10px 10px 6px;
   background-color: #000;
 }
 
@@ -778,6 +777,8 @@ main {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
   height: 36px;
 }
 
@@ -828,6 +829,8 @@ main {
 
 .movie-card--details--text-container {
   width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1014,3 +1017,669 @@ footer p:last-child a:hover {
 }
 
 /* -------- FOOTER ENDS --------  */
+
+/* -------- PORTAL STARTS --------  */
+
+.portal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  overflow-y: scroll;
+
+  /* Display: flex; */
+}
+
+.portal-main-container {
+  position: relative;
+  width: 100%;
+  /* min-height: 1500px; */
+  height: auto;
+  margin: auto auto;
+  background-color: #181818;
+  z-index: 11;
+  border-radius: 8px;
+}
+
+.background-portal {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.portal-main-container-background {
+  width: 80%;
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+
+.portal-main-container .close-portal {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 3.2rem;
+  padding: 2.5px;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+  z-index: 12;
+}
+
+.portal-main-container .close-portal:hover {
+  color: black;
+  background-color: white;
+}
+
+.portal-video-container {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-top: 56.3925%;
+}
+
+/* -------- PORTAL VIDEO STARTS --------  */
+
+.portal-main-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  object-fit: cover;
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
+  vertical-align: middle;
+}
+
+.portal-video-details {
+  width: 40%;
+  position: absolute;
+  bottom: 10%;
+  left: 2.5em;
+}
+
+.portal-video-details picture {
+  margin-bottom: 34px;
+  height: 100px;
+  width: 100%;
+  display: block;
+}
+
+.portal-video-details picture img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.portal-video-duration {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  font-weight: 700;
+}
+
+.portal-video-duration .progress {
+  height: 2px;
+  display: block;
+  background-color: hsla(0, 0%, 100%, 0.3);
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.portal-video-duration .progress .fill {
+  width: 80%;
+  height: 100%;
+  background-color: #e50914;
+}
+
+.portal-video-duration p {
+  display: inline-block;
+  margin: 0;
+  color: hsla(0, 0%, 100%, 0.7);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.portal-video-actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.portal-video-actions button {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #141414;
+  padding: 4px 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.portal-video-actions button:hover {
+  background-color: #c5c5c5;
+}
+
+.portal-video-actions button span {
+  margin-right: 6px;
+  color: #141414;
+  font-size: 34px;
+}
+
+.portal-video-actions > span {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 3rem;
+  padding: 8px;
+  margin-right: 7px;
+}
+
+.portal-video-actions > span:hover {
+  opacity: 0.7;
+}
+
+.portal-video-button {
+  position: absolute;
+  right: 4.8rem;
+  bottom: 10%;
+  margin-bottom: 16px;
+}
+
+.portal-video-button button {
+  outline: none;
+  background: none;
+  font-size: 24px;
+  padding: 8px;
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.portal-video-button button:hover {
+  background-color: rgba(20, 20, 20, 0.6);
+}
+
+/* -------- PORTAL VIDEO ENDS --------  */
+
+/* -------- PORTAL DESCRIPTION STARTS --------  */
+
+.portal-description-container {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  padding: 15px 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.portal-description-synopsis {
+  height: 100%;
+  width: calc(90% - 280px);
+}
+
+.portal-description-synopsis span {
+  margin-right: 15px;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.portal-description-synopsis .green-text {
+  color: #46d369;
+}
+
+.portal-description-synopsis .tv-ma-text {
+  padding: 1.5px 6px;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+
+.portal-description-container p {
+  color: white;
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.portal-description-metadata {
+  height: 100%;
+  width: 265px;
+}
+
+.portal-description-metadata ul li {
+  font-size: 1.6rem;
+  list-style: none;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.portal-description-metadata ul li span {
+  color: #777;
+  font-weight: 400;
+}
+
+.portal-description-metadata ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.portal-description-metadata ul li a:hover {
+  text-decoration: underline;
+}
+
+/* -------- PORTAL DESCRIPTION ENDS --------  */
+
+/* -------- PORTAL EPISODES STARTS --------  */
+
+.portal-episodes-container {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  padding: 15px 3vw;
+}
+
+.portal-episodes--title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.portal-episodes--title h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.portal-episodes--title select {
+  cursor: pointer;
+  background-color: #242424;
+  border: 2px solid #4d4d4d;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.portal-episodes--title select:hover {
+  background-color: #333333;
+}
+
+.episode-card {
+  cursor: pointer;
+  border-bottom: 2px solid #404040;
+  height: auto;
+  min-height: 100px;
+  padding: 35px 25px;
+  display: grid;
+  grid-template-columns: 30px 150px 1fr;
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.episode-card:first-child {
+  border-top: 2px solid #404040;
+}
+
+.episode-card h4 {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.episode-card picture {
+  width: 100%;
+  max-height: 100px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.episode-card picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-fit: contain;
+}
+
+.episode-card picture .progress {
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.episode-card picture .fill {
+  width: 80%;
+  height: 100%;
+  background-color: #e50914;
+}
+
+.episode-card picture span {
+  display: none;
+  position: absolute;
+  font-size: 3rem;
+  color: #fff;
+  background-color: rgba(20, 20, 20, 0.7);
+  border-radius: 50%;
+  border: 1px solid #fff;
+  z-index: 13;
+  padding: 8px;
+  width: 50px;
+  height: 50px;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+}
+
+.episode-card picture span:hover {
+  opacity: 0.7;
+}
+
+.episode-card:hover picture span {
+  display: block;
+}
+
+.episode-card--details {
+  width: 100%;
+  height: 100%;
+}
+
+.episode-card--title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.episode-card--title span {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.episode-card--details p {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+/* -------- PORTAL EPISODES ENDS --------  */
+
+/* -------- PORTAL MORE-LIKE-THIS STARTS --------  */
+
+.portal-more-like-this {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  margin-top: 30px;
+  padding: 0 3vw 25px 3vw;
+}
+
+.portal-more-like-this h3 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.portal-mlt--movie-cards-container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.portal-movie-card {
+  height: 330px;
+  width: 100%;
+  background-color: #2f2f2f;
+
+  /* max-width: 255px;
+  max-height: 355px;
+  flex: 0 0 31%; */
+
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hide-pmc {
+  display: none;
+}
+
+.portal-movie-card--preview {
+  height: 150px;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.portal-movie-card--preview-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    195deg,
+    rgba(24, 24, 24, 0.7),
+    rgba(24, 24, 24, 0.5) 10%,
+    transparent 25%
+  );
+  z-index: 14;
+}
+
+.portal-movie-card--preview > span {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  z-index: 15;
+}
+
+.portal-movie-card--preview picture {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.portal-movie-card--preview picture img {
+  width: 100%;
+}
+
+.portal-movie-card--preview > button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  background: rgba(20, 20, 20, 0.7);
+  visibility: hidden;
+  transition: opacity 0.2s ease-in;
+  padding: 6px;
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.portal-movie-card:hover .portal-movie-card--preview > button {
+  visibility: visible;
+}
+
+.portal-movie-card--preview > button:hover {
+  opacity: 0.7;
+}
+
+.portal-movie-card--details {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  color: #fff;
+}
+
+.portal-movie-card--details .green-text {
+  display: block;
+  color: #46d369;
+  margin-bottom: 7px;
+}
+
+.portal-movie-card--details .tv-ma-text {
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  padding: 1px 6px;
+  margin-right: 8px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.portal-movie-card--details span {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.portal-movie-card--details p {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: justify;
+}
+
+.portal-mlt--divider {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  border-bottom: 2px solid #404040;
+  display: flex;
+  justify-content: center;
+  box-shadow: none;
+  margin: auto;
+  margin-top: -80px;
+  background-image: linear-gradient(
+    0deg,
+    #181818 0,
+    rgba(24, 24, 24, 0.7) 20%,
+    rgba(24, 24, 24, 0.4) 30%,
+    transparent 50%
+  );
+}
+
+.portal-mlt--divider button {
+  color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  font-size: 22px;
+  transform: translateY(50%);
+  position: absolute;
+  bottom: 0;
+  border-width: 2px;
+  background-color: rgba(42, 42, 42, 0.6);
+  border-color: hsla(0, 0%, 100%, 0.5);
+  padding: 8px;
+}
+
+.portal-mlt--divider button:hover {
+  opacity: 0.7;
+}
+
+/* -------- PORTAL MORE-LIKE-THIS ENDS --------  */
+
+/* -------- PORTAL ABOUT STARTS --------  */
+
+.portal-about {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  margin-top: 48px;
+  padding: 0 3vw 25px 3vw;
+}
+
+.portal-about h3 {
+  font-size: 2.4rem;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.portal-about ul {
+  padding: 0;
+}
+
+.portal-about ul li {
+  list-style: none;
+  color: #fff;
+  margin: 7px 0;
+  font-size: 1.5rem;
+  line-height: 22px;
+}
+
+.portal-about ul li > span {
+  color: #777;
+}
+
+.portal-about ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.portal-about ul li a:hover {
+  text-decoration: underline;
+}
+
+.portal-about ul li:last-child {
+  display: flex;
+}
+
+.portal-about ul li:last-child > span {
+  margin-right: 5px;
+}
+
+.portal-about ul li:last-child p span {
+  border: 1px solid #fff;
+  padding: 2px 6px;
+  margin-right: 5px;
+}
+
+/* -------- PORTAL ABOUT ENDS --------  */
+
+/* -------- PORTAL ENDS --------  */
