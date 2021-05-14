@@ -5,14 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Kevin J. Zea" />
+  <meta name="description" content="Clon de Netflix creado con HTML, CSS y JavaScript. Para más información, contacte por https://linkedin.com/in/kevinjzea." />
   <meta name="keywords" content="Netflix, Webflix, Fakeflix, Kevin J. Zea, kevinjzea" />
   <title>Fakeflix</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-  <link rel="stylesheet" href="../styles/index.css" />
-  <link rel="stylesheet" href="../styles/media.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' /> -->
+  <!-- <link rel="stylesheet" href="../styles/index.css" />
+  <link rel="stylesheet" href="../styles/media.css" /> -->
+
   <style>
+
+/* -------- FONTS STARTS --------  */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+
+/* -------- FONTS ENDS --------  */
 
 /* -------- VARIABLES STARTS --------  */
 
@@ -526,6 +533,7 @@ main {
 
 .main-controls-player span {
   width: 7vw;
+  min-width: 105px;
   padding: 10px;
   padding-left: 20px;
   font-size: 2.2rem;
@@ -593,8 +601,8 @@ main {
 
 /* --- CAROUSEL BUTTON STARTS --- */
 
-.carousel-button-left,
-.carousel-button-right {
+.carousel-container .carousel-button-left,
+.carousel-container .carousel-button-right {
   border: none;
   outline: none;
   cursor: pointer;
@@ -611,11 +619,11 @@ main {
   bottom: 50px;
 }
 
-.carousel-button-left {
+.carousel-container .carousel-button-left {
   left: 0;
 }
 
-.carousel-button-right {
+.carousel-container .carousel-button-right {
   right: 0;
 }
 
@@ -944,10 +952,10 @@ footer ul li a:hover {
   align-items: center;
 }
 
-.languages-social-media-container select {
+.languages-social-media-container .select-container {
   cursor: pointer;
+  position: relative;
   margin: 20px 0 10px;
-  padding: 10px 5px 10px 20px;
   background-color: transparent;
   color: #999;
   font-size: 1.6rem;
@@ -955,11 +963,45 @@ footer ul li a:hover {
   border-radius: 3px;
 }
 
-/* .languages-social-media-container select::before {
-  background-image: url("https://www.pngkey.com/png/full/167-1670247_white-globe-icon-png-holy-bible-new-international.png");
-  height: 10px;
-  width: 20px;
-} */
+.languages-social-media-container .select-container::before {
+  top: calc(50% - 10px);
+  left: 12px;
+  color: #999;
+  content: "language";
+  font-family: "Material Icons";
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+.languages-social-media-container .select-container::after {
+  top: calc(50% - 10px);
+  right: 4px;
+  color: #999;
+  content: "arrow_drop_down";
+  font-family: "Material Icons";
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+.languages-social-media-container select {
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding: 16px 30px 16px 45px;
+  color: #999;
+  background-color: transparent;
+  border: none;
+
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+.languages-social-media-container select::-ms-expand {
+  display: none;
+}
 
 .languages-social-media-container select option {
   /* margin: 20px 0 10px;
@@ -1646,7 +1688,7 @@ footer p:last-child a:hover {
   height: auto;
   background-color: transparent;
   margin-top: 48px;
-  padding: 0 3vw 25px 3vw;
+  padding: 0 3vw 35px 3vw;
 }
 
 .portal-about h3 {
@@ -1700,7 +1742,6 @@ footer p:last-child a:hover {
 
 /* -------- PORTAL ENDS --------  */
 
-
 @media (max-width: 1450px) {
   .carousel-container {
     max-height: 280px;
@@ -1723,7 +1764,6 @@ footer p:last-child a:hover {
   }
 }
 
-
   </style>
 
 </head>
@@ -1739,7 +1779,7 @@ footer p:last-child a:hover {
 
 <header class="header">
   <div class="header--nav-container">
-    <a title="Inicio" tabindex="0" href="./index.html">
+    <a title="Inicio" tabindex="0" href="#">
       <img class="fakeflix-logo" src="https://logodownload.org/wp-content/uploads/2014/10/netflix-logo-5.png" alt="Fakeflix Logo" />
     </a>
     <nav>
@@ -1790,7 +1830,7 @@ footer p:last-child a:hover {
 
   <section class="main-video-container">
     <div class="main-video-shadow"></div>
-    <video id="main-video" autoplay muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
+    <video id="main-video" muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
       <source src="https://webflix-nine.vercel.app/static/media/test-video-2.ddb9b8b9.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -1812,13 +1852,13 @@ footer p:last-child a:hover {
     </div>
     <div class="main-video-controls">
       <div class="main-controls-wrapper">
-        <a href="/">
+        <a href="#">
           <button class="main-controls-wrapper--play">
             <i class="material-icons">play_arrow</i>
             <span>Reproducir</span>
           </button>
         </a>
-        <button class="main-controls-wrapper--more-info">
+        <button onclick="handlePortalDisplayBlock()" class="main-controls-wrapper--more-info">
           <i class="material-icons">info</i>
           <span>M&aacute;s informaci&oacute;n</span>
         </button>
@@ -1833,6 +1873,15 @@ footer p:last-child a:hover {
 
   <section class="movie-cards-main-container">
 
+    <section id="my-list" class="movie-cards-container">
+      <h3>Mi Lista</h3>
+      <div class="carousel-container">
+        <button type="button" class="material-icons carousel-button-left">navigate_before</button>
+        <div class="carousel"></div>
+        <button type="button" class="material-icons carousel-button-right">navigate_next</button>
+      </div>
+    </section>
+
     <section class="movie-cards-container">
       <h3>Popular en Fakeflix</h3>
       <div class="carousel-container">
@@ -1841,7 +1890,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/originals/43/9a/0d/439a0d0c452ac069332e0c1450e5690a.jpg" alt="13 Reasons Why"/>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -1853,9 +1902,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">97% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>56min</p>
               </div>
             </div>
           </article>
@@ -1874,16 +1923,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">74% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>48min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" alt="La Casa de Papel" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -1895,16 +1944,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 22min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+                <img src="https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg" alt="Dark" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -1916,114 +1965,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">77% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 44min</p>
               </div>
             </div>
           </article>
@@ -2042,9 +1986,114 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">92% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">95% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>54min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://i.ebayimg.com/images/g/s8AAAOSwamZdmnsq/s-l300.jpg" alt="Historia de un Matrimonio" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">75% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>2h 17min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg" alt="Volver al Futuro II" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">88% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 48min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg" alt="Matrix" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">71% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>2h 16min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">92% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -2084,16 +2133,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">74% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>48min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" alt="La Casa de Papel" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2105,16 +2154,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 22min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+                <img src="https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg" alt="Dark" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2126,9 +2175,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">77% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 44min</p>
               </div>
             </div>
           </article>
@@ -2147,9 +2196,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">92% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -2177,7 +2226,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
+                <img src="https://i.ebayimg.com/images/g/s8AAAOSwamZdmnsq/s-l300.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2189,16 +2238,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">75% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 17min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+                <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg" alt="Matrix" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2210,16 +2259,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">71% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 16min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg" alt="Volver al Futuro" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2231,16 +2280,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">88% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>1h 56min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+                <img src="https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg" alt="Dark" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2252,16 +2301,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">77% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 44min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2273,9 +2322,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">97% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>56min</p>
               </div>
             </div>
           </article>
@@ -2315,9 +2364,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -2376,7 +2425,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+                <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg" alt="Matrix" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2388,16 +2437,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">71% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 16min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/db/Rocky_Balboa_%282006%29_theatrical_poster.jpg" alt="Rocky I" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2409,16 +2458,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">81% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 2min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg" alt="Volver al Futuro" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2430,9 +2479,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">88% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>1h 56min</p>
               </div>
             </div>
           </article>
@@ -2451,16 +2500,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
+                <img src="https://i.ebayimg.com/images/g/s8AAAOSwamZdmnsq/s-l300.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2472,16 +2521,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">75% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 17min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/db/Rocky_Balboa_%282006%29_theatrical_poster.jpg" alt="Rocky I" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2493,30 +2542,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">81% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 2min</p>
               </div>
             </div>
           </article>
@@ -2565,7 +2593,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+                <img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg" alt="Matrix" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2577,16 +2605,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">71% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 16min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/db/Rocky_Balboa_%282006%29_theatrical_poster.jpg" alt="Rocky I" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2598,9 +2626,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">81% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 2min</p>
               </div>
             </div>
           </article>
@@ -2649,7 +2677,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2661,16 +2689,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">97% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>56min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg" alt="Volver al Futuro" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2682,9 +2710,30 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">88% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>1h 56min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_768,w_640/v1591195803/user-600981/submissions/pz7wvl7rwqp6pmjmt3za.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">74% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>48min</p>
               </div>
             </div>
           </article>
@@ -2722,6 +2771,90 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
+                <img src="https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg" alt="The Umbrella Academy" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">97% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>56min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">95% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>54min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg" alt="Volver al Futuro" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">88% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>1h 56min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
+                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
+              </picture>
+            </div>
+            <div class="movie-card--details">
+              <div class="movie-card--details--icons-container">
+                <i class="material-icons" title="Reproducir">play_arrow</i>
+                <i class="material-icons" title="Agregar a favoritos">add</i>
+                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
+                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
+                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
+              </div>
+              <div class="movie-card--details--text-container">
+                <p class="green-text">92% para ti</p>
+                <p class="tv-ma-text">TV-MA</p>
+                <p>54min</p>
+              </div>
+            </div>
+          </article>
+          <article class="movie-card">
+            <div class="movie-card--main-image">
+              <picture>
                 <img src="https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png" alt="Dark" />
               </picture>
             </div>
@@ -2743,7 +2876,7 @@ footer p:last-child a:hover {
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdna.artstation.com/p/assets/covers/images/024/925/404/smaller_square/jose-vega-thumbnail.jpg" alt="Kingdom" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/db/Rocky_Balboa_%282006%29_theatrical_poster.jpg" alt="Rocky I" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2755,93 +2888,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">81% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://talenthouse-res.cloudinary.com/image/upload/c_fill,h_894,w_640/v1591170989/user-436270/submissions/ycnzzsygmg89azrvjuze.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg" alt="Dark" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
-              </div>
-            </div>
-          </article>
-          <article class="movie-card">
-            <div class="movie-card--main-image">
-              <picture>
-                <img src="https://e4p7c9i3.stackpathcdn.com/wp-content/uploads/2017/10/1-27.jpg" alt="Stranger Things" />
-              </picture>
-            </div>
-            <div class="movie-card--details">
-              <div class="movie-card--details--icons-container">
-                <i class="material-icons" title="Reproducir">play_arrow</i>
-                <i class="material-icons" title="Agregar a favoritos">add</i>
-                <i class="material-icons" title="Me gusta">thumb_up_off_alt</i>
-                <i class="material-icons" title="No me gusta">thumb_down_off_alt</i>
-                <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
-              </div>
-              <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
-                <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 2min</p>
               </div>
             </div>
           </article>
@@ -2860,16 +2909,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">74% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>48min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" alt="La Casa de Papel" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2881,16 +2930,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 22min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51i5gIzuvaL.jpg" alt="13 Reasons Why" />
+                <img src="https://i.ebayimg.com/images/g/s8AAAOSwamZdmnsq/s-l300.jpg" alt="13 Reasons Why" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2902,9 +2951,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">75% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 17min</p>
               </div>
             </div>
           </article>
@@ -2923,9 +2972,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">92% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -2944,9 +2993,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -2965,16 +3014,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">74% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>48min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" alt="La Casa de Papel" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -2986,16 +3035,16 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">95% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 22min</p>
               </div>
             </div>
           </article>
           <article class="movie-card">
             <div class="movie-card--main-image">
               <picture>
-                <img src="https://i.pinimg.com/736x/ba/4c/00/ba4c00634f142ddb7aa251f1d5ef0657.jpg" alt="Dark" />
+                <img src="https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg" alt="Dark" />
               </picture>
             </div>
             <div class="movie-card--details">
@@ -3007,9 +3056,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">77% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>2h 44min</p>
               </div>
             </div>
           </article>
@@ -3049,9 +3098,9 @@ footer p:last-child a:hover {
                 <button onclick="handlePortalDisplayBlock()" class="material-icons" title="Ver m&aacute;s">expand_more</button>
               </div>
               <div class="movie-card--details--text-container">
-                <p class="green-text">96% para ti</p>
+                <p class="green-text">92% para ti</p>
                 <p class="tv-ma-text">TV-MA</p>
-                <p>1h 50min</p>
+                <p>54min</p>
               </div>
             </div>
           </article>
@@ -3092,27 +3141,29 @@ footer p:last-child a:hover {
 
 
   <div class="languages-social-media-container">
-    <select name="languages" id="languages">
-      <option value="es">Espa&ntilde;ol</option>
-      <option value="en">English</option>
-    </select>
+    <div class="select-container">
+      <select name="languages" id="languages">
+        <option value="es">Espa&ntilde;ol</option>
+        <option value="en">English</option>
+      </select>
+    </div>
     <div class="social-media-icons">
-      <a href="https://facebook.com/Fakeflix" target="_blank">
+      <a href="#">
         <span title="Facebook" class="icon facebook"></span>
       </a>
-      <a href="https://instagram.com/Fakeflix" target="_blank">
+      <a href="#">
         <span title="Instagram" class="icon instagram"></span>
       </a>
-      <a href="https://twitter.com/Fakeflix" target="_blank">
+      <a href="#">
         <span title="Twitter" class="icon twitter"></span>
       </a>
-      <a href="https://youtube.com/Fakeflix" target="_blank">
+      <a href="#">
         <span title="YouTube" class="icon youtube"></span>
       </a>
     </div>
   </div>
   <p>
-    &copy; Fakeflix M&eacute;xico 2021 - Made by
+    &copy; Fakeflix M&eacute;xico 2021 - Made with &#x1F49A; by
     <a title="Kevin J. Zea's GitHub" href="https://github.com/kevinjzea">
       <b>Kevin J. Zea</b>
     </a>
@@ -3131,7 +3182,7 @@ footer p:last-child a:hover {
     <section class="portal-main-container">
       <span onclick="handlePortalDisplayNone()" class="close-portal material-icons">clear</span>
       <section class="portal-video-container">
-        <video id="portal-main-video" autoplay muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
+        <video id="portal-main-video" muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
           <source src="https://webflix-nine.vercel.app/static/media/test-video-2.ddb9b8b9.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -3173,7 +3224,7 @@ footer p:last-child a:hover {
       <section class="portal-episodes-container">
         <div class="portal-episodes--title">
           <h3>Episodios</h3>
-          <select name="episodes" id="episodes">
+          <select onchange="handleChangeOnPortalSelect()" name="episodes" id="episodes-portal">
             <option value="temporada-1">Temporada 1</option>
             <option value="temporada-2">Temporada 2</option>
             <option value="temporada-3">Temporada 3</option>
@@ -3244,7 +3295,7 @@ footer p:last-child a:hover {
           <article class="episode-card">
             <h4>5</h4>
             <picture>
-              <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="Money Heist" />
+              <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
               <div class="progress"><div class="fill"></div></div>
               <span class="material-icons">play_arrow</span>
             </picture>
@@ -3282,7 +3333,7 @@ footer p:last-child a:hover {
               <div class="portal-movie-card--preview-overlay"></div>
               <span>5 Temporadas</span>
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
               </picture>
               <button class="material-icons">play_arrow</button>
             </div>
@@ -3362,7 +3413,7 @@ footer p:last-child a:hover {
               <div class="portal-movie-card--preview-overlay"></div>
               <span>5 Temporadas</span>
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
               </picture>
               <button class="material-icons">play_arrow</button>
             </div>
@@ -3442,7 +3493,7 @@ footer p:last-child a:hover {
               <div class="portal-movie-card--preview-overlay"></div>
               <span>5 Temporadas</span>
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
               </picture>
               <button class="material-icons">play_arrow</button>
             </div>
@@ -3522,7 +3573,7 @@ footer p:last-child a:hover {
               <div class="portal-movie-card--preview-overlay"></div>
               <span>5 Temporadas</span>
               <picture>
-                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-Professor-NetflixTVShowPosterArt_a625f889-edc9-4a64-acb0-030b988d9ac6.jpg" alt="La Casa de Papel" />
+                <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/MoneyHeist-NetflixTVShowPosterFanArt_67917fbc-de8e-4228-90a4-217503d7bbd4.jpg" alt="La Casa de Papel" />
               </picture>
               <button class="material-icons">play_arrow</button>
             </div>
@@ -3572,8 +3623,30 @@ footer p:last-child a:hover {
 
 <!-- PORTAL ENDS -->
 
-<script src="../script/index.js"></script>
-<script>
+
+<!-- <script>
+
+/* ------------------------------ */
+
+/* Adding Link to Google Material Icons to <head> */
+
+  setTimeout(() => {
+  let linkElement = document.createElement("link");
+  let linkAttrRel = document.createAttribute("rel");
+  let linkAttrHref = document.createAttribute("href");
+  linkAttrRel.value = "stylesheet";
+  linkAttrHref.value =
+    "https://fonts.googleapis.com/icon?family=Material+Icons";
+  linkElement.setAttributeNode(linkAttrRel);
+  linkElement.setAttributeNode(linkAttrHref);
+  document.getElementsByTagName("head")[0].appendChild(linkElement);
+}, 40);
+
+/* ------------------------------ */
+
+/* ------------------------------ */
+
+/* Handle Search Bar */
 
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
@@ -3595,44 +3668,70 @@ function handleSearchBar() {
   }
 }
 
+/* ------------------------------ */
+
+/* ------------------------------ */
+
 /* Header Background */
 
-$(window).on("scroll", function () {
-  if ($(window).scrollTop() > 50) {
-    $(".header").addClass("active");
-  } else {
-    //remove the background property so it comes transparent again (defined in your css)
-    $(".header").removeClass("active");
-  }
-});
+setTimeout(() => {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      document.getElementsByClassName("header")[0].classList.add("active");
+    } else {
+      //remove the background property so it comes transparent again (defined in css)
+      document.getElementsByClassName("header")[0].classList.remove("active");
+    }
+  });
+}, 500);
+
+/* ------------------------------ */
+
+/* ------------------------------ */
 
 /* Event Listener for Carousel Scrolling */
 
 const carousels = document.querySelectorAll(".carousel");
+const carouselsLength = carousels.length;
 const rightButtons = document.querySelectorAll(".carousel-button-right");
 const leftButtons = document.querySelectorAll(".carousel-button-left");
 
-rightButtons[0].addEventListener("click", () => {
-  carousels[0].scrollLeft += carousels[0].offsetWidth;
-});
-rightButtons[1].addEventListener("click", () => {
-  carousels[1].scrollLeft += carousels[1].offsetWidth;
-});
-rightButtons[2].addEventListener("click", () => {
-  carousels[2].scrollLeft += carousels[2].offsetWidth;
-});
+/* Evaluate this possibility:
 
-leftButtons[0].addEventListener("click", () => {
-  carousels[0].scrollLeft -= carousels[0].offsetWidth;
-});
-leftButtons[1].addEventListener("click", () => {
-  carousels[1].scrollLeft -= carousels[1].offsetWidth;
-});
-leftButtons[2].addEventListener("click", () => {
-  carousels[2].scrollLeft -= carousels[2].offsetWidth;
-});
+const carousels = document.querySelector(".carousel");
+const rightButtons = document.querySelector(".carousel-button-right");
+const leftButtons = document.querySelector(".carousel-button-left");
 
+rightButtons.addEventListener("click", handleNextContent(carousels));
+leftButtons.addEventListener("click", handlePreviousContent(carousels)); */
 
+setTimeout(() => {
+  for (let i = 0; i < carouselsLength; i++) {
+    rightButtons[i].addEventListener("click", () => {
+      carousels[i].scrollLeft += carousels[i].offsetWidth;
+    });
+
+    leftButtons[i].addEventListener("click", () => {
+      carousels[i].scrollLeft -= carousels[i].offsetWidth;
+    });
+  }
+}, 500);
+
+/* Evaluate this possibility:
+
+function handleNextContent(carousel) {
+  console.log("Right");
+  carousel.scrollLeft += carousel.offsetWidth;
+}
+
+function handlePreviousContent(carousel) {
+  console.log("Left");
+  carousel.scrollLeft -= carousel.offsetWidth;
+} */
+
+/* ------------------------------ */
+
+/* ------------------------------ */
 
 /* Volume Button */
 
@@ -3656,35 +3755,65 @@ const handleVolumeButton = (volumeButton, video) => {
   }
 };
 
-mainVideo.addEventListener("pause", () => {
-  mainVolumeButton.innerHTML = "replay";
-});
+setTimeout(() => {
+  mainVideo.addEventListener("play", () => {
+    mainVolumeButton.innerHTML = "volume_off";
+    mainVideo.muted = true;
+  });
 
-portalVideo.addEventListener("pause", () => {
-  portalVolumeButton.innerHTML = "replay";
-});
+  portalVideo.addEventListener("play", () => {
+    portalVolumeButton.innerHTML = "volume_off";
+    portalVideo.muted = true;
+  });
 
-// $(document).on("click",".containerVolume",function(e){
-//   if(isMuted){
-//       $('video').prop('muted', false);
-//   }
-//   else{
-//       $('video').prop('muted',true);
-//   }
-// });
+  mainVideo.addEventListener("pause", () => {
+    mainVolumeButton.innerHTML = "replay";
+  });
+
+  portalVideo.addEventListener("pause", () => {
+    portalVolumeButton.innerHTML = "replay";
+  });
+}, 500);
+
+setTimeout(() => {
+  mainVideo.play();
+}, 3000);
+
+/* ------------------------------ */
+
+/* ------------------------------ */
 
 /* handlePortalDisplay */
 
 const portal = document.getElementById("portal");
-// const backgroundPortal = document.getElementById("background-portal");
 
 const handlePortalDisplayBlock = () => {
   portal.style.display = "flex";
+  portalVideo.load();
+  mainVideo.pause();
+  portalVolumeButton.innerHTML = "volume_off";
+  portalVideo.muted = true;
+  setTimeout(() => {
+    portalVideo.play();
+  }, 3000);
+
+  // Hiding Portal pressing ESC
+  window.onkeyup = (event) => {
+    if (event.keyCode === 27) {
+      portal.style.display = "none";
+    }
+  };
 };
 
 const handlePortalDisplayNone = () => {
   portal.style.display = "none";
+  mainVideo.play();
+  portalVideo.pause();
 };
+
+/* ------------------------------ */
+
+/* ------------------------------ */
 
 /* handlePortalMovieCards */
 
@@ -3712,8 +3841,311 @@ const handlePortalMovieCards = () => {
   }
 };
 
+/* ------------------------------ */
 
-</script>
+/* ------------------------------ */
+
+/* handleMyList */
+
+const mainMovieCards = document.querySelectorAll(".movie-card");
+
+setTimeout(() => {
+  mainMovieCards.forEach((movieCard) => {
+    /* MovieCard - .details - .icons - i(icon-add) */
+    let clickedIcon = movieCard.children[1].children[0].children[1];
+
+    clickedIcon.addEventListener("click", () => {
+      handleMyList(movieCard);
+    });
+  });
+}, 500);
+
+const myList = document.getElementById("my-list");
+let myListMovieCards = document
+  .getElementById("my-list")
+  .querySelectorAll(".movie-card");
+
+if (myList.children[1].children[1].children.length > 0) {
+  myList.style.display = "block";
+} else {
+  myList.style.display = "none";
+}
+
+// myListMovieCards.forEach((myListMovieCard) => {
+//   let imageValue =
+//     myListMovieCard.children[0].children[0].children[0].attributes[0].value;
+
+//   if (imageValue === "") {
+//     myListMovieCard.style.display = "none";
+//   } else {
+//     myListMovieCard.style.display = "flex";
+//   }
+// });
+
+// /* MovieCard - .main-image - picture - img */
+// movieCard.children[0].children[0].children[0].attributes[0].value;
+
+const handleMyList = (movieCard) => {
+  let movieCardImgSrc =
+    movieCard.children[0].children[0].children[0].attributes[0].value;
+  let movieCardImgAlt =
+    movieCard.children[0].children[0].children[0].attributes[1].value;
+  let movieCardDuration =
+    movieCard.children[1].children[1].children[2].innerHTML;
+  let movieCardPercentageString =
+    movieCard.children[1].children[1].children[0].innerHTML;
+  let movieCardPercentage =
+    movieCardPercentageString[0] + movieCardPercentageString[1];
+  let clickedIcon = movieCard.children[1].children[0].children[1];
+
+  if (clickedIcon.innerHTML === "add") {
+    let newMovieCard = createMovieCard(
+      movieCardImgSrc,
+      movieCardImgAlt,
+      movieCardDuration,
+      movieCardPercentage
+    );
+    myList.children[1].children[1].appendChild(newMovieCard);
+
+    mainMovieCards.forEach((mainMovieCard) => {
+      let mainMovieCardImgSrc =
+        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
+
+      if (mainMovieCardImgSrc === movieCardImgSrc) {
+        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
+        clickedIcon.innerHTML = "delete_outline";
+        clickedIcon.attributes[1].value = "Remover de favoritos";
+      }
+    });
+
+    let newMovieCardIconClickeable =
+      newMovieCard.children[1].children[0].children[1];
+
+    let newMovieCardImgSrc = movieCardImgSrc;
+
+    newMovieCardIconClickeable.addEventListener("click", () => {
+      mainMovieCards.forEach((mainMovieCard) => {
+        let mainMovieCardImgSrc =
+          mainMovieCard.children[0].children[0].children[0].attributes[0].value;
+
+        if (mainMovieCardImgSrc === newMovieCardImgSrc) {
+          let clickedIcon = mainMovieCard.children[1].children[0].children[1];
+          clickedIcon.innerHTML = "add";
+          clickedIcon.attributes[1].value = "Agregar a favoritos";
+        }
+      });
+
+      myList.children[1].children[1].removeChild(newMovieCard);
+
+      if (myList.children[1].children[1].children.length > 0) {
+        myList.style.display = "block";
+      } else {
+        myList.style.display = "none";
+      }
+    });
+
+    clickedIcon.innerHTML = "delete_outline";
+    clickedIcon.attributes[1].value = "Remover de favoritos";
+  } else if (clickedIcon.innerHTML === "delete_outline") {
+    let myListMovieCards = document
+      .getElementById("my-list")
+      .querySelectorAll(".movie-card");
+
+    myListMovieCards.forEach((myListMovieCard) => {
+      let myListMovieCardImgSrc =
+        myListMovieCard.children[0].children[0].children[0].attributes[0].value;
+
+      if (myListMovieCardImgSrc === movieCardImgSrc) {
+        myList.children[1].children[1].removeChild(myListMovieCard);
+      }
+    });
+
+    mainMovieCards.forEach((mainMovieCard) => {
+      let mainMovieCardImgSrc =
+        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
+
+      if (mainMovieCardImgSrc === movieCardImgSrc) {
+        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
+        clickedIcon.innerHTML = "add";
+        clickedIcon.attributes[1].value = "Agregar a favoritos";
+      }
+    });
+
+    clickedIcon.innerHTML = "add";
+    clickedIcon.attributes[1].value = "Agregar a favoritos";
+  }
+
+  if (myList.children[1].children[1].children.length > 0) {
+    myList.style.display = "block";
+  } else {
+    myList.style.display = "none";
+  }
+};
+
+/******* Function to create Movie Cards */
+
+const createMovieCard = (
+  url = "",
+  altText = "Image",
+  duration = "1h 50min",
+  percentage = "96"
+) => {
+  /* ---------- Create MovieCard with class .movie-card ---------- */
+  let movieCard = document.createElement("article");
+  let movieCardClass = document.createAttribute("class");
+  movieCardClass.value = "movie-card";
+  movieCard.setAttributeNode(movieCardClass);
+
+  /* ---------- Create MovieCard's Image Container
+                and add it to MovieCard ---------- */
+
+  let imageContainer = document.createElement("div");
+  let imageContainerClass = document.createAttribute("class");
+  imageContainerClass.value = "movie-card--main-image";
+  imageContainer.setAttributeNode(imageContainerClass);
+  movieCard.appendChild(imageContainer);
+
+  /* ---------- Create picture and img in MovieCard's Image Container
+  ImgAlt and ImgSrc go according to those sent in handleMyList(). ---------- */
+
+  let pictureElement = document.createElement("picture");
+  let imgElement = document.createElement("img");
+  let imgSrc = document.createAttribute("src");
+  let imgAlt = document.createAttribute("alt");
+  imgSrc.value = url;
+  imgAlt.value = altText;
+  imgElement.setAttributeNode(imgSrc);
+  imgElement.setAttributeNode(imgAlt);
+  imageContainer.appendChild(pictureElement);
+  pictureElement.appendChild(imgElement);
+
+  /* ---------- Create MovieCard's Details Container ---------- */
+
+  let detailsContainer = document.createElement("div");
+  let detailsContainerClass = document.createAttribute("class");
+  detailsContainerClass.value = "movie-card--details";
+  detailsContainer.setAttributeNode(detailsContainerClass);
+  movieCard.appendChild(detailsContainer);
+
+  /* ---------- Creating MovieCard's Details Container children (START) ---------- */
+
+  let iconsContainer = document.createElement("div");
+  let textContainer = document.createElement("div");
+  let iconsContainerClass = document.createAttribute("class");
+  let textContainerClass = document.createAttribute("class");
+  iconsContainerClass.value = "movie-card--details--icons-container";
+  textContainerClass.value = "movie-card--details--text-container";
+  iconsContainer.setAttributeNode(iconsContainerClass);
+  textContainer.setAttributeNode(textContainerClass);
+  detailsContainer.appendChild(iconsContainer);
+  detailsContainer.appendChild(textContainer);
+
+  /* ---------- Creating MovieCard's Details Container children (END) ---------- */
+
+  /* ---------- Creating Icons Container's content (START) ---------- */
+
+  /* Play Icon */
+
+  let playIcon = document.createElement("i");
+  let playIconClass = document.createAttribute("class");
+  playIconClass.value = "material-icons";
+  playIcon.setAttributeNode(playIconClass);
+  let playIconTitle = document.createAttribute("title");
+  playIconTitle.value = "Reproducir";
+  playIcon.setAttributeNode(playIconTitle);
+  playIcon.innerHTML = "play_arrow";
+  iconsContainer.appendChild(playIcon);
+
+  /* Add Icon */
+
+  let addIcon = document.createElement("i");
+  let addIconClass = document.createAttribute("class");
+  addIconClass.value = "material-icons";
+  addIcon.setAttributeNode(addIconClass);
+  let addIconTitle = document.createAttribute("title");
+  addIconTitle.value = "Remover de favoritos";
+  addIcon.setAttributeNode(addIconTitle);
+  addIcon.innerHTML = "delete_outline";
+  iconsContainer.appendChild(addIcon);
+
+  /* Like Icon */
+
+  let likeIcon = document.createElement("i");
+  let likeIconClass = document.createAttribute("class");
+  likeIconClass.value = "material-icons";
+  likeIcon.setAttributeNode(likeIconClass);
+  let likeIconTitle = document.createAttribute("title");
+  likeIconTitle.value = "Me gusta";
+  likeIcon.setAttributeNode(likeIconTitle);
+  likeIcon.innerHTML = "thumb_up_off_alt";
+  iconsContainer.appendChild(likeIcon);
+
+  /* Dislike Icon */
+
+  let dislikeIcon = document.createElement("i");
+  let dislikeIconClass = document.createAttribute("class");
+  dislikeIconClass.value = "material-icons";
+  dislikeIcon.setAttributeNode(dislikeIconClass);
+  let dislikeIconTitle = document.createAttribute("title");
+  dislikeIconTitle.value = "No me gusta";
+  dislikeIcon.setAttributeNode(dislikeIconTitle);
+  dislikeIcon.innerHTML = "thumb_down_off_alt";
+  iconsContainer.appendChild(dislikeIcon);
+
+  /* Expand Icon */
+
+  let expandIcon = document.createElement("button");
+  let expandIconClass = document.createAttribute("class");
+  expandIconClass.value = "material-icons";
+  expandIcon.setAttributeNode(expandIconClass);
+  let expandIconTitle = document.createAttribute("title");
+  expandIconTitle.value = "Ver más";
+  expandIcon.setAttributeNode(expandIconTitle);
+  let expandIconOnClick = document.createAttribute("onclick");
+  expandIconOnClick.value = "handlePortalDisplayBlock()";
+  expandIcon.setAttributeNode(expandIconOnClick);
+  expandIcon.innerHTML = "expand_more";
+  iconsContainer.appendChild(expandIcon);
+
+  /* ---------- Creating Icons Container's content (END) ---------- */
+
+  /* ---------- Creating Text Container's content (START) ---------- */
+
+  /* Green Text */
+
+  let greenText = document.createElement("p");
+  let greenTextClass = document.createAttribute("class");
+  greenTextClass.value = "green-text";
+  greenText.setAttributeNode(greenTextClass);
+  greenText.innerHTML = `${percentage}% para ti`;
+  textContainer.appendChild(greenText);
+
+  /* TV-MA Text */
+
+  let tvmaText = document.createElement("p");
+  let tvmaTextClass = document.createAttribute("class");
+  tvmaTextClass.value = "tv-ma-text";
+  tvmaText.setAttributeNode(tvmaTextClass);
+  tvmaText.innerHTML = "TV-MA";
+  textContainer.appendChild(tvmaText);
+
+  /* Duration Text */
+
+  let durationText = document.createElement("p");
+  durationText.innerHTML = duration;
+  textContainer.appendChild(durationText);
+
+  /* ---------- Creating Text Container's content (END) ---------- */
+
+  return movieCard;
+};
+
+/* ------------------------------ */
+
+
+</script> -->
+
+<script src="../script/index.js"></script>
 
 </body>
 </html>
