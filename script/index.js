@@ -619,68 +619,25 @@ const createMovieCard = (
 
   /* ---------- Creating Icons Container's content (START) ---------- */
 
-  /* Play Icon */
+  const playIcon = createIcon('Reproducir', 'play_arrow');
+  const addIcon = createIcon('Remover de favoritos', 'delete_outline');
+  const likeIcon = createIcon('Me gusta', 'thumb_up_off_alt');
+  const dislikeIcon = createIcon('No me gusta', 'thumb_down_off_alt');
 
-  let playIcon = document.createElement("i");
-  let playIconClass = document.createAttribute("class");
-  playIconClass.value = "material-icons";
-  playIcon.setAttributeNode(playIconClass);
-  let playIconTitle = document.createAttribute("title");
-  playIconTitle.value = "Reproducir";
-  playIcon.setAttributeNode(playIconTitle);
-  playIcon.innerHTML = "play_arrow";
-  iconsContainer.appendChild(playIcon);
-
-  /* Add Icon */
-
-  let addIcon = document.createElement("i");
-  let addIconClass = document.createAttribute("class");
-  addIconClass.value = "material-icons";
-  addIcon.setAttributeNode(addIconClass);
-  let addIconTitle = document.createAttribute("title");
-  addIconTitle.value = "Remover de favoritos";
-  addIcon.setAttributeNode(addIconTitle);
-  addIcon.innerHTML = "delete_outline";
-  iconsContainer.appendChild(addIcon);
-
-  /* Like Icon */
-
-  let likeIcon = document.createElement("i");
-  let likeIconClass = document.createAttribute("class");
-  likeIconClass.value = "material-icons";
-  likeIcon.setAttributeNode(likeIconClass);
-  let likeIconTitle = document.createAttribute("title");
-  likeIconTitle.value = "Me gusta";
-  likeIcon.setAttributeNode(likeIconTitle);
-  likeIcon.innerHTML = "thumb_up_off_alt";
-  iconsContainer.appendChild(likeIcon);
-
-  /* Dislike Icon */
-
-  let dislikeIcon = document.createElement("i");
-  let dislikeIconClass = document.createAttribute("class");
-  dislikeIconClass.value = "material-icons";
-  dislikeIcon.setAttributeNode(dislikeIconClass);
-  let dislikeIconTitle = document.createAttribute("title");
-  dislikeIconTitle.value = "No me gusta";
-  dislikeIcon.setAttributeNode(dislikeIconTitle);
-  dislikeIcon.innerHTML = "thumb_down_off_alt";
-  iconsContainer.appendChild(dislikeIcon);
-
-  /* Expand Icon */
-
-  let expandIcon = document.createElement("button");
-  let expandIconClass = document.createAttribute("class");
+  const expandIcon = document.createElement("button");
+  const expandIconClass = document.createAttribute("class");
   expandIconClass.value = "material-icons";
   expandIcon.setAttributeNode(expandIconClass);
-  let expandIconTitle = document.createAttribute("title");
+  const expandIconTitle = document.createAttribute("title");
   expandIconTitle.value = "Ver más";
   expandIcon.setAttributeNode(expandIconTitle);
-  let expandIconOnClick = document.createAttribute("onclick");
+  const expandIconOnClick = document.createAttribute("onclick");
   expandIconOnClick.value = "handlePortalDisplayBlock()";
   expandIcon.setAttributeNode(expandIconOnClick);
   expandIcon.innerHTML = "expand_more";
   iconsContainer.appendChild(expandIcon);
+
+  iconsContainer.append(playIcon, addIcon, likeIcon, dislikeIcon, expandIcon);
 
   /* ---------- Creating Icons Container's content (END) ---------- */
 
@@ -714,6 +671,19 @@ const createMovieCard = (
 
   return movieCard;
 };
+
+function createIcon(title, innerHTML) {
+  const icon = document.createElement('i')
+  const iconClass = document.createAttribute("class");
+  iconClass.value = "material-icons";
+  icon.setAttributeNode(iconClass);
+  const iconTitle = document.createAttribute("title");
+  iconTitle.value = title;
+  icon.setAttributeNode(iconTitle);
+  icon.innerHTML = innerHTML;
+
+  return icon;
+}
 
 /*
 
