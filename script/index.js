@@ -1,23 +1,5 @@
 /* ------------------------------ */
 
-/* Adding Link to Google Material Icons to <head> */
-
-setTimeout(() => {
-  let linkElement = document.createElement("link");
-  let linkAttrRel = document.createAttribute("rel");
-  let linkAttrHref = document.createAttribute("href");
-  linkAttrRel.value = "stylesheet";
-  linkAttrHref.value =
-    "https://fonts.googleapis.com/icon?family=Material+Icons";
-  linkElement.setAttributeNode(linkAttrRel);
-  linkElement.setAttributeNode(linkAttrHref);
-  document.getElementsByTagName("head")[0].appendChild(linkElement);
-}, 40);
-
-/* ------------------------------ */
-
-/* ------------------------------ */
-
 /* Handle Search Bar */
 
 const searchInput = document.getElementById("search-input");
