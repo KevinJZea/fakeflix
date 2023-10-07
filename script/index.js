@@ -203,9 +203,8 @@ const handlePortalMovieCards = () => {
 
 const portalSelectEpisodes = document.getElementById("episodes-portal");
 const episodesCards = document.getElementsByClassName("episode-card");
-const episodesCardsLength = episodesCards.length;
 
-const temporada1Data = [
+const season1Data = [
   {
     img: "https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg",
     title: "The Umbrella Academy",
@@ -243,7 +242,7 @@ const temporada1Data = [
   },
 ];
 
-const temporada2Data = [
+const season2Data = [
   {
     img: "https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg",
     title: "Batman: el Caballero de la Noche Asciende",
@@ -267,7 +266,7 @@ const temporada2Data = [
       "Forrest Gump, un joven sure&ntilde;o, tenaz e inocente, es protagonista de acontecimientos cruciales en la historia de los Estados Unidos.",
   },
   {
-    img: "https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg",
+    img: "https://c8.alamy.com/comp/2K4TMJ5/the-matrix-1999-the-matrix-movie-poster-keanu-reeves-2K4TMJ5.jpg",
     title: "Matrix",
     duration: "2h 16min",
     description:
@@ -282,7 +281,7 @@ const temporada2Data = [
   },
 ];
 
-const temporada3Data = [
+const season3Data = [
   {
     img: "https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png",
     title: "Stranger Things",
@@ -321,7 +320,7 @@ const temporada3Data = [
   },
 ];
 
-const temporada4Data = [
+const season4Data = [
   {
     img: "https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg",
     title: "Dark",
@@ -360,59 +359,28 @@ const temporada4Data = [
   },
 ];
 
+const seasonDataMap = {
+  'season-1': season1Data,
+  'season-2': season2Data,
+  'season-3': season3Data,
+  'season-4': season4Data,
+}
+
 const handleChangeOnPortalSelect = () => {
-  if (portalSelectEpisodes.value === "temporada-1") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada1Data[i].img;
-      episodeCardImg.attributes[1].value = temporada1Data[i].title;
+  const seasonData = seasonDataMap[portalSelectEpisodes.value];
+  
+  for (let i = 0; i < episodesCards.length; i++) {
+    const episodeCard = episodesCards[i];
+    const episodeData = seasonData[i];
 
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada1Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada1Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada1Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-2") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada2Data[i].img;
-      episodeCardImg.attributes[1].value = temporada2Data[i].title;
+    const episodeCardImg = episodeCard.querySelector('img');
+    episodeCardImg.src = episodeData.img;
+    episodeCardImg.alt = episodeData.title;
 
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada2Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada2Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada2Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-3") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada3Data[i].img;
-      episodeCardImg.attributes[1].value = temporada3Data[i].title;
-
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada3Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada3Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada3Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-4") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada4Data[i].img;
-      episodeCardImg.attributes[1].value = temporada4Data[i].title;
-
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada4Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada4Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada4Data[i].description;
-    }
+    const episodeCardDetails = episodeCard.querySelector('.episode-card--details');
+    episodeCardDetails.querySelector('.episode-card--title').innerHTML = episodeData.title;
+    episodeCardDetails.querySelector('.episode-card--duration').innerHTML = episodeData.duration;
+    episodeCardDetails.querySelector('.episode-card--description').innerHTML = episodeData.description;
   }
 };
 

@@ -1427,21 +1427,18 @@ footer p:last-child a:hover {
   height: 100%;
 }
 
-.episode-card--title {
+.episode-card--title-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.episode-card--title span {
   color: #fff;
   font-size: 1.6rem;
   font-weight: 700;
 }
 
-.episode-card--details p {
+.episode-card--description {
   color: #fff;
   font-size: 1.6rem;
 }
