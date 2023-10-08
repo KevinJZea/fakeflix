@@ -394,7 +394,6 @@ function groupMoviesByImageSrc() {
 
   movieCards.forEach((movieCard) => {
     const movieCardImageSrc = movieCard.querySelector('img').src;
-    console.log(movieCardsGroups[movieCardImageSrc]);
 
     if (!movieCardsGroups[movieCardImageSrc]) movieCardsGroups[movieCardImageSrc] = [];
 
@@ -500,68 +499,13 @@ const handleMyList = (movieCard) => {
   }
 };
 
-/******* Function to create Movie Cards */
-
-const createMovieCard = (
+function createMovieCard(
   url = "",
   altText = "Image",
   duration = "1h 50min",
   percentage = "96"
-) => {
-  /* ---------- Create MovieCard with class .movie-card ---------- */
-  let movieCard = document.createElement("article");
-  let movieCardClass = document.createAttribute("class");
-  movieCardClass.value = "movie-card";
-  movieCard.setAttributeNode(movieCardClass);
-
-  /* ---------- Create MovieCard's Image Container
-                and add it to MovieCard ---------- */
-
-  let imageContainer = document.createElement("div");
-  let imageContainerClass = document.createAttribute("class");
-  imageContainerClass.value = "movie-card--main-image";
-  imageContainer.setAttributeNode(imageContainerClass);
-  movieCard.appendChild(imageContainer);
-
-  /* ---------- Create picture and img in MovieCard's Image Container
-  ImgAlt and ImgSrc go according to those sent in handleMyList(). ---------- */
-
-  let pictureElement = document.createElement("picture");
-  let imgElement = document.createElement("img");
-  let imgSrc = document.createAttribute("src");
-  let imgAlt = document.createAttribute("alt");
-  imgSrc.value = url;
-  imgAlt.value = altText;
-  imgElement.setAttributeNode(imgSrc);
-  imgElement.setAttributeNode(imgAlt);
-  imageContainer.appendChild(pictureElement);
-  pictureElement.appendChild(imgElement);
-
-  /* ---------- Create MovieCard's Details Container ---------- */
-
-  let detailsContainer = document.createElement("div");
-  let detailsContainerClass = document.createAttribute("class");
-  detailsContainerClass.value = "movie-card--details";
-  detailsContainer.setAttributeNode(detailsContainerClass);
-  movieCard.appendChild(detailsContainer);
-
-  /* ---------- Creating MovieCard's Details Container children (START) ---------- */
-
-  let iconsContainer = document.createElement("div");
-  let textContainer = document.createElement("div");
-  let iconsContainerClass = document.createAttribute("class");
-  let textContainerClass = document.createAttribute("class");
-  iconsContainerClass.value = "movie-card--details--icons-container";
-  textContainerClass.value = "movie-card--details--text-container";
-  iconsContainer.setAttributeNode(iconsContainerClass);
-  textContainer.setAttributeNode(textContainerClass);
-  detailsContainer.appendChild(iconsContainer);
-  detailsContainer.appendChild(textContainer);
-
-  /* ---------- Creating MovieCard's Details Container children (END) ---------- */
-
-  /* ---------- Creating Icons Container's content (START) ---------- */
-
+) {
+  /* ---------- Create MovieCard's Icons Container ---------- */
   const playIcon = createIcon('Reproducir', 'play_arrow');
   const addIcon = createIcon('Remover de favoritos', 'delete_outline');
   const likeIcon = createIcon('Me gusta', 'thumb_up_off_alt');
@@ -569,65 +513,109 @@ const createMovieCard = (
 
   addIcon.classList.add('movie-card--details--add-icon');
 
-  const expandIcon = document.createElement("button");
-  const expandIconClass = document.createAttribute("class");
-  expandIconClass.value = "material-icons";
-  expandIcon.setAttributeNode(expandIconClass);
-  const expandIconTitle = document.createAttribute("title");
-  expandIconTitle.value = "Ver más";
-  expandIcon.setAttributeNode(expandIconTitle);
-  const expandIconOnClick = document.createAttribute("onclick");
-  expandIconOnClick.value = "handlePortalDisplayBlock()";
-  expandIcon.setAttributeNode(expandIconOnClick);
-  expandIcon.innerHTML = "expand_more";
-  iconsContainer.appendChild(expandIcon);
+  const expandIcon = createElement({
+    tagname: 'button',
+    attributes: {
+      class: 'material-icons',
+      title: 'Ver m&aacute;s',
+      onclick: 'handlePortalDisplayBlock()',
+    },
+    innerHTML: 'expand_more',
+  });
+  
+  const iconsContainer = createElement({
+    tagname: 'div',
+    children: [playIcon, addIcon, likeIcon, dislikeIcon, expandIcon],
+    attributes: { class: 'movie-card--details--icons-container' },
+  });
 
-  iconsContainer.append(playIcon, addIcon, likeIcon, dislikeIcon, expandIcon);
+  /* ---------- Create MovieCard's Text Container ---------- */
+  const percentageText = createElement({
+    tagname: 'p',
+    attributes: {
+      class: 'green-text',
+    },
+    innerHTML: `${percentage}% para ti`,
+  });
 
-  /* ---------- Creating Icons Container's content (END) ---------- */
+  const tvmaText = createElement({
+    tagname: 'p',
+    attributes: {
+      class: 'tv-ma-text',
+    },
+    innerHTML: 'TV-MA',
+  });
 
-  /* ---------- Creating Text Container's content (START) ---------- */
+  const durationText = createElement({ tagname: 'p', innerHTML: duration });
 
-  /* Green Text */
+  const textContainer = createElement({
+    tagname: 'div',
+    children: [percentageText, tvmaText, durationText],
+    attributes: { class: 'movie-card--details--text-container' },
+  });
+  
+  /* ---------- Create MovieCard's Details Container ---------- */
+  const detailsContainer = createElement({
+    tagname: 'div',
+    children: [iconsContainer, textContainer],
+    attributes: { class: 'movie-card--details' },
+  });
 
-  let greenText = document.createElement("p");
-  let greenTextClass = document.createAttribute("class");
-  greenTextClass.value = "green-text";
-  greenText.setAttributeNode(greenTextClass);
-  greenText.innerHTML = `${percentage}% para ti`;
-  textContainer.appendChild(greenText);
+  /* ---------- Create MovieCard's Image Container ---------- */
+  const image = createElement({
+    tagname: 'img',
+    attributes: {
+      src: url,
+      alt: altText,
+    },
+  });
 
-  /* TV-MA Text */
+  const pictureElement = createElement({
+    tagname: 'picture',
+    children: [image],
+  });
 
-  let tvmaText = document.createElement("p");
-  let tvmaTextClass = document.createAttribute("class");
-  tvmaTextClass.value = "tv-ma-text";
-  tvmaText.setAttributeNode(tvmaTextClass);
-  tvmaText.innerHTML = "TV-MA";
-  textContainer.appendChild(tvmaText);
+  const imageContainer = createElement({
+    tagname: 'div',
+    children: [pictureElement],
+    attributes: {
+      class: 'movie-card--main-image',
+    },
+  });
 
-  /* Duration Text */
-
-  let durationText = document.createElement("p");
-  durationText.innerHTML = duration;
-  textContainer.appendChild(durationText);
-
-  /* ---------- Creating Text Container's content (END) ---------- */
+  const movieCard = createElement({
+    tagname: 'article',
+    children: [imageContainer, detailsContainer],
+    attributes: { class: 'movie-card' },
+  });
 
   return movieCard;
 };
 
 function createIcon(title, innerHTML) {
-  const icon = document.createElement('i')
-  const iconClass = document.createAttribute("class");
-  iconClass.value = "material-icons";
-  icon.setAttributeNode(iconClass);
-  const iconTitle = document.createAttribute("title");
-  iconTitle.value = title;
-  icon.setAttributeNode(iconTitle);
-  icon.innerHTML = innerHTML;
+  return createElement({
+    tagname: 'i',
+    attributes: {
+      class: 'material-icons',
+      title,
+    },
+    innerHTML,
+  });
+}
 
-  return icon;
+function createElement({ tagname, children = [], ...props }) {
+  const element = document.createElement(tagname);
+  element.append(...children);
+
+  for (const prop in props) {
+    if (prop === 'attributes') {
+      Object.entries(props.attributes).forEach(function (attr) {
+        element.setAttribute(attr[0], attr[1]);
+      });
+    } else element[prop] = props[prop];
+  }
+
+  return element;
 }
 
 /*
