@@ -1,18 +1,11 @@
-/* -------- FONTS STARTS --------  */
-
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
-
-/* -------- FONTS ENDS --------  */
-
-/* -------- VARIABLES STARTS --------  */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
 :root {
   --gray-text: #8b8b8b;
   --green-text: #46d369;
   --header-size: 60px;
+  --white: #fff;
 }
-
-/* -------- VARIABLES ENDS --------  */
 
 * {
   box-sizing: border-box;
@@ -22,14 +15,10 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Lato", "Netflix Sans", "Helvetica Neue", Helvetica, Arial,
+  font-family: 'Lato', 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
   scroll-behavior: smooth;
 }
-
-/* body {
-  position: static;
-} */
 
 a,
 button {
@@ -46,7 +35,7 @@ a {
   text-decoration: none;
 }
 
-/* -------- GENERAL CLASSES STARTS --------  */
+/* -------- GENERAL CLASSES --------  */
 
 .icon:hover {
   opacity: 0.75;
@@ -68,9 +57,7 @@ a {
   background-color: rgb(0, 0, 0);
 }
 
-/* -------- GENERAL CLASSES ENDS --------  */
-
-/* -------- HEADER STARTS --------  */
+/* -------- HEADER --------  */
 
 header {
   z-index: 5;
@@ -85,7 +72,7 @@ header {
   background-color: rgba(0, 0, 0, 0);
 }
 
-/* --- HEADER LEFT PART STARTS --- */
+/* --- HEADER LEFT PART --- */
 
 .header--nav-container {
   display: flex;
@@ -113,7 +100,7 @@ header .header--nav-container nav ul li {
 
 header .header--nav-container nav ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--white);
   font-size: 1.4rem;
 }
 
@@ -121,9 +108,7 @@ header .header--nav-container nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* --- HEADER LEFT PART ENDS --- */
-
-/* --- HEADER RIGHT PART STARTS --- */
+/* --- HEADER RIGHT PART --- */
 
 header .header--profile-container {
   height: 100%;
@@ -148,7 +133,7 @@ header .header--profile-container ul li {
 
 header .header--profile-container ul li .material-icons {
   cursor: pointer;
-  color: #fff;
+  color: var(--white);
   font-size: 3rem;
 }
 
@@ -161,7 +146,6 @@ header .header--profile-container ul li:first-child form {
   width: auto;
   height: 35px;
   padding: 0 10px;
-  /* border: 1px solid white; */
   border-radius: 5px;
 
   display: flex;
@@ -182,15 +166,14 @@ header .header--profile-container ul li form .search {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-image: url("https://www.iconsdb.com/icons/preview/white/search-13-xxl.png"); */
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png");
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png');
 }
 
 header .header--profile-container ul li form input {
   outline: none;
   height: 100%;
   padding: 2px 0 2px 5px;
-  color: white;
+  color: var(--white);
   background-color: transparent;
   border: none;
 }
@@ -209,7 +192,7 @@ header .header--profile-container ul li form input:nth-child(2)::placeholder {
 
 header .header--profile-container ul li form input:nth-child(3) {
   cursor: pointer;
-  color: white;
+  color: var(--white);
 }
 
 header .header--profile-container ul li form input:nth-child(3):hover {
@@ -235,7 +218,7 @@ header .header--profile-container ul li a .icon {
 header .header--profile-container ul li a .my-list {
   height: 24px;
   width: 19px;
-  background-image: url("https://icon-library.com/images/what-is-the-white-shopping-bag-icon/what-is-the-white-shopping-bag-icon-3.jpg");
+  background-image: url('https://icon-library.com/images/what-is-the-white-shopping-bag-icon/what-is-the-white-shopping-bag-icon-3.jpg');
 }
 
 header .header--profile-container ul li .notifications {
@@ -243,8 +226,7 @@ header .header--profile-container ul li .notifications {
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: 3px;
-  /* background-image: url("https://www.iconsdb.com/icons/preview/white/bell-3-xxl.png"); */
-  background-image: url("https://flaticons.net/icon.php?slug_category=miscellaneous&slug_icon=bell");
+  background-image: url('https://flaticons.net/icon.php?slug_category=miscellaneous&slug_icon=bell');
 }
 
 header .header--profile-container ul li:last-child {
@@ -268,7 +250,7 @@ header .header--profile-container ul li .arrow-down {
   background-size: cover;
   height: 10px;
   width: 15px;
-  background-image: url("https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-9.jpg");
+  background-image: url('https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-9.jpg');
 }
 
 .header--profile-container ul li ul {
@@ -281,7 +263,6 @@ header .header--profile-container ul li .arrow-down {
   position: absolute;
   text-align: right;
   background-color: rgba(0, 0, 0, 0.7);
-  /* border-top: 10px solid transparent; */
 }
 
 .header--profile-container ul li .header--hide-menu li:last-child {
@@ -300,7 +281,7 @@ header .header--profile-container ul li .arrow-down {
 
 .header--profile-container ul li .header--hide-menu li a {
   font-size: 1.2rem;
-  color: white;
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -308,11 +289,7 @@ header .header--profile-container ul li .arrow-down {
   text-decoration: underline;
 }
 
-/* --- HEADER RIGHT PART ENDS --- */
-
-/* -------- HEADER ENDS -------- */
-
-/* -------- MAIN STARTS -------- */
+/* -------- MAIN -------- */
 
 main {
   min-height: 100vh;
@@ -321,14 +298,13 @@ main {
   position: relative;
 }
 
-/* --- MAIN VIDEO STARTS --- */
+/* --- MAIN VIDEO --- */
 
 .main-video-container {
-  /* background-color: rgba(0, 0, 0, 1); */
   width: 100%;
   height: 100vh;
   margin-bottom: 30px;
-  color: white;
+  color: var(--white);
   display: grid;
   grid-template-rows: var(--header-size) repeat(5, 1fr);
   grid-template-columns: repeat(3, 1fr);
@@ -437,7 +413,7 @@ main {
 
 .main-controls-wrapper a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
 }
 
 .main-controls-wrapper--play {
@@ -448,7 +424,7 @@ main {
   padding: 12px 28px;
   font-size: 22px;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--white);
   margin-right: 14px;
 }
 
@@ -477,7 +453,7 @@ main {
   font-size: 22px;
   border-radius: 4px;
   background: rgba(89, 89, 89, 0.78);
-  color: #fff;
+  color: var(--white);
 }
 
 .main-controls-wrapper--more-info:hover {
@@ -497,14 +473,14 @@ main {
   cursor: pointer;
   width: 50px;
   height: 50px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   border-radius: 50%;
   padding: 12px;
   font-weight: 300;
   margin-right: 20px;
   text-align: center;
   vertical-align: middle;
-  color: #fff;
+  color: var(--white);
   font-size: 22px;
   background: none;
   outline: none;
@@ -522,12 +498,10 @@ main {
   font-size: 2.2rem;
   border-left: 2px solid #e5e5e5;
   background-color: rgba(20, 20, 20, 0.6);
-  color: #fff;
+  color: var(--white);
 }
 
-/* --- MAIN VIDEO ENDS --- */
-
-/* --- MAIN SECTION STARTS --- */
+/* --- MAIN SECTION --- */
 
 #my-list {
   display: none;
@@ -549,9 +523,6 @@ main {
   -webkit-user-select: none;
   user-select: none;
 
-  /* For not having functional scroll on the movie-cards-container  */
-  /* overflow-y: hidden; */
-
   /* Hide scrollbar for IE, Edge and Firefox */
 
   -ms-overflow-style: none; /* IE and Edge */
@@ -567,17 +538,13 @@ main {
   z-index: 3;
 }
 
-/* .movie-cards-container:not(:last-of-type) {
-  margin-bottom: 20px;
-} */
-
 .movie-cards-container h3 {
-  color: white;
+  color: var(--white);
   font-size: 2.4rem;
   margin: 15px 0 -5px;
 }
 
-/* --- MAIN SECTION ENDS --- */
+/* --- CAROUSEL --- */
 
 .carousel-container {
   position: relative;
@@ -586,7 +553,7 @@ main {
   max-height: 300px;
 }
 
-/* --- CAROUSEL BUTTON STARTS --- */
+/* --- CAROUSEL BUTTON --- */
 
 .carousel-container .carousel-button-left,
 .carousel-container .carousel-button-right {
@@ -596,7 +563,7 @@ main {
   visibility: hidden;
   z-index: 4;
   position: absolute;
-  color: white;
+  color: var(--white);
   background-color: rgba(20, 20, 20, 0.7);
   max-height: 100%;
   top: 50px;
@@ -625,9 +592,7 @@ main {
   visibility: visible;
 }
 
-/* --- CAROUSEL BUTTON ENDS --- */
-
-/* --- MAIN CAROUSEL STARTS --- */
+/* --- MAIN CAROUSEL --- */
 
 .movie-cards-container .carousel {
   min-height: 300px;
@@ -639,38 +604,12 @@ main {
   scroll-behavior: smooth;
   margin-top: 10px;
   padding: 50px 0;
-
-  /* padding-top: 10px;
-  position: relative;
-  height: 100%;
-  font-size: 0;
-  align-items: flex-start; */
 }
 
 .carousel {
-  /* transition: 450ms -webkit-transform;
-  transition: 450ms transform;
-  transition: 450ms transform, 450ms -webkit-transform;
-  transition: all 1s;
-  scroll-behavior: smooth;
-  white-space: nowrap;
-  padding-bottom: 10px;
-  width: inherit;
-  display: inline-table;
-  overflow-x: scroll;
-  */
-
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-
-/*
-
-  https://i.pinimg.com/originals/f4/48/ef/f448ef8c16e554313b36de43d059eef3.png
-  https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b4f85340664543.5787e03bf1133.jpg
-  https://i.pinimg.com/originals/5b/ff/1b/5bff1be797f8ca131e08ccb10940eb9f.jpg
-
-  */
 
 .carousel::-webkit-scrollbar {
   display: none;
@@ -688,12 +627,9 @@ main {
   overflow: visible;
 }
 
-/* --- MAIN CAROUSEL ENDS --- */
-
-/* --- MAIN MOVIE-CARD STARTS --- */
+/* --- MAIN MOVIE-CARD --- */
 
 .movie-card {
-  /* background-color: rgba(255, 255, 255, 1); */
   overflow: hidden;
   position: relative;
   display: flex;
@@ -705,32 +641,12 @@ main {
   font-size: 20px;
   border-radius: 1px;
   transition: 450ms all;
-  /* -webkit-transform-origin: center left;
-    transform-origin: center left; */
 }
 
 .carousel .movie-card:nth-child(1) {
   -webkit-transform-origin: center left;
   transform-origin: center left;
 }
-
-/* .movie-card:hover ~ .movie-card {
-    -webkit-transform: translate3d(125px, 0, 0);
-    transform: translate3d(125px, 0, 0);
-  } */
-
-/* .movie-card .movie-card--main-image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-} */
-
-/* .movie-card--main-image {
-  position: relative;
-  width: 100%;
-  height: inherit;
-  padding: 28.125%;
-} */
 
 .movie-card .movie-card--main-image {
   position: relative;
@@ -768,7 +684,6 @@ main {
 }
 
 .movie-card--details {
-  /* border: 1px solid white; */
   display: none;
   width: 100%;
   height: 78px;
@@ -778,13 +693,9 @@ main {
 
 .movie-card:hover .movie-card--details {
   display: block;
-  /* z-index: 1; */
-  /* transform: 1000ms display; */
-  /* Animation for the details container */
 }
 
 .movie-card--details .movie-card--details--icons-container {
-  /* padding: 0 5px; */
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -795,9 +706,8 @@ main {
 
 .movie-card--details--icons-container .material-icons {
   cursor: pointer;
-  /* margin-right: 9px; */
   font-size: 22px;
-  color: #fff;
+  color: var(--white);
   padding: 6px;
   border: 1px solid #e5e5e5;
   border-radius: 50%;
@@ -806,37 +716,6 @@ main {
 .movie-card--details--icons-container .material-icons:hover {
   opacity: 0.7;
 }
-
-/* .movie-card--details .movie-card--details--icons-container img {
-  cursor: pointer;
-  display: inherit;
-  width: 30px;
-  height: 30px;
-  padding: 8px;
-  border-radius: 50%;
-  border: 1px solid white;
-  margin-right: 5px;
-}
-
-.movie-card--details .movie-card--details--icons-container .play-icon {
-  border: none;
-  border-radius: 0;
-  width: 40px;
-  height: 40px;
-  margin-top: -3px;
-}
-
-.movie-card--details .movie-card--details--icons-container .plus-icon {
-  /* border: none;
-  width: 80px;
-  height: 80px;
-  margin-top: -3px;
-  background-color: white;
-}
-
-.movie-card--details .movie-card--details--icons-container img:hover {
-  opacity: 0.75;
-} */
 
 .movie-card--details--text-container {
   width: 100%;
@@ -857,38 +736,13 @@ main {
 }
 
 .movie-card--details p {
-  color: white;
+  color: var(--white);
   font-size: 1.4rem;
   display: inline-block;
   margin: 5px 5px 0 0;
 }
 
-/* .movie-card--details {
-    align-items: flex-start;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    bottom: 0;
-    display: flex;
-    font-size: 1rem;
-    flex-direction: column;
-    justify-content: flex-end;
-    left: 0;
-    opacity: 0;
-    transition: 450ms opacity;
-    padding: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  } */
-
-/* --- MAIN MOVIE-CARD ENDS --- */
-
-/* -------- MAIN ENDS -------- */
-
-/* -------- FOOTER STARTS -------- */
+/* -------- FOOTER -------- */
 
 footer {
   width: 100%;
@@ -954,8 +808,8 @@ footer ul li a:hover {
   top: calc(50% - 10px);
   left: 12px;
   color: #999;
-  content: "language";
-  font-family: "Material Icons";
+  content: 'language';
+  font-family: 'Material Icons';
   font-size: 2rem;
   position: absolute;
   pointer-events: none;
@@ -965,8 +819,8 @@ footer ul li a:hover {
   top: calc(50% - 10px);
   right: 4px;
   color: #999;
-  content: "arrow_drop_down";
-  font-family: "Material Icons";
+  content: 'arrow_drop_down';
+  font-family: 'Material Icons';
   font-size: 2rem;
   position: absolute;
   pointer-events: none;
@@ -979,11 +833,6 @@ footer ul li a:hover {
   color: #999;
   background-color: transparent;
   border: none;
-
-  /* for Firefox */
-  -moz-appearance: none;
-  /* for Chrome */
-  -webkit-appearance: none;
 }
 
 .languages-social-media-container select::-ms-expand {
@@ -991,8 +840,6 @@ footer ul li a:hover {
 }
 
 .languages-social-media-container select option {
-  /* margin: 20px 0 10px;
-  padding: 10px 10px 10px 50px; */
   background-color: #000;
   color: #999;
   font-size: 1.6rem;
@@ -1035,9 +882,7 @@ footer p:last-child a:hover {
   color: #c5c5c5;
 }
 
-/* -------- FOOTER ENDS --------  */
-
-/* -------- PORTAL STARTS --------  */
+/* -------- PORTAL --------  */
 
 .portal {
   display: none;
@@ -1048,14 +893,11 @@ footer p:last-child a:hover {
   width: 100vw;
   z-index: 10;
   overflow-y: scroll;
-
-  /* Display: flex; */
 }
 
 .portal-main-container {
   position: relative;
   width: 100%;
-  /* min-height: 1500px; */
   height: auto;
   margin: auto auto;
   background-color: #181818;
@@ -1088,14 +930,14 @@ footer p:last-child a:hover {
   font-size: 3.2rem;
   padding: 2.5px;
   border-radius: 50%;
-  color: white;
+  color: var(--white);
   background-color: black;
   z-index: 12;
 }
 
 .portal-main-container .close-portal:hover {
   color: black;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .portal-video-container {
@@ -1105,7 +947,7 @@ footer p:last-child a:hover {
   padding-top: 56.3925%;
 }
 
-/* -------- PORTAL VIDEO STARTS --------  */
+/* -------- PORTAL VIDEO --------  */
 
 .portal-main-container video {
   width: 100%;
@@ -1180,7 +1022,7 @@ footer p:last-child a:hover {
   outline: none;
   border: none;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--white);
   color: #141414;
   padding: 4px 20px;
   font-size: 1.6rem;
@@ -1203,9 +1045,9 @@ footer p:last-child a:hover {
 
 .portal-video-actions > span {
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid var(--white);
   border-radius: 50%;
-  color: white;
+  color: var(--white);
   font-size: 3rem;
   padding: 8px;
   margin-right: 7px;
@@ -1227,7 +1069,7 @@ footer p:last-child a:hover {
   background: none;
   font-size: 24px;
   padding: 8px;
-  color: #fff;
+  color: var(--white);
   border: 1px solid #e5e5e5;
   border-radius: 50%;
 }
@@ -1236,9 +1078,7 @@ footer p:last-child a:hover {
   background-color: rgba(20, 20, 20, 0.6);
 }
 
-/* -------- PORTAL VIDEO ENDS --------  */
-
-/* -------- PORTAL DESCRIPTION STARTS --------  */
+/* -------- PORTAL DESCRIPTION --------  */
 
 .portal-description-container {
   user-select: none;
@@ -1260,7 +1100,7 @@ footer p:last-child a:hover {
 
 .portal-description-synopsis span {
   margin-right: 15px;
-  color: white;
+  color: var(--white);
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -1275,7 +1115,7 @@ footer p:last-child a:hover {
 }
 
 .portal-description-container p {
-  color: white;
+  color: var(--white);
   margin-top: 20px;
   font-size: 1.8rem;
   font-weight: 400;
@@ -1290,7 +1130,7 @@ footer p:last-child a:hover {
 .portal-description-metadata ul li {
   font-size: 1.6rem;
   list-style: none;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 10px;
 }
 
@@ -1301,16 +1141,14 @@ footer p:last-child a:hover {
 
 .portal-description-metadata ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
 }
 
 .portal-description-metadata ul li a:hover {
   text-decoration: underline;
 }
 
-/* -------- PORTAL DESCRIPTION ENDS --------  */
-
-/* -------- PORTAL EPISODES STARTS --------  */
+/* -------- PORTAL EPISODES --------  */
 
 .portal-episodes-container {
   user-select: none;
@@ -1332,7 +1170,7 @@ footer p:last-child a:hover {
 .portal-episodes--title h3 {
   font-size: 2.4rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--white);
 }
 
 .portal-episodes--title select {
@@ -1340,7 +1178,7 @@ footer p:last-child a:hover {
   background-color: #242424;
   border: 2px solid #4d4d4d;
   padding: 10px 15px;
-  color: #fff;
+  color: var(--white);
   font-size: 1.6rem;
   font-weight: bold;
   border-radius: 5px;
@@ -1368,7 +1206,7 @@ footer p:last-child a:hover {
 }
 
 .episode-card h4 {
-  color: #fff;
+  color: var(--white);
   font-size: 2.4rem;
   font-weight: 700;
   text-align: center;
@@ -1406,10 +1244,10 @@ footer p:last-child a:hover {
   display: none;
   position: absolute;
   font-size: 3rem;
-  color: #fff;
+  color: var(--white);
   background-color: rgba(20, 20, 20, 0.7);
   border-radius: 50%;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   z-index: 13;
   padding: 8px;
   width: 50px;
@@ -1437,19 +1275,17 @@ footer p:last-child a:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--white);
   font-size: 1.6rem;
   font-weight: 700;
 }
 
 .episode-card--description {
-  color: #fff;
+  color: var(--white);
   font-size: 1.6rem;
 }
 
-/* -------- PORTAL EPISODES ENDS --------  */
-
-/* -------- PORTAL MORE-LIKE-THIS STARTS --------  */
+/* -------- PORTAL MORE-LIKE-THIS --------  */
 
 .portal-more-like-this {
   user-select: none;
@@ -1465,7 +1301,7 @@ footer p:last-child a:hover {
 .portal-more-like-this h3 {
   font-size: 2.4rem;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--white);
   font-weight: 700;
 }
 
@@ -1483,11 +1319,6 @@ footer p:last-child a:hover {
   height: 330px;
   width: 100%;
   background-color: #2f2f2f;
-
-  /* max-width: 255px;
-  max-height: 355px;
-  flex: 0 0 31%; */
-
   position: relative;
   border-radius: 6px;
   overflow: hidden;
@@ -1525,7 +1356,7 @@ footer p:last-child a:hover {
   top: 5%;
   right: 5%;
   white-space: nowrap;
-  color: #fff;
+  color: var(--white);
   font-size: 1.6rem;
   font-weight: 700;
   z-index: 15;
@@ -1551,7 +1382,7 @@ footer p:last-child a:hover {
   visibility: hidden;
   transition: opacity 0.2s ease-in;
   padding: 6px;
-  color: #fff;
+  color: var(--white);
   border: 1px solid #e5e5e5;
   border-radius: 50%;
 }
@@ -1568,7 +1399,7 @@ footer p:last-child a:hover {
   width: 100%;
   height: auto;
   padding: 15px;
-  color: #fff;
+  color: var(--white);
 }
 
 .portal-movie-card--details .green-text {
@@ -1617,7 +1448,7 @@ footer p:last-child a:hover {
 }
 
 .portal-mlt--divider button {
-  color: #fff;
+  color: var(--white);
   border: 1px solid #e5e5e5;
   border-radius: 50%;
   font-size: 22px;
@@ -1634,9 +1465,7 @@ footer p:last-child a:hover {
   opacity: 0.7;
 }
 
-/* -------- PORTAL MORE-LIKE-THIS ENDS --------  */
-
-/* -------- PORTAL ABOUT STARTS --------  */
+/* -------- PORTAL ABOUT --------  */
 
 .portal-about {
   user-select: none;
@@ -1653,7 +1482,7 @@ footer p:last-child a:hover {
   font-size: 2.4rem;
   margin-top: 48px;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--white);
   font-weight: 400;
 }
 
@@ -1663,7 +1492,7 @@ footer p:last-child a:hover {
 
 .portal-about ul li {
   list-style: none;
-  color: #fff;
+  color: var(--white);
   margin: 7px 0;
   font-size: 1.5rem;
   line-height: 22px;
@@ -1675,7 +1504,7 @@ footer p:last-child a:hover {
 
 .portal-about ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
 }
 
 .portal-about ul li a:hover {
@@ -1691,11 +1520,7 @@ footer p:last-child a:hover {
 }
 
 .portal-about ul li:last-child p span {
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   padding: 2px 6px;
   margin-right: 5px;
 }
-
-/* -------- PORTAL ABOUT ENDS --------  */
-
-/* -------- PORTAL ENDS --------  */
