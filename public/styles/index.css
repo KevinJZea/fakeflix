@@ -833,11 +833,6 @@ footer ul li a:hover {
   color: #999;
   background-color: transparent;
   border: none;
-
-  /* for Firefox */
-  -moz-appearance: none;
-  /* for Chrome */
-  -webkit-appearance: none;
 }
 
 .languages-social-media-container select::-ms-expand {
