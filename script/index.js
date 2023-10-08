@@ -1,23 +1,5 @@
 /* ------------------------------ */
 
-/* Adding Link to Google Material Icons to <head> */
-
-setTimeout(() => {
-  let linkElement = document.createElement("link");
-  let linkAttrRel = document.createAttribute("rel");
-  let linkAttrHref = document.createAttribute("href");
-  linkAttrRel.value = "stylesheet";
-  linkAttrHref.value =
-    "https://fonts.googleapis.com/icon?family=Material+Icons";
-  linkElement.setAttributeNode(linkAttrRel);
-  linkElement.setAttributeNode(linkAttrHref);
-  document.getElementsByTagName("head")[0].appendChild(linkElement);
-}, 40);
-
-/* ------------------------------ */
-
-/* ------------------------------ */
-
 /* Handle Search Bar */
 
 const searchInput = document.getElementById("search-input");
@@ -221,9 +203,8 @@ const handlePortalMovieCards = () => {
 
 const portalSelectEpisodes = document.getElementById("episodes-portal");
 const episodesCards = document.getElementsByClassName("episode-card");
-const episodesCardsLength = episodesCards.length;
 
-const temporada1Data = [
+const season1Data = [
   {
     img: "https://asturscore.com/wp-content/uploads/2019/02/Caratula-BSO-The-Umbrella-Academy-Jeff-Russo.jpg",
     title: "The Umbrella Academy",
@@ -261,7 +242,7 @@ const temporada1Data = [
   },
 ];
 
-const temporada2Data = [
+const season2Data = [
   {
     img: "https://i.pinimg.com/236x/8a/8f/b0/8a8fb02d966e9cf4e811d1daa6699653--batman-and-catwoman-hd-movies.jpg",
     title: "Batman: el Caballero de la Noche Asciende",
@@ -285,7 +266,7 @@ const temporada2Data = [
       "Forrest Gump, un joven sure&ntilde;o, tenaz e inocente, es protagonista de acontecimientos cruciales en la historia de los Estados Unidos.",
   },
   {
-    img: "https://www.joblo.com/assets/images/oldsite/posters/images/full/1999-poster-matrix-2_thumb.jpg",
+    img: "https://c8.alamy.com/comp/2K4TMJ5/the-matrix-1999-the-matrix-movie-poster-keanu-reeves-2K4TMJ5.jpg",
     title: "Matrix",
     duration: "2h 16min",
     description:
@@ -300,7 +281,7 @@ const temporada2Data = [
   },
 ];
 
-const temporada3Data = [
+const season3Data = [
   {
     img: "https://i.pinimg.com/originals/ae/e0/26/aee026f47aa9a01116f4b7e613c8d470.png",
     title: "Stranger Things",
@@ -339,7 +320,7 @@ const temporada3Data = [
   },
 ];
 
-const temporada4Data = [
+const season4Data = [
   {
     img: "https://d25bohr794b7hg.cloudfront.net/tlnt-holdings/case-studies/netflix-dark/netflix-dark-selected-01.jpg",
     title: "Dark",
@@ -378,63 +359,64 @@ const temporada4Data = [
   },
 ];
 
+const seasonDataMap = {
+  'season-1': season1Data,
+  'season-2': season2Data,
+  'season-3': season3Data,
+  'season-4': season4Data,
+}
+
 const handleChangeOnPortalSelect = () => {
-  if (portalSelectEpisodes.value === "temporada-1") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada1Data[i].img;
-      episodeCardImg.attributes[1].value = temporada1Data[i].title;
+  const seasonData = seasonDataMap[portalSelectEpisodes.value];
+  
+  for (let i = 0; i < episodesCards.length; i++) {
+    const episodeCard = episodesCards[i];
+    const episodeData = seasonData[i];
 
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada1Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada1Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada1Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-2") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada2Data[i].img;
-      episodeCardImg.attributes[1].value = temporada2Data[i].title;
+    const episodeCardImg = episodeCard.querySelector('img');
+    episodeCardImg.src = episodeData.img;
+    episodeCardImg.alt = episodeData.title;
 
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada2Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada2Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada2Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-3") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada3Data[i].img;
-      episodeCardImg.attributes[1].value = temporada3Data[i].title;
-
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada3Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada3Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada3Data[i].description;
-    }
-  } else if (portalSelectEpisodes.value === "temporada-4") {
-    for (let i = 0; i < episodesCardsLength; i++) {
-      let episodeCardImg = episodesCards[i].children[1].children[0];
-      episodeCardImg.attributes[0].value = temporada4Data[i].img;
-      episodeCardImg.attributes[1].value = temporada4Data[i].title;
-
-      let episodeCardDetails = episodesCards[i].children[2];
-      episodeCardDetails.children[0].children[0].innerHTML =
-        temporada4Data[i].title;
-      episodeCardDetails.children[0].children[1].innerHTML =
-        temporada4Data[i].duration;
-      episodeCardDetails.children[1].innerHTML = temporada4Data[i].description;
-    }
+    const episodeCardDetails = episodeCard.querySelector('.episode-card--details');
+    episodeCardDetails.querySelector('.episode-card--title').innerHTML = episodeData.title;
+    episodeCardDetails.querySelector('.episode-card--duration').innerHTML = episodeData.duration;
+    episodeCardDetails.querySelector('.episode-card--description').innerHTML = episodeData.description;
   }
 };
 
 /* ------------------------------ */
+
+/* ------------------------------ */
+
+function groupMoviesByImageSrc() {
+  const movieCards = document.querySelectorAll('.movie-card');
+  const movieCardsGroups = {};
+
+  movieCards.forEach((movieCard) => {
+    const movieCardImageSrc = movieCard.querySelector('img').src;
+    console.log(movieCardsGroups[movieCardImageSrc]);
+
+    if (!movieCardsGroups[movieCardImageSrc]) movieCardsGroups[movieCardImageSrc] = [];
+
+    movieCardsGroups[movieCardImageSrc].push(movieCard);
+  });
+
+  return movieCardsGroups;
+}
+
+const groupedMovieCards = groupMoviesByImageSrc();
+
+/* ------------------------------ */
+
+function changeMovieCardsWithSameImageSrc(movieCardImgSrc, innerHTML, title) {
+  const movieCards = groupedMovieCards[movieCardImgSrc];
+
+  movieCards.forEach((movieCard) => {
+    const movieCardAddToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
+    movieCardAddToMyListIcon.innerHTML = innerHTML;
+    movieCardAddToMyListIcon.title = title;
+  });
+}
 
 /* ------------------------------ */
 
@@ -444,131 +426,74 @@ const mainMovieCards = document.querySelectorAll(".movie-card");
 
 setTimeout(() => {
   mainMovieCards.forEach((movieCard) => {
-    /* MovieCard - .details - .icons - i(icon-add) */
-    let clickedIcon = movieCard.children[1].children[0].children[1];
+    const addToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
 
-    clickedIcon.addEventListener("click", () => {
-      handleMyList(movieCard);
-    });
+    addToMyListIcon.addEventListener("click", () => handleMyList(movieCard));
   });
 }, 500);
 
 const myList = document.getElementById("my-list");
-let myListMovieCards = document
-  .getElementById("my-list")
-  .querySelectorAll(".movie-card");
-
-if (myList.children[1].children[1].children.length > 0) {
-  myList.style.display = "block";
-} else {
-  myList.style.display = "none";
-}
-
-// myListMovieCards.forEach((myListMovieCard) => {
-//   let imageValue =
-//     myListMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-//   if (imageValue === "") {
-//     myListMovieCard.style.display = "none";
-//   } else {
-//     myListMovieCard.style.display = "flex";
-//   }
-// });
-
-// /* MovieCard - .main-image - picture - img */
-// movieCard.children[0].children[0].children[0].attributes[0].value;
+const myListCarousel = myList.querySelector('.carousel');
 
 const handleMyList = (movieCard) => {
-  let movieCardImgSrc =
-    movieCard.children[0].children[0].children[0].attributes[0].value;
-  let movieCardImgAlt =
-    movieCard.children[0].children[0].children[0].attributes[1].value;
-  let movieCardDuration =
-    movieCard.children[1].children[1].children[2].innerHTML;
-  let movieCardPercentageString =
-    movieCard.children[1].children[1].children[0].innerHTML;
-  let movieCardPercentage =
-    movieCardPercentageString[0] + movieCardPercentageString[1];
-  let clickedIcon = movieCard.children[1].children[0].children[1];
+  const movieCardImage = movieCard.querySelector('img');
+  const movieCardImgSrc = movieCardImage.src;
+  const movieCardImgAlt = movieCardImage.alt;
+  
+  const movieCardTextsContainer = movieCard.querySelector('.movie-card--details--text-container');
+  const movieCardDuration = movieCardTextsContainer.children[2].innerHTML;
+  const movieCardPercentageText = movieCardTextsContainer.children[0].innerHTML;
+  const movieCardPercentage = movieCardPercentageText.split('%')[0];
+  const addToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
 
-  if (clickedIcon.innerHTML === "add") {
-    let newMovieCard = createMovieCard(
+  if (addToMyListIcon.innerHTML === "add") {
+    // New Movie Card
+    const newMovieCard = createMovieCard(
       movieCardImgSrc,
       movieCardImgAlt,
       movieCardDuration,
       movieCardPercentage
     );
-    myList.children[1].children[1].appendChild(newMovieCard);
 
-    mainMovieCards.forEach((mainMovieCard) => {
-      let mainMovieCardImgSrc =
-        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
+    const newMovieCardAddToListIcon = newMovieCard.querySelector('.movie-card--details--add-icon');
 
-      if (mainMovieCardImgSrc === movieCardImgSrc) {
-        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-        clickedIcon.innerHTML = "delete_outline";
-        clickedIcon.attributes[1].value = "Remover de favoritos";
-      }
+    newMovieCardAddToListIcon.addEventListener("click", () => {
+      changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'add', 'Agregar a favoritos');
+      
+      myListCarousel.removeChild(newMovieCard);
+      
+      if (myListCarousel.children.length > 0) myList.style.display = "block";
+      else myList.style.display = "none";
     });
-
-    let newMovieCardIconClickeable =
-      newMovieCard.children[1].children[0].children[1];
-
-    let newMovieCardImgSrc = movieCardImgSrc;
-
-    newMovieCardIconClickeable.addEventListener("click", () => {
-      mainMovieCards.forEach((mainMovieCard) => {
-        let mainMovieCardImgSrc =
-          mainMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-        if (mainMovieCardImgSrc === newMovieCardImgSrc) {
-          let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-          clickedIcon.innerHTML = "add";
-          clickedIcon.attributes[1].value = "Agregar a favoritos";
-        }
-      });
-
-      myList.children[1].children[1].removeChild(newMovieCard);
-
-      if (myList.children[1].children[1].children.length > 0) {
-        myList.style.display = "block";
-      } else {
-        myList.style.display = "none";
-      }
-    });
-
-    clickedIcon.innerHTML = "delete_outline";
-    clickedIcon.attributes[1].value = "Remover de favoritos";
-  } else if (clickedIcon.innerHTML === "delete_outline") {
-    let myListMovieCards = document
-      .getElementById("my-list")
-      .querySelectorAll(".movie-card");
-
+    
+    myListCarousel.append(newMovieCard);
+    
+    // Change Movie Cards with same image
+    changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'delete_outline', 'Remover a favoritos');
+    
+    // Update Icon
+    addToMyListIcon.innerHTML = "delete_outline";
+    addToMyListIcon.title = "Remover de favoritos";
+  } else if (addToMyListIcon.innerHTML === "delete_outline") {
+    const myListMovieCards = myListCarousel.querySelectorAll(".movie-card");
+    
     myListMovieCards.forEach((myListMovieCard) => {
-      let myListMovieCardImgSrc =
-        myListMovieCard.children[0].children[0].children[0].attributes[0].value;
-
+      const myListMovieCardImgSrc = myListMovieCard.querySelector('img').src;
+      
       if (myListMovieCardImgSrc === movieCardImgSrc) {
-        myList.children[1].children[1].removeChild(myListMovieCard);
+        myListCarousel.removeChild(myListMovieCard);
       }
     });
-
-    mainMovieCards.forEach((mainMovieCard) => {
-      let mainMovieCardImgSrc =
-        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-      if (mainMovieCardImgSrc === movieCardImgSrc) {
-        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-        clickedIcon.innerHTML = "add";
-        clickedIcon.attributes[1].value = "Agregar a favoritos";
-      }
-    });
-
-    clickedIcon.innerHTML = "add";
-    clickedIcon.attributes[1].value = "Agregar a favoritos";
+    
+    // Change Movie Cards with same image
+    changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'add', 'Agregar a favoritos');
+    
+    // Update Icon
+    addToMyListIcon.innerHTML = "add";
+    addToMyListIcon.attributes[1].value = "Agregar a favoritos";
   }
 
-  if (myList.children[1].children[1].children.length > 0) {
+  if (myListCarousel.children.length > 0) {
     myList.style.display = "block";
   } else {
     myList.style.display = "none";
@@ -637,68 +562,27 @@ const createMovieCard = (
 
   /* ---------- Creating Icons Container's content (START) ---------- */
 
-  /* Play Icon */
+  const playIcon = createIcon('Reproducir', 'play_arrow');
+  const addIcon = createIcon('Remover de favoritos', 'delete_outline');
+  const likeIcon = createIcon('Me gusta', 'thumb_up_off_alt');
+  const dislikeIcon = createIcon('No me gusta', 'thumb_down_off_alt');
 
-  let playIcon = document.createElement("i");
-  let playIconClass = document.createAttribute("class");
-  playIconClass.value = "material-icons";
-  playIcon.setAttributeNode(playIconClass);
-  let playIconTitle = document.createAttribute("title");
-  playIconTitle.value = "Reproducir";
-  playIcon.setAttributeNode(playIconTitle);
-  playIcon.innerHTML = "play_arrow";
-  iconsContainer.appendChild(playIcon);
+  addIcon.classList.add('movie-card--details--add-icon');
 
-  /* Add Icon */
-
-  let addIcon = document.createElement("i");
-  let addIconClass = document.createAttribute("class");
-  addIconClass.value = "material-icons";
-  addIcon.setAttributeNode(addIconClass);
-  let addIconTitle = document.createAttribute("title");
-  addIconTitle.value = "Remover de favoritos";
-  addIcon.setAttributeNode(addIconTitle);
-  addIcon.innerHTML = "delete_outline";
-  iconsContainer.appendChild(addIcon);
-
-  /* Like Icon */
-
-  let likeIcon = document.createElement("i");
-  let likeIconClass = document.createAttribute("class");
-  likeIconClass.value = "material-icons";
-  likeIcon.setAttributeNode(likeIconClass);
-  let likeIconTitle = document.createAttribute("title");
-  likeIconTitle.value = "Me gusta";
-  likeIcon.setAttributeNode(likeIconTitle);
-  likeIcon.innerHTML = "thumb_up_off_alt";
-  iconsContainer.appendChild(likeIcon);
-
-  /* Dislike Icon */
-
-  let dislikeIcon = document.createElement("i");
-  let dislikeIconClass = document.createAttribute("class");
-  dislikeIconClass.value = "material-icons";
-  dislikeIcon.setAttributeNode(dislikeIconClass);
-  let dislikeIconTitle = document.createAttribute("title");
-  dislikeIconTitle.value = "No me gusta";
-  dislikeIcon.setAttributeNode(dislikeIconTitle);
-  dislikeIcon.innerHTML = "thumb_down_off_alt";
-  iconsContainer.appendChild(dislikeIcon);
-
-  /* Expand Icon */
-
-  let expandIcon = document.createElement("button");
-  let expandIconClass = document.createAttribute("class");
+  const expandIcon = document.createElement("button");
+  const expandIconClass = document.createAttribute("class");
   expandIconClass.value = "material-icons";
   expandIcon.setAttributeNode(expandIconClass);
-  let expandIconTitle = document.createAttribute("title");
+  const expandIconTitle = document.createAttribute("title");
   expandIconTitle.value = "Ver más";
   expandIcon.setAttributeNode(expandIconTitle);
-  let expandIconOnClick = document.createAttribute("onclick");
+  const expandIconOnClick = document.createAttribute("onclick");
   expandIconOnClick.value = "handlePortalDisplayBlock()";
   expandIcon.setAttributeNode(expandIconOnClick);
   expandIcon.innerHTML = "expand_more";
   iconsContainer.appendChild(expandIcon);
+
+  iconsContainer.append(playIcon, addIcon, likeIcon, dislikeIcon, expandIcon);
 
   /* ---------- Creating Icons Container's content (END) ---------- */
 
@@ -733,10 +617,23 @@ const createMovieCard = (
   return movieCard;
 };
 
+function createIcon(title, innerHTML) {
+  const icon = document.createElement('i')
+  const iconClass = document.createAttribute("class");
+  iconClass.value = "material-icons";
+  icon.setAttributeNode(iconClass);
+  const iconTitle = document.createAttribute("title");
+  iconTitle.value = title;
+  icon.setAttributeNode(iconTitle);
+  icon.innerHTML = innerHTML;
+
+  return icon;
+}
+
 /*
 
 Al dar clic en una MovieCard, el src debe irse a la MovieCard añadida
-a MyList y, al mismo tiempo, cambiar el clickedIcon de todas las
+a MyList y, al mismo tiempo, cambiar el addToMyListIcon de todas las
 MovieCards que tengan el mismo src.
 
 1. Podrían existir los elementos, y
