@@ -388,137 +388,112 @@ const handleChangeOnPortalSelect = () => {
 
 /* ------------------------------ */
 
+function groupMoviesByImageSrc() {
+  const movieCards = document.querySelectorAll('.movie-card');
+  const movieCardsGroups = {};
+
+  movieCards.forEach((movieCard) => {
+    const movieCardImageSrc = movieCard.querySelector('img').src;
+    console.log(movieCardsGroups[movieCardImageSrc]);
+
+    if (!movieCardsGroups[movieCardImageSrc]) movieCardsGroups[movieCardImageSrc] = [];
+
+    movieCardsGroups[movieCardImageSrc].push(movieCard);
+  });
+
+  return movieCardsGroups;
+}
+
+const groupedMovieCards = groupMoviesByImageSrc();
+
+/* ------------------------------ */
+
+function changeMovieCardsWithSameImageSrc(movieCardImgSrc, innerHTML, title) {
+  const movieCards = groupedMovieCards[movieCardImgSrc];
+
+  movieCards.forEach((movieCard) => {
+    const movieCardAddToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
+    movieCardAddToMyListIcon.innerHTML = innerHTML;
+    movieCardAddToMyListIcon.title = title;
+  });
+}
+
+/* ------------------------------ */
+
 /* handleMyList */
 
 const mainMovieCards = document.querySelectorAll(".movie-card");
 
 setTimeout(() => {
   mainMovieCards.forEach((movieCard) => {
-    /* MovieCard - .details - .icons - i(icon-add) */
-    let clickedIcon = movieCard.children[1].children[0].children[1];
+    const addToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
 
-    clickedIcon.addEventListener("click", () => {
-      handleMyList(movieCard);
-    });
+    addToMyListIcon.addEventListener("click", () => handleMyList(movieCard));
   });
 }, 500);
 
 const myList = document.getElementById("my-list");
-let myListMovieCards = document
-  .getElementById("my-list")
-  .querySelectorAll(".movie-card");
-
-if (myList.children[1].children[1].children.length > 0) {
-  myList.style.display = "block";
-} else {
-  myList.style.display = "none";
-}
-
-// myListMovieCards.forEach((myListMovieCard) => {
-//   let imageValue =
-//     myListMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-//   if (imageValue === "") {
-//     myListMovieCard.style.display = "none";
-//   } else {
-//     myListMovieCard.style.display = "flex";
-//   }
-// });
-
-// /* MovieCard - .main-image - picture - img */
-// movieCard.children[0].children[0].children[0].attributes[0].value;
+const myListCarousel = myList.querySelector('.carousel');
 
 const handleMyList = (movieCard) => {
-  let movieCardImgSrc =
-    movieCard.children[0].children[0].children[0].attributes[0].value;
-  let movieCardImgAlt =
-    movieCard.children[0].children[0].children[0].attributes[1].value;
-  let movieCardDuration =
-    movieCard.children[1].children[1].children[2].innerHTML;
-  let movieCardPercentageString =
-    movieCard.children[1].children[1].children[0].innerHTML;
-  let movieCardPercentage =
-    movieCardPercentageString[0] + movieCardPercentageString[1];
-  let clickedIcon = movieCard.children[1].children[0].children[1];
+  const movieCardImage = movieCard.querySelector('img');
+  const movieCardImgSrc = movieCardImage.src;
+  const movieCardImgAlt = movieCardImage.alt;
+  
+  const movieCardTextsContainer = movieCard.querySelector('.movie-card--details--text-container');
+  const movieCardDuration = movieCardTextsContainer.children[2].innerHTML;
+  const movieCardPercentageText = movieCardTextsContainer.children[0].innerHTML;
+  const movieCardPercentage = movieCardPercentageText.split('%')[0];
+  const addToMyListIcon = movieCard.querySelector('.movie-card--details--add-icon');
 
-  if (clickedIcon.innerHTML === "add") {
-    let newMovieCard = createMovieCard(
+  if (addToMyListIcon.innerHTML === "add") {
+    // New Movie Card
+    const newMovieCard = createMovieCard(
       movieCardImgSrc,
       movieCardImgAlt,
       movieCardDuration,
       movieCardPercentage
     );
-    myList.children[1].children[1].appendChild(newMovieCard);
 
-    mainMovieCards.forEach((mainMovieCard) => {
-      let mainMovieCardImgSrc =
-        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
+    const newMovieCardAddToListIcon = newMovieCard.querySelector('.movie-card--details--add-icon');
 
-      if (mainMovieCardImgSrc === movieCardImgSrc) {
-        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-        clickedIcon.innerHTML = "delete_outline";
-        clickedIcon.attributes[1].value = "Remover de favoritos";
-      }
+    newMovieCardAddToListIcon.addEventListener("click", () => {
+      changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'add', 'Agregar a favoritos');
+      
+      myListCarousel.removeChild(newMovieCard);
+      
+      if (myListCarousel.children.length > 0) myList.style.display = "block";
+      else myList.style.display = "none";
     });
-
-    let newMovieCardIconClickeable =
-      newMovieCard.children[1].children[0].children[1];
-
-    let newMovieCardImgSrc = movieCardImgSrc;
-
-    newMovieCardIconClickeable.addEventListener("click", () => {
-      mainMovieCards.forEach((mainMovieCard) => {
-        let mainMovieCardImgSrc =
-          mainMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-        if (mainMovieCardImgSrc === newMovieCardImgSrc) {
-          let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-          clickedIcon.innerHTML = "add";
-          clickedIcon.attributes[1].value = "Agregar a favoritos";
-        }
-      });
-
-      myList.children[1].children[1].removeChild(newMovieCard);
-
-      if (myList.children[1].children[1].children.length > 0) {
-        myList.style.display = "block";
-      } else {
-        myList.style.display = "none";
-      }
-    });
-
-    clickedIcon.innerHTML = "delete_outline";
-    clickedIcon.attributes[1].value = "Remover de favoritos";
-  } else if (clickedIcon.innerHTML === "delete_outline") {
-    let myListMovieCards = document
-      .getElementById("my-list")
-      .querySelectorAll(".movie-card");
-
+    
+    myListCarousel.append(newMovieCard);
+    
+    // Change Movie Cards with same image
+    changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'delete_outline', 'Remover a favoritos');
+    
+    // Update Icon
+    addToMyListIcon.innerHTML = "delete_outline";
+    addToMyListIcon.title = "Remover de favoritos";
+  } else if (addToMyListIcon.innerHTML === "delete_outline") {
+    const myListMovieCards = myListCarousel.querySelectorAll(".movie-card");
+    
     myListMovieCards.forEach((myListMovieCard) => {
-      let myListMovieCardImgSrc =
-        myListMovieCard.children[0].children[0].children[0].attributes[0].value;
-
+      const myListMovieCardImgSrc = myListMovieCard.querySelector('img').src;
+      
       if (myListMovieCardImgSrc === movieCardImgSrc) {
-        myList.children[1].children[1].removeChild(myListMovieCard);
+        myListCarousel.removeChild(myListMovieCard);
       }
     });
-
-    mainMovieCards.forEach((mainMovieCard) => {
-      let mainMovieCardImgSrc =
-        mainMovieCard.children[0].children[0].children[0].attributes[0].value;
-
-      if (mainMovieCardImgSrc === movieCardImgSrc) {
-        let clickedIcon = mainMovieCard.children[1].children[0].children[1];
-        clickedIcon.innerHTML = "add";
-        clickedIcon.attributes[1].value = "Agregar a favoritos";
-      }
-    });
-
-    clickedIcon.innerHTML = "add";
-    clickedIcon.attributes[1].value = "Agregar a favoritos";
+    
+    // Change Movie Cards with same image
+    changeMovieCardsWithSameImageSrc(movieCardImgSrc, 'add', 'Agregar a favoritos');
+    
+    // Update Icon
+    addToMyListIcon.innerHTML = "add";
+    addToMyListIcon.attributes[1].value = "Agregar a favoritos";
   }
 
-  if (myList.children[1].children[1].children.length > 0) {
+  if (myListCarousel.children.length > 0) {
     myList.style.display = "block";
   } else {
     myList.style.display = "none";
@@ -592,6 +567,8 @@ const createMovieCard = (
   const likeIcon = createIcon('Me gusta', 'thumb_up_off_alt');
   const dislikeIcon = createIcon('No me gusta', 'thumb_down_off_alt');
 
+  addIcon.classList.add('movie-card--details--add-icon');
+
   const expandIcon = document.createElement("button");
   const expandIconClass = document.createAttribute("class");
   expandIconClass.value = "material-icons";
@@ -656,7 +633,7 @@ function createIcon(title, innerHTML) {
 /*
 
 Al dar clic en una MovieCard, el src debe irse a la MovieCard añadida
-a MyList y, al mismo tiempo, cambiar el clickedIcon de todas las
+a MyList y, al mismo tiempo, cambiar el addToMyListIcon de todas las
 MovieCards que tengan el mismo src.
 
 1. Podrían existir los elementos, y

@@ -529,6 +529,10 @@ main {
 
 /* --- MAIN SECTION STARTS --- */
 
+#my-list {
+  display: none;
+}
+
 .movie-cards-main-container {
   margin-top: -180px;
   padding-bottom: 60px;
