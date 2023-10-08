@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Kevin J. Zea" />
-  <meta name="description" content="Clon de Netflix creado con HTML, CSS y JavaScript. Para más información, contacte por https://linkedin.com/in/kevinjzea." />
-  <meta name="keywords" content="Netflix, Webflix, Fakeflix, Kevin J. Zea, kevinjzea" />
-  <title>Fakeflix</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-  <link rel="stylesheet" href="./styles/index.css" />
-  <link rel="stylesheet" href="./styles/media.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Kevin J. Zea" />
+    <meta name="description" content="Clon de Netflix creado con HTML, CSS y JavaScript. Para más información del autor, contacte por https://linkedin.com/in/kevinjzea." />
+    <meta name="keywords" content="Netflix, Webflix, Fakeflix, Kevin J. Zea, kevinjzea" />
+    <title>Fakeflix</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/media.css" />
+  </head>
+  <body>
 
-<!-- Inspired on https://webflix-nine.vercel.app/ -->
+  <!-- Inspired on https://webflix-nine.vercel.app/ -->
 
-<noscript>
-  Debes habilitar JavaScript para correr esta aplicaci&oacute;n correctamente.
-</noscript>
-
-<!-- HEADER STARTS -->
+  <noscript>Debes habilitar JavaScript para correr esta aplicaci&oacute;n correctamente.</noscript>
 
 <header class="header">
   <div class="header--nav-container">
@@ -41,22 +37,18 @@
   <div class="header--profile-container">
     <ul>
       <li><form id="search-form" action="#" method="GET">
-        <!-- <label onclick="handleSearchBar()" for="search-input" title="Buscar" class="icon search"></label> -->
         <i onclick="handleSearchBar()" for="search-input" title="Buscar" class="material-icons">search</i>
         <input style="display: none;" class="hide" name="search-input" id="search-input" type="search" placeholder="T&iacute;tulos, personas, g&eacute;neros" />
         <input id="search-button" class="hide" type="submit" value="Buscar..." />
       </form></li>
       <li><a href="#">
-        <!-- <span title="Mi lista" class="icon my-list"></span> -->
         <i title="Mi lista" class="material-icons">shopping_bag</i>
       </a></li>
       <li><a href="#">
-        <!-- <span title="Notificaciones" class="icon notifications"></span> -->
         <i title="Notificaciones" class="material-icons">notifications</i>
       </a></li>
       <li>
         <img title="Mi perfil" src="https://lh3.googleusercontent.com/ogw/ADGmqu8hSa4xMOm3viY0tGpajS4YG3KInDt9dfov_zi8=s83-c-mo" alt="Perfil de usuario" />
-        <!-- <span title="Desplegar opciones de mi perfil" class="icon arrow-down"></span> -->
         <i title="Desplegar opciones de mi perfil" class="material-icons">arrow_drop_down</i>
         <ul class="header--hide-menu">
           <li><a href="#">Cuenta</a></li>
@@ -67,13 +59,7 @@
   </div>
 </header>
 
-<!-- HEADER ENDS -->
-
-
-<!-- MAIN STARTS -->
-
 <main>
-
   <section class="main-video-container">
     <div class="main-video-shadow"></div>
     <video id="main-video" muted poster="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg">
@@ -116,9 +102,7 @@
     </div>
   </section>
 
-
   <section class="movie-cards-main-container">
-
     <section id="my-list" class="movie-cards-container">
       <h3>Mi Lista</h3>
       <div class="carousel-container">
@@ -1354,14 +1338,8 @@
         <button type="button" class="material-icons carousel-button-right">navigate_next</button>
       </div>
     </section>
-
   </section>
-
 </main>
-
-<!-- MAIN ENDS -->
-
-<!-- FOOTER ENDS -->
 
 <footer>
   <p>¿Preguntas? Llama al 800-283-3300</p>
@@ -1419,15 +1397,10 @@
   <p>
     &copy; Fakeflix M&eacute;xico 2021 - Made with &#x1F49A; by
     <a title="Kevin J. Zea's GitHub" href="https://github.com/kevinjzea">
-      <b>Kevin J. Zea</b>
+      <strong>Kevin J. Zea</strong>
     </a>
   </p>
-
 </footer>
-
-<!-- FOOTER ENDS -->
-
-<!-- PORTAL STARTS -->
 
 <div id="portal" class="portal">
   <div onclick="handlePortalDisplayNone()" class="background-portal"></div>
@@ -1871,17 +1844,8 @@
       </section>
     </section>
   </div>
-
-  <!-- <div onclick="handlePortalDisplayNone()" class="background-portal"></div> -->
 </div>
 
-<!-- PORTAL ENDS -->
-
-<<<<<<< HEAD
-<script src="./script/index.js"></script>
-=======
-<script src="../script/index.js"></script>
-
->>>>>>> main
-</body>
+    <script src="./script/index.js"></script>
+  </body>
 </html>
