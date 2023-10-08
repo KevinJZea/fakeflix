@@ -501,7 +501,7 @@ main {
   color: var(--white);
 }
 
-/* --- MAIN SECTION STARTS --- */
+/* --- MAIN SECTION --- */
 
 #my-list {
   display: none;
@@ -553,7 +553,7 @@ main {
   max-height: 300px;
 }
 
-/* --- CAROUSEL BUTTON STARTS --- */
+/* --- CAROUSEL BUTTON --- */
 
 .carousel-container .carousel-button-left,
 .carousel-container .carousel-button-right {
@@ -742,7 +742,7 @@ main {
   margin: 5px 5px 0 0;
 }
 
-/* -------- FOOTER STARTS -------- */
+/* -------- FOOTER -------- */
 
 footer {
   width: 100%;
@@ -882,7 +882,7 @@ footer p:last-child a:hover {
   color: #c5c5c5;
 }
 
-/* -------- PORTAL STARTS --------  */
+/* -------- PORTAL --------  */
 
 .portal {
   display: none;
