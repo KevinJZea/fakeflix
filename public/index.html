@@ -40,7 +40,7 @@
       rel="stylesheet"
       href="./styles/media.css"
     />
-    <script src="./script/index.js"></script>
+    <script defer src="./script/index.js"></script>
   </head>
   <body>
     <!-- Inspired on https://webflix-nine.vercel.app/ -->
@@ -156,19 +156,19 @@
           />
           Your browser does not support the video tag.
         </video>
+        <img
+          alt=""
+          class="main-poster"
+          src="https://www.arquitecturaydiseno.es/medio/2021/01/29/serie-de-netflix-lupin_d2215818_1280x794.jpeg"
+        />
         <picture class="main-video-image">
           <img
             src="https://occ-0-1068-1723.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABauvr9_GMwFxcow4pmUAKm2GRhBCkf0e4NjnB7-eI9jd_X9VDP28Z5FQAMP4Au65tcULNLyXUFEi4CpssSd7gQegUrR9eD6gbgGTW76cekS-Jf0oLi5HVzaClwuh6_6pprVTHzRrzx_8FPNnZShYFbBSei4pi8nRxEFXLjQTQVpqQw.png"
-            alt="Lupin"
+            alt=""
           />
         </picture>
         <div class="main-video-info">
           <h2 class="main-video-title">N° 6 en M&eacute;xico hoy</h2>
-          <div class="main-video-details">
-            <p>2021</p>
-            <p>TV-MA</p>
-            <p>1 Temporada</p>
-          </div>
           <p class="main-video-synopsis">
             Inspirado por las aventuras de Ars&egrave;ne Lupin, el ladr&oacute;n
             de guante blanco Assane Diop se propone vengar la injusticia sufrida
@@ -177,18 +177,16 @@
         </div>
         <div class="main-video-controls">
           <div class="main-controls-wrapper">
-            <a href="#">
-              <button class="main-controls-wrapper--play">
-                <i class="material-icons">play_arrow</i>
-                <span>Reproducir</span>
-              </button>
+            <a href="#" class="main-controls-wrapper--play">
+              <i class="material-icons">play_arrow</i>
+              <span>Reproducir</span>
             </a>
             <button
               onclick="handlePortalDisplayBlock()"
               class="main-controls-wrapper--more-info"
             >
               <i class="material-icons">info</i>
-              <span>M&aacute;s informaci&oacute;n</span>
+              <span>Detalles</span>
             </button>
           </div>
           <div class="main-controls-player">

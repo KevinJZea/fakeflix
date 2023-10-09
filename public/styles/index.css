@@ -5,6 +5,7 @@
   --green-text: #46d369;
   --header-size: 60px;
   --white: #fff;
+  --black: #000;
 }
 
 * {
@@ -18,6 +19,10 @@ html {
   font-family: 'Lato', 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
 }
 
 a,
@@ -301,24 +306,38 @@ main {
 /* --- MAIN VIDEO --- */
 
 .main-video-container {
-  width: 100%;
   height: 100vh;
+  padding: var(--header-size) 0 0 32px;
   margin-bottom: 30px;
   color: var(--white);
-  display: grid;
-  grid-template-rows: var(--header-size) repeat(5, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   -moz-user-select: none;
   -webkit-user-select: none;
+  user-select: none;
 }
 
-.main-video-shadow {
+.main-poster {
+  display: none;
+}
+
+.main-video-shadow,
+.main-video-container video,
+.main-poster {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  grid-column: 1/-1;
-  grid-row: 1/-1;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.main-video-shadow {
   filter: brightness(0.9) drop-shadow(0 50px 50px black);
   background: linear-gradient(
     to bottom,
@@ -332,37 +351,25 @@ main {
 }
 
 .main-video-container video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  grid-column: 1/-1;
-  grid-row: 1/-1;
   filter: brightness(0.9) drop-shadow(0 50px 50px black);
 }
 
-.main-video-info,
 .main-video-image {
-  position: relative;
-  grid-column: 1/2;
-  margin-left: 3vw;
-}
-
-.main-video-info {
-  grid-row: 3/4;
+  height: 220px;
+  width: 520px;
+  overflow: hidden;
   z-index: 2;
 }
 
-.main-video-image {
-  grid-row: 2/3;
-  margin-top: 28px;
+.main-video-image img {
+  height: 100%;
 }
 
-.main-video-image img {
-  width: 85rem;
+.main-video-info {
+  z-index: 2;
 }
 
 .main-video-title,
-.main-video-details,
 .main-video-synopsis {
   font-weight: 400;
   text-shadow: 2px 2px 4px #000;
@@ -374,25 +381,14 @@ main {
   font-size: 3rem;
 }
 
-.main-video-details {
-  display: none;
-  align-items: center;
-  font-size: 1.3rem;
-}
-
-.main-video-details p:not(:last-child) {
-  margin-right: 10px;
-}
-
 .main-video-synopsis {
   font-size: 2.6rem;
+  max-width: 840px;
+  margin-bottom: 80px;
 }
 
 .main-video-controls {
   display: flex;
-  position: relative;
-  grid-row: 4/5;
-  grid-column: 1/-1;
   justify-content: space-between;
   align-items: flex-end;
   z-index: 1;
@@ -401,42 +397,39 @@ main {
 .main-controls-wrapper {
   display: flex;
   align-items: center;
-  position: relative;
-  width: auto;
-  left: 3vw;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.main-controls-wrapper button {
+.main-controls-wrapper--play,
+.main-controls-wrapper--more-info {
   display: flex;
   align-items: center;
-}
-
-.main-controls-wrapper a {
-  text-decoration: none;
-  color: var(--white);
+  gap: 16px;
+  cursor: pointer;
+  border: none;
+  padding: 12px 20px;
+  font-size: 24px;
+  border-radius: 4px;
+  min-width: 148px;
 }
 
 .main-controls-wrapper--play {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  justify-content: space-between;
-  padding: 12px 28px;
-  font-size: 22px;
-  border-radius: 4px;
   background-color: var(--white);
-  margin-right: 14px;
 }
 
 .main-controls-wrapper--play:hover {
   background-color: #c5c5c5;
 }
 
+.main-controls-wrapper--play i,
+.main-controls-wrapper--more-info i {
+  font-size: 34px;
+}
+
 .main-controls-wrapper--play i {
-  margin-right: 15px;
   color: #141414;
   font-weight: 600;
-  font-size: 34px;
 }
 
 .main-controls-wrapper--play span {
@@ -445,24 +438,12 @@ main {
 }
 
 .main-controls-wrapper--more-info {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  justify-content: space-between;
-  padding: 12px 28px;
-  font-size: 22px;
-  border-radius: 4px;
   background: rgba(89, 89, 89, 0.78);
   color: var(--white);
 }
 
 .main-controls-wrapper--more-info:hover {
   opacity: 0.7;
-}
-
-.main-controls-wrapper--more-info i {
-  margin-right: 15px;
-  font-size: 34px;
 }
 
 .main-controls-player {
@@ -483,7 +464,6 @@ main {
   color: var(--white);
   font-size: 22px;
   background: none;
-  outline: none;
 }
 
 .main-controls-player button:hover {

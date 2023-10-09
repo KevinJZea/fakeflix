@@ -19,3 +19,100 @@
     min-width: 25%;
   }
 }
+
+@media (max-width: 740px) {
+  .main-video-container {
+    margin: 0;
+    padding: 0;
+    height: 76vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .main-poster {
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    border-radius: 16px;
+  }
+
+  .main-video-image {
+    height: 160px;
+    width: 380px;
+  }
+
+  #main-video,
+  .main-video-shadow,
+  .main-controls-player,
+  .main-video-synopsis {
+    display: none;
+  }
+
+  .main-poster {
+    display: block;
+  }
+
+  .main-video-controls {
+    width: 100%;
+  }
+
+  .main-controls-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-controls-wrapper--play,
+  .main-controls-wrapper--more-info {
+    justify-content: center;
+    padding: 8px 16px;
+    width: calc(40% - 16px);
+    font-size: 18px;
+  }
+
+  .main-controls-wrapper--play i,
+  .main-controls-wrapper--more-info i {
+    font-size: 28px;
+  }
+
+  /* --- MAIN SECTION --- */
+
+  .movie-cards-main-container {
+    margin: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .main-video-image {
+    height: 120px;
+    width: 280px;
+  }
+
+  .main-video-title {
+    font-size: 2.4rem;
+  }
+
+  .main-controls-wrapper--play,
+  .main-controls-wrapper--more-info {
+    width: calc(40% - 16px);
+  }
+
+  .main-controls-wrapper--play i,
+  .main-controls-wrapper--more-info i {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-video-image {
+    height: 100px;
+    width: 234px;
+  }
+
+  .main-controls-wrapper {
+    flex-direction: column;
+  }
+}
