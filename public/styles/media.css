@@ -20,7 +20,31 @@
   }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 800px) {
+  /* -------- HEADER --------  */
+  .header {
+    justify-content: center;
+  }
+
+  .header--nav-container {
+    gap: 0;
+  }
+
+  .header--nav-container .fakeflix-logo {
+    height: 40px;
+  }
+
+  .header--nav-container nav,
+  .header--search-bar-container {
+    display: none;
+  }
+
+  .header--profile-container {
+    position: absolute;
+    right: 24px;
+  }
+
+  /* --- MAIN VIDEO --- */
   .main-video-container {
     margin: 0;
     padding: 0;
@@ -86,6 +110,33 @@
 }
 
 @media (max-width: 440px) {
+  .header--profile-search-bar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 8px 0;
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header--profile-search-bar-container > ul {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .header--mobile-menu-icon {
+    display: block;
+  }
+
+  .header--profile-container {
+    display: none;
+  }
+
+  /* --- MAIN VIDEO --- */
   .main-video-image {
     height: 120px;
     width: 280px;
@@ -103,6 +154,16 @@
   .main-controls-wrapper--play i,
   .main-controls-wrapper--more-info i {
     font-size: 24px;
+  }
+
+  .footer {
+    padding: 36px 0 60px 0;
+  }
+
+  .footer--questions-text,
+  .footer--links-container,
+  .footer--social-media-icons {
+    display: none;
   }
 }
 

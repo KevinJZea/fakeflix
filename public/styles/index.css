@@ -171,6 +171,10 @@ a {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.header--mobile-menu-icon {
+  display: none;
+}
+
 .header--profile-container {
   display: flex;
   justify-content: space-between;
@@ -754,7 +758,7 @@ main {
   outline: none;
 }
 
-.languages-social-media-container .social-media-icons {
+.footer--social-media-icons {
   width: 270px;
   display: flex;
   justify-content: space-between;
@@ -764,13 +768,13 @@ main {
   column-gap: 20px;
 }
 
-.languages-social-media-container .social-media-icons a .icon {
+.footer--social-media-icons .icon {
   height: 28px;
   width: 36px;
   fill: #bebebe;
 }
 
-.languages-social-media-container .social-media-icons a .icon.youtube {
+.footer--social-media-icons .icon.youtube {
   height: 25px;
 }
 
