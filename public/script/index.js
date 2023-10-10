@@ -4,29 +4,51 @@ const searchButton = document.getElementById('search-button');
 const searchForm = document.getElementById('search-form');
 
 function handleSearchBar() {
-  if (searchInput.style.display === 'none') {
+  if (searchInput.classList.contains('hide')) {
     searchForm.style.border = '1px solid white';
-    searchForm.style.marginRight = '0';
-
-    searchButton.style.display = 'block';
-    searchInput.style.display = 'block';
-  } else if (searchButton.style.display === 'block') {
+    searchForm.style.padding = '0 12px';
+  } else {
     searchForm.style.border = 'none';
-    searchForm.style.marginRight = '-25px';
-
-    searchButton.style.display = 'none';
-    searchInput.style.display = 'none';
+    searchForm.style.padding = '0';
   }
+  searchButton.classList.toggle('hide');
+  searchInput.classList.toggle('hide');
+}
+
+/* Profile Container - Hidden Menu */
+const body = document.getElementsByTagName('body')[0];
+const header = document.getElementsByClassName('header')[0];
+const hiddenMenu = header.querySelector('.header--hidden-menu-container');
+let executeEvent;
+
+function handleHiddenMenu() {
+  hiddenMenu.classList.toggle('hide');
+  executeEvent = true;
+
+  if (!window.onkeyup) window.onkeyup = (event) => hideMenuWhenEscape(event);
+  else window.onkeyup = undefined;
+
+  if (!body.onclick) body.onclick = hideMenuWhenClick;
+  else body.onclick = undefined;
+}
+
+function hideMenuWhenEscape(event) {
+  if (event.key === 'Escape') handleHiddenMenu();
+}
+
+function hideMenuWhenClick() {
+  if (!executeEvent) return handleHiddenMenu();
+  executeEvent = false;
 }
 
 /* Header Background */
 setTimeout(() => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      document.getElementsByClassName('header')[0].classList.add('active');
+      header.classList.add('active');
     } else {
       //remove the background property so it comes transparent again (defined in css)
-      document.getElementsByClassName('header')[0].classList.remove('active');
+      header.classList.remove('active');
     }
   });
 }, 500);
@@ -98,6 +120,12 @@ setTimeout(() => {
 /* handlePortalDisplay */
 const portal = document.getElementById('portal');
 
+function hidePortalWhenEscape(event) {
+  if (event.key === 'Escape') {
+    handlePortalDisplayNone();
+  }
+}
+
 const handlePortalDisplayBlock = () => {
   portal.style.display = 'flex';
   portalVideo.load();
@@ -109,17 +137,15 @@ const handlePortalDisplayBlock = () => {
   }, 3000);
 
   // Hiding Portal pressing ESC
-  window.onkeyup = (event) => {
-    if (event.key === 'Escape') {
-      portal.style.display = 'none';
-    }
-  };
+  window.addEventListener('keyup', hidePortalWhenEscape);
 };
 
 const handlePortalDisplayNone = () => {
   portal.style.display = 'none';
   mainVideo.play();
   portalVideo.pause();
+
+  window.removeEventListener('keyup', hidePortalWhenEscape);
 };
 
 /* handlePortalMovieCards */

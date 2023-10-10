@@ -31,7 +31,6 @@ button {
 }
 
 button {
-  outline: none;
   border: none;
   background: none;
 }
@@ -58,13 +57,13 @@ a {
   transition: all 0.5s;
 }
 
-.active {
+.header.active {
   background-color: rgb(0, 0, 0);
 }
 
 /* -------- HEADER --------  */
 
-header {
+.header {
   z-index: 5;
   position: fixed;
   top: 0;
@@ -74,6 +73,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 36px;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -83,214 +83,134 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 45%;
-  max-width: 520px;
   height: 100%;
+  gap: 30px;
 }
 
-header .header--nav-container a .fakeflix-logo {
-  height: 26px;
-  margin-right: 30px;
+.header--nav-container .fakeflix-logo {
+  height: 28px;
 }
 
-header .header--nav-container nav ul {
-  width: 380px;
+.header--nav-container nav ul {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
-header .header--nav-container nav ul li {
+.header--nav-container nav ul li {
   list-style: none;
 }
 
-header .header--nav-container nav ul li a {
-  text-decoration: none;
+.header--nav-container nav ul li a {
   color: var(--white);
   font-size: 1.4rem;
 }
 
-header .header--nav-container nav ul li a:hover {
+.header--nav-container nav ul li a:hover {
   text-decoration: underline;
 }
 
 /* --- HEADER RIGHT PART --- */
 
-header .header--profile-container {
-  height: 100%;
-  /* width: 30%; */
-  min-width: 200px;
-  max-width: 600px;
-  margin-right: 10px;
+.header--profile-search-bar-container {
+  margin-right: 12px;
 }
 
-header .header--profile-container ul {
-  width: 100%;
-  height: 100%;
+.header--profile-search-bar-container > ul {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 32px;
 }
 
-header .header--profile-container ul li {
+.header--profile-search-bar-container li {
   list-style: none;
-  margin-left: 30px;
 }
 
-header .header--profile-container ul li .material-icons {
+.header--profile-search-bar-container .material-icons {
   cursor: pointer;
   color: var(--white);
   font-size: 3rem;
 }
 
-header .header--profile-container ul li .material-icons:hover {
+.header--profile-search-bar-container .material-icons:hover {
   opacity: 0.7;
 }
 
-header .header--profile-container ul li:first-child form {
-  margin-right: -25px;
-  width: auto;
-  height: 35px;
-  padding: 0 10px;
-  border-radius: 5px;
+.header--search-bar-container form {
+  border-radius: 8px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  transition: 1500ms all;
+  transition: 800ms all;
   -webkit-transform-origin: center right;
   transform-origin: center right;
 }
 
-header .header--profile-container ul li form .search {
-  cursor: pointer;
-  margin-right: 15px;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png');
-}
-
-header .header--profile-container ul li form input {
-  outline: none;
+.header--search-bar-container form input {
   height: 100%;
-  padding: 2px 0 2px 5px;
+  padding: 4px 0 4px 4px;
   color: var(--white);
   background-color: transparent;
   border: none;
 }
 
-header .header--profile-container ul li form input:nth-child(2) {
-  margin-right: 10px;
-  padding: 2px 0 2px 5px;
-  width: 200px;
-}
-
-header .header--profile-container ul li form input:nth-child(2)::placeholder {
+.header--search-bar-container .search-input::placeholder {
   width: 100%;
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
 }
 
-header .header--profile-container ul li form input:nth-child(3) {
+.header--search-bar-container .submit-input {
   cursor: pointer;
   color: var(--white);
 }
 
-header .header--profile-container ul li form input:nth-child(3):hover {
+.header--search-bar-container .submit-input:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-header .header--profile-container ul li a {
-  text-decoration: none;
-}
-
-header .header--profile-container ul li a span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-
-header .header--profile-container ul li a .icon {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-header .header--profile-container ul li a .my-list {
-  height: 24px;
-  width: 19px;
-  background-image: url('https://icon-library.com/images/what-is-the-white-shopping-bag-icon/what-is-the-white-shopping-bag-icon-3.jpg');
-}
-
-header .header--profile-container ul li .notifications {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-top: 3px;
-  background-image: url('https://flaticons.net/icon.php?slug_category=miscellaneous&slug_icon=bell');
-}
-
-header .header--profile-container ul li:last-child {
+.header--profile-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 4px;
 }
 
-header .header--profile-container ul li:last-child img {
+.header--profile-image {
   cursor: pointer;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  margin-right: 8px;
+  width: 28px;
+  height: 28px;
 }
 
-header .header--profile-container ul li .arrow-down {
-  cursor: pointer;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 10px;
-  width: 15px;
-  background-image: url('https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-9.jpg');
+.header--profile-container {
+  position: relative;
 }
 
-.header--profile-container ul li ul {
-  display: none;
-  list-style: none;
-  height: auto;
-  width: auto;
-  margin: 0px 0px -85px -20px;
-  padding: 5px 10px;
+.header--hidden-menu-container {
+  width: max-content;
+  padding: 4px 8px;
   position: absolute;
-  text-align: right;
+  top: 100%;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.header--profile-container ul li .header--hide-menu li:last-child {
-  display: block;
+.header--hidden-menu {
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.header--profile-container ul li:hover .header--hide-menu,
-.header--profile-container ul li .header--hide-menu:hover {
-  display: block;
-}
-
-.header--profile-container ul li .header--hide-menu li {
-  margin: 10px 0px;
-}
-
-.header--profile-container ul li .header--hide-menu li a {
+.header--hidden-menu li a {
   font-size: 1.2rem;
   color: var(--white);
-  text-decoration: none;
 }
 
-.header--profile-container ul li ul li a:hover {
+.header--hidden-menu li a:hover {
   text-decoration: underline;
 }
 

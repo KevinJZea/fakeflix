@@ -40,7 +40,10 @@
       rel="stylesheet"
       href="./styles/media.css"
     />
-    <script defer src="./script/index.js"></script>
+    <script
+      defer
+      src="./script/index.js"
+    ></script>
   </head>
   <body>
     <!-- Inspired on https://webflix-nine.vercel.app/ -->
@@ -60,7 +63,7 @@
           <img
             class="fakeflix-logo"
             src="https://logodownload.org/wp-content/uploads/2014/10/netflix-logo-5.png"
-            alt="Fakeflix Logo"
+            alt="Go to Home page"
           />
         </a>
         <nav>
@@ -68,75 +71,70 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Series</a></li>
             <li><a href="#">Pel&iacute;culas</a></li>
-            <li><a href="#">Novedades populares</a></li>
+            <li><a href="#">Novedades</a></li>
             <li><a href="#">Mi lista</a></li>
           </ul>
         </nav>
       </div>
-      <div class="header--profile-container">
+      <div class="header--profile-search-bar-container">
         <ul>
-          <li>
+          <li class="header--search-bar-container">
             <form
               id="search-form"
               action="#"
               method="GET"
+              onsubmit="handleSearchBar()"
             >
-              <i
+              <button
+                type="button"
                 onclick="handleSearchBar()"
-                for="search-input"
-                title="Buscar"
-                class="material-icons"
-                >search</i
               >
+                <i
+                  class="material-icons"
+                  for="search-input"
+                  title="Buscar"
+                  >search</i
+                >
+              </button>
               <input
-                style="display: none"
-                class="hide"
+                class="search-input hide"
                 name="search-input"
                 id="search-input"
                 type="search"
-                placeholder="T&iacute;tulos, personas, g&eacute;neros"
+                placeholder="T&iacute;tulos, personas, g&eacute;neros..."
               />
               <input
                 id="search-button"
-                class="hide"
+                class="submit-input hide"
                 type="submit"
-                value="Buscar..."
+                value="Buscar"
               />
             </form>
           </li>
-          <li>
-            <a href="#">
-              <i
-                title="Mi lista"
-                class="material-icons"
-                >shopping_bag</i
-              >
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i
-                title="Notificaciones"
-                class="material-icons"
-                >notifications</i
-              >
-            </a>
-          </li>
-          <li>
+          <li class="header--profile-container">
             <img
+              alt=""
+              class="header--profile-image"
               title="Mi perfil"
               src="https://lh3.googleusercontent.com/ogw/ADGmqu8hSa4xMOm3viY0tGpajS4YG3KInDt9dfov_zi8=s83-c-mo"
-              alt="Perfil de usuario"
+              onclick="handleHiddenMenu()"
             />
-            <i
-              title="Desplegar opciones de mi perfil"
-              class="material-icons"
-              >arrow_drop_down</i
+            <button
+              type="button"
+              onclick="handleHiddenMenu()"
             >
-            <ul class="header--hide-menu">
-              <li><a href="#">Cuenta</a></li>
-              <li><a href="#">Cerrar Sesi&oacute;n</a></li>
-            </ul>
+              <i
+                class="material-icons"
+                title="Desplegar opciones de mi perfil"
+                >arrow_drop_down</i
+              >
+            </button>
+            <div class="header--hidden-menu-container hide">
+              <ul class="header--hidden-menu">
+                <li><a href="#">Cuenta</a></li>
+                <li><a href="#">Cerrar Sesi&oacute;n</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
