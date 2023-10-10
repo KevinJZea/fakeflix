@@ -46,6 +46,7 @@
 
   /* --- MAIN VIDEO --- */
   .main-video-container {
+    position: relative;
     margin: 0;
     padding: 0;
     height: 76vh;
@@ -55,6 +56,7 @@
   }
 
   .main-poster {
+    display: block;
     width: 90%;
     height: 90%;
     top: 5%;
@@ -76,9 +78,6 @@
     display: none;
   }
 
-  .main-poster {
-    display: block;
-  }
 
   .main-video-controls {
     width: 100%;

@@ -156,15 +156,15 @@ const expandMovieDivider = document.getElementById('expand-movie-divider');
 const hideablePortalMovieCards = document.getElementsByClassName('hide-pmc');
 
 const handlePortalMovieCards = () => {
-  if (expandMovieCardsButton.innerHTML === 'expand_more') {
-    expandMovieCardsButton.innerHTML = 'expand_less';
+  if (expandMovieCardsButton.innerText === 'expand_more') {
+    expandMovieCardsButton.innerText = 'expand_less';
     expandMovieDivider.style.marginTop = '0px';
 
     for (let i = 0; i < hideablePortalMovieCards.length; i++) {
       hideablePortalMovieCards[i].style.display = 'block';
     }
-  } else if (expandMovieCardsButton.innerHTML === 'expand_less') {
-    expandMovieCardsButton.innerHTML = 'expand_more';
+  } else if (expandMovieCardsButton.innerText === 'expand_less') {
+    expandMovieCardsButton.innerText = 'expand_more';
     expandMovieDivider.style.marginTop = '-80px';
 
     for (let i = 0; i < hideablePortalMovieCards.length; i++) {
