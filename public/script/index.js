@@ -117,6 +117,29 @@ setTimeout(() => {
   mainVideo.play();
 }, 3000);
 
+/* addClickEventWhenResize */
+function checkWindowSize() {
+  const movieCards = document.querySelectorAll('.movie-card');
+  if (window.innerWidth <= 560) {
+    if (!movieCards[0].onclick) {
+      movieCards.forEach((movieCard) => {
+        movieCard.onclick = handlePortalDisplayBlock;
+        movieCard.style.cursor = 'pointer';
+      });
+    }
+  } else {
+    if (movieCards[0].onclick) {
+      movieCards.forEach((movieCard) => {
+        movieCard.onclick = undefined;
+        movieCard.style.cursor = 'default';
+      });
+    }
+  }
+}
+
+window.addEventListener('resize', checkWindowSize);
+checkWindowSize();
+
 /* handlePortalDisplay */
 const portal = document.getElementById('portal');
 
@@ -126,7 +149,7 @@ function hidePortalWhenEscape(event) {
   }
 }
 
-const handlePortalDisplayBlock = () => {
+function handlePortalDisplayBlock() {
   portal.style.display = 'flex';
   portalVideo.load();
   mainVideo.pause();
@@ -138,7 +161,7 @@ const handlePortalDisplayBlock = () => {
 
   // Hiding Portal pressing ESC
   window.addEventListener('keyup', hidePortalWhenEscape);
-};
+}
 
 const handlePortalDisplayNone = () => {
   portal.style.display = 'none';

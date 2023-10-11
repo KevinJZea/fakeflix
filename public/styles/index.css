@@ -520,10 +520,6 @@ a {
   padding: 37% 0;
 }
 
-.movie-card:hover .movie-card--main-image {
-  padding: 37% 0;
-}
-
 .movie-card--main-image picture {
   height: 100%;
 }
@@ -532,7 +528,7 @@ a {
   width: 100%;
   position: absolute;
   top: 0;
-  object-position: 0 16%;
+  object-position: 50% 16%;
   height: inherit;
   object-fit: cover;
 }
@@ -554,7 +550,7 @@ a {
 
 .movie-card--details--icons-container .material-icons {
   cursor: pointer;
-  font-size: 22px;
+  font-size: 2.2rem;
   color: var(--white);
   padding: 6px;
   border: 1px solid #e5e5e5;
