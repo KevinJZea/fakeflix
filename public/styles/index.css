@@ -770,6 +770,9 @@ a {
   color: var(--white);
   background-color: var(--black);
   z-index: 12;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .portal-main-container .close-portal:hover {
