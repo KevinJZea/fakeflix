@@ -150,7 +150,7 @@ function hidePortalWhenEscape(event) {
 }
 
 function handlePortalDisplayBlock() {
-  portal.style.display = 'flex';
+  portal.style.display = 'block';
   portalVideo.load();
   mainVideo.pause();
   portalVolumeButton.innerHTML = 'volume_off';

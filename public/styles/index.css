@@ -3,6 +3,7 @@
 :root {
   --gray-text: #8b8b8b;
   --green-text: #46d369;
+  --red-bar: #e50914;
   --header-size: 60px;
   --white: #fff;
   --black: #000;
@@ -267,7 +268,6 @@ a {
   -webkit-user-select: none;
   user-select: none;
 }
-
 
 .main-video-image {
   height: 220px;
@@ -735,60 +735,52 @@ a {
   position: fixed;
   top: 0;
   bottom: 0;
-  height: 100vh;
   width: 100vw;
   z-index: 10;
   overflow-y: scroll;
 }
 
-.portal-main-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin: auto auto;
-  background-color: #181818;
-  z-index: 11;
-  border-radius: 8px;
-}
-
 .background-portal {
   background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: auto;
   position: fixed;
   top: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .portal-main-container-background {
   width: 80%;
   max-width: 900px;
-  height: 100%;
   margin: 0 auto;
   padding: 25px 0;
+}
+
+.portal-main-container {
+  position: relative;
+  background-color: #181818;
+  z-index: 11;
 }
 
 .portal-main-container .close-portal {
   cursor: pointer;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 16px;
+  right: 16px;
   font-size: 3.2rem;
   padding: 2.5px;
   border-radius: 50%;
   color: var(--white);
-  background-color: black;
+  background-color: var(--black);
   z-index: 12;
 }
 
 .portal-main-container .close-portal:hover {
-  color: black;
+  color: var(--black);
   background-color: var(--white);
 }
 
 .portal-video-container {
-  width: 100%;
-  height: 0;
   position: relative;
   padding-top: 56.3925%;
 }
@@ -801,24 +793,21 @@ a {
   position: absolute;
   top: 0;
   bottom: 0;
-  min-height: 100%;
   object-fit: cover;
   -webkit-filter: brightness(0.8);
   filter: brightness(0.8);
-  vertical-align: middle;
 }
 
 .portal-video-details {
   width: 40%;
   position: absolute;
   bottom: 10%;
-  left: 2.5em;
+  left: 2.4rem;
 }
 
 .portal-video-details picture {
   margin-bottom: 34px;
   height: 100px;
-  width: 100%;
   display: block;
 }
 
@@ -831,12 +820,10 @@ a {
   display: flex;
   align-items: center;
   margin: 16px 0;
-  font-weight: 700;
 }
 
 .portal-video-duration .progress {
   height: 2px;
-  display: block;
   background-color: hsla(0, 0%, 100%, 0.3);
   margin-right: 10px;
   flex-grow: 1;
@@ -845,14 +832,11 @@ a {
 .portal-video-duration .progress .fill {
   width: 80%;
   height: 100%;
-  background-color: #e50914;
+  background-color: var(--red-bar);
 }
 
 .portal-video-duration p {
-  display: inline-block;
-  margin: 0;
   color: hsla(0, 0%, 100%, 0.7);
-  font-weight: 700;
   font-size: 1.6rem;
 }
 
@@ -860,13 +844,10 @@ a {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  gap: 12px;
 }
 
 .portal-video-actions button {
-  cursor: pointer;
-  background: none;
-  outline: none;
-  border: none;
   border-radius: 4px;
   background-color: var(--white);
   color: #141414;
@@ -876,7 +857,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 10px;
+  gap: 8px;
 }
 
 .portal-video-actions button:hover {
@@ -884,22 +865,19 @@ a {
 }
 
 .portal-video-actions button span {
-  margin-right: 6px;
-  color: #141414;
   font-size: 34px;
 }
 
-.portal-video-actions > span {
+.portal-video-actions > .material-icons {
   cursor: pointer;
   border: 1px solid var(--white);
   border-radius: 50%;
   color: var(--white);
   font-size: 3rem;
   padding: 8px;
-  margin-right: 7px;
 }
 
-.portal-video-actions > span:hover {
+.portal-video-actions > .material-icons:hover {
   opacity: 0.7;
 }
 
@@ -907,13 +885,9 @@ a {
   position: absolute;
   right: 4.8rem;
   bottom: 10%;
-  margin-bottom: 16px;
 }
 
 .portal-video-button button {
-  outline: none;
-  background: none;
-  font-size: 24px;
   padding: 8px;
   color: var(--white);
   border: 1px solid #e5e5e5;
@@ -927,32 +901,28 @@ a {
 /* -------- PORTAL DESCRIPTION --------  */
 
 .portal-description-container {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  padding: 15px 3vw;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  gap: 60px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .portal-description-synopsis {
-  height: 100%;
-  width: calc(90% - 280px);
+  width: 100%;
 }
 
 .portal-description-synopsis span {
-  margin-right: 15px;
+  margin-right: 16px;
   color: var(--white);
   font-size: 1.6rem;
   font-weight: bold;
 }
 
 .portal-description-synopsis .green-text {
-  color: #46d369;
+  color: var(--green-text);
 }
 
 .portal-description-synopsis .tv-ma-text {
@@ -964,29 +934,29 @@ a {
   color: var(--white);
   margin-top: 20px;
   font-size: 1.8rem;
-  font-weight: 400;
   text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portal-description-metadata {
-  height: 100%;
-  width: 265px;
+  min-width: 200px;
 }
 
 .portal-description-metadata ul li {
   font-size: 1.6rem;
   list-style: none;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .portal-description-metadata ul li span {
   color: #777;
-  font-weight: 400;
 }
 
 .portal-description-metadata ul li a {
-  text-decoration: none;
   color: var(--white);
 }
 
@@ -997,13 +967,10 @@ a {
 /* -------- PORTAL EPISODES --------  */
 
 .portal-episodes-container {
-  user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  padding: 15px 3vw;
+  user-select: none;
+  padding: 16px 24px;
 }
 
 .portal-episodes--title {
@@ -1015,7 +982,6 @@ a {
 
 .portal-episodes--title h3 {
   font-size: 2.4rem;
-  font-weight: 700;
   color: var(--white);
 }
 
@@ -1023,11 +989,11 @@ a {
   cursor: pointer;
   background-color: #242424;
   border: 2px solid #4d4d4d;
-  padding: 10px 15px;
+  padding: 12px 16px;
   color: var(--white);
   font-size: 1.6rem;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .portal-episodes--title select:hover {
@@ -1037,11 +1003,9 @@ a {
 .episode-card {
   cursor: pointer;
   border-bottom: 2px solid #404040;
-  height: auto;
-  min-height: 100px;
-  padding: 35px 25px;
+  padding: 36px 24px;
   display: grid;
-  grid-template-columns: 30px 150px 1fr;
+  grid-template-columns: 28px 140px 1fr;
   gap: 20px;
   justify-items: center;
   align-items: center;
@@ -1054,12 +1018,10 @@ a {
 .episode-card h4 {
   color: var(--white);
   font-size: 2.4rem;
-  font-weight: 700;
   text-align: center;
 }
 
 .episode-card picture {
-  width: 100%;
   max-height: 100px;
   overflow-y: hidden;
   position: relative;
@@ -1067,9 +1029,6 @@ a {
 
 .episode-card picture img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-fit: contain;
 }
 
 .episode-card picture .progress {
@@ -1083,7 +1042,7 @@ a {
 .episode-card picture .fill {
   width: 80%;
   height: 100%;
-  background-color: #e50914;
+  background-color: var(--red-bar);
 }
 
 .episode-card picture span {
@@ -1111,16 +1070,14 @@ a {
 }
 
 .episode-card--details {
-  width: 100%;
   height: 100%;
 }
 
 .episode-card--title-container {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--white);
   font-size: 1.6rem;
   font-weight: 700;
@@ -1129,31 +1086,28 @@ a {
 .episode-card--description {
   color: var(--white);
   font-size: 1.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* -------- PORTAL MORE-LIKE-THIS --------  */
 
 .portal-more-like-this {
-  user-select: none;
+  padding: 24px;
   -moz-user-select: none;
   -webkit-user-select: none;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  margin-top: 30px;
-  padding: 0 3vw 25px 3vw;
+  user-select: none;
 }
 
 .portal-more-like-this h3 {
   font-size: 2.4rem;
   margin-bottom: 20px;
   color: var(--white);
-  font-weight: 700;
 }
 
 .portal-mlt--movie-cards-container {
-  width: 100%;
-  height: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
@@ -1165,9 +1119,7 @@ a {
   height: 330px;
   width: 100%;
   background-color: #2f2f2f;
-  position: relative;
-  border-radius: 6px;
-  overflow: hidden;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -1201,17 +1153,10 @@ a {
   position: absolute;
   top: 5%;
   right: 5%;
-  white-space: nowrap;
   color: var(--white);
   font-size: 1.6rem;
   font-weight: 700;
   z-index: 15;
-}
-
-.portal-movie-card--preview picture {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
 }
 
 .portal-movie-card--preview picture img {
@@ -1243,35 +1188,35 @@ a {
 
 .portal-movie-card--details {
   width: 100%;
-  height: auto;
-  padding: 15px;
+  padding: 16px;
   color: var(--white);
+}
+
+.portal-movie-card--details span {
+  font-size: 1.6rem;
 }
 
 .portal-movie-card--details .green-text {
   display: block;
-  color: #46d369;
-  margin-bottom: 7px;
+  color: var(--green-text);
+  margin-bottom: 8px;
 }
 
 .portal-movie-card--details .tv-ma-text {
   border: 1px solid hsla(0, 0%, 100%, 0.4);
   padding: 1px 6px;
   margin-right: 8px;
-  font-size: 1.6rem;
   font-weight: 600;
-  white-space: nowrap;
-}
-
-.portal-movie-card--details span {
-  font-size: 1.6rem;
-  white-space: nowrap;
 }
 
 .portal-movie-card--details p {
   font-size: 1.3rem;
-  margin-top: 15px;
+  margin-top: 16px;
   text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portal-mlt--divider {
@@ -1281,8 +1226,6 @@ a {
   border-bottom: 2px solid #404040;
   display: flex;
   justify-content: center;
-  box-shadow: none;
-  margin: auto;
   margin-top: -80px;
   background-image: linear-gradient(
     0deg,
@@ -1295,15 +1238,13 @@ a {
 
 .portal-mlt--divider button {
   color: var(--white);
-  border: 1px solid #e5e5e5;
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
   border-radius: 50%;
   font-size: 22px;
   transform: translateY(50%);
   position: absolute;
   bottom: 0;
-  border-width: 2px;
   background-color: rgba(42, 42, 42, 0.6);
-  border-color: hsla(0, 0%, 100%, 0.5);
   padding: 8px;
 }
 
@@ -1314,33 +1255,30 @@ a {
 /* -------- PORTAL ABOUT --------  */
 
 .portal-about {
-  user-select: none;
+  margin-top: 36px;
+  padding: 0 30px 40px 30px;
   -moz-user-select: none;
   -webkit-user-select: none;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-  margin-top: 48px;
-  padding: 0 3vw 35px 3vw;
+  user-select: none;
 }
 
 .portal-about h3 {
   font-size: 2.4rem;
-  margin-top: 48px;
   margin-bottom: 20px;
   color: var(--white);
   font-weight: 400;
 }
 
 .portal-about ul {
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .portal-about ul li {
   list-style: none;
   color: var(--white);
-  margin: 7px 0;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 22px;
 }
 
@@ -1349,7 +1287,6 @@ a {
 }
 
 .portal-about ul li a {
-  text-decoration: none;
   color: var(--white);
 }
 
@@ -1362,11 +1299,11 @@ a {
 }
 
 .portal-about ul li:last-child > span {
-  margin-right: 5px;
+  margin-right: 4px;
 }
 
 .portal-about ul li:last-child p span {
   border: 1px solid var(--white);
   padding: 2px 6px;
-  margin-right: 5px;
+  margin-right: 4px;
 }
