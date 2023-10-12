@@ -14,8 +14,455 @@
 }
 
 @media (max-width: 1100px) {
+  .carousel-container {
+    max-height: 240px;
+  }
+
   .movie-card {
     width: 25%;
     min-width: 25%;
+  }
+
+  .movie-card--details .tv-ma-text {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  /* -------- HEADER --------  */
+  .header {
+    justify-content: center;
+  }
+
+  .header--nav-container {
+    gap: 0;
+  }
+
+  .header--nav-container .fakeflix-logo {
+    height: 40px;
+  }
+
+  .header--nav-container nav,
+  .header--search-bar-container {
+    display: none;
+  }
+
+  .header--profile-container {
+    position: absolute;
+    right: 24px;
+  }
+
+  /* --- MAIN VIDEO --- */
+  .main-video-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 76vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .main-poster {
+    display: block;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    border-radius: 16px;
+  }
+
+  .main-video-image {
+    height: 160px;
+    width: 380px;
+  }
+
+  #main-video,
+  .main-video-shadow,
+  .main-controls-player,
+  .main-video-synopsis {
+    display: none;
+  }
+
+  .main-video-controls {
+    width: 100%;
+  }
+
+  .main-controls-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-controls-wrapper--play,
+  .main-controls-wrapper--more-info {
+    justify-content: center;
+    padding: 8px 16px;
+    width: calc(40% - 16px);
+    font-size: 18px;
+  }
+
+  .main-controls-wrapper--play i,
+  .main-controls-wrapper--more-info i {
+    font-size: 28px;
+  }
+
+  /* --- MAIN SECTION --- */
+
+  .movie-cards-main-container {
+    margin: 0;
+  }
+
+  .carousel-container {
+    max-height: 180px;
+  }
+
+  .carousel {
+    padding: 36px 0;
+  }
+
+  /* --- MAIN MOVIE-CARD --- */
+
+  .movie-card--details--icons-container .material-icons {
+    font-size: 1.4rem;
+    padding: 4px;
+  }
+
+  .movie-card--details p {
+    font-size: 1.2rem;
+  }
+
+  /* -------- PORTAL --------  */
+
+  .portal-main-container-background {
+    width: 90%;
+  }
+
+  .portal-description-container {
+    gap: 32px;
+  }
+
+  .episode-card {
+    gap: 16px;
+    padding: 28px 8px;
+    grid-template-columns: 12px 120px 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .movie-cards-container h3 {
+    color: var(--white);
+    font-size: 2.4rem;
+  }
+
+  .movie-cards-main-container {
+    padding-bottom: 20px;
+  }
+
+  .carousel-container {
+    max-height: 280px;
+  }
+
+  .movie-cards-container {
+    margin-bottom: 20px;
+  }
+
+  .movie-cards-container h3 {
+    font-size: 2rem;
+  }
+
+  .movie-cards-container:hover .carousel-button-left,
+  .movie-cards-container:hover .carousel-button-right {
+    visibility: hidden;
+  }
+
+  .movie-card {
+    width: 30%;
+    min-width: 30%;
+  }
+
+  .movie-card--main-image {
+    padding: 76.125% 0;
+  }
+
+  .movie-card:hover .movie-card--details {
+    display: none;
+  }
+
+  .movie-card--details--icons-container .material-icons {
+    font-size: 1rem;
+    padding: 3px;
+  }
+
+  /* -------- PORTAL --------  */
+
+  .portal-main-container .close-portal {
+    top: 12px;
+    right: 12px;
+    padding: 2px;
+  }
+
+  .portal-video-image {
+    height: 80px;
+    margin-bottom: 16px;
+  }
+
+  .portal-video-actions button {
+    padding: 4px 16px;
+    font-size: 1.4rem;
+  }
+
+  .portal-video-actions button .material-icons {
+    font-size: 2.8rem;
+  }
+
+  .portal-video-actions > .material-icons,
+  .portal-video-button > .material-icons {
+    font-size: 2.4rem;
+    padding: 6px;
+  }
+
+  .portal-video-button {
+    right: 2.8rem;
+    bottom: 2rem;
+  }
+
+  .portal-description-synopsis > span {
+    font-size: 1.4rem;
+  }
+
+  .portal-description-synopsis > p {
+    font-size: 1.6rem;
+  }
+
+  .portal-description-metadata {
+    display: none;
+  }
+
+  .episode-card--title {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .episode-card--duration {
+    font-weight: 400;
+    font-size: 1.4rem;
+    opacity: 0.9;
+  }
+
+  .episode-card--description {
+    font-size: 1.4rem;
+  }
+
+  .portal-more-like-this {
+    display: none;
+  }
+
+  .portal-about {
+    padding: 28px 20px;
+  }
+
+  .portal-about h3 {
+    font-size: 2rem;
+  }
+
+  .portal-about > ul > li {
+    font-size: 1.4rem;
+    line-height: 16px;
+  }
+
+  .portal-about > ul li:last-child .tv-ma-text {
+    display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .header--profile-search-bar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 8px 0;
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header--profile-search-bar-container > ul {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .header--mobile-menu-icon {
+    display: block;
+  }
+
+  .header--profile-container {
+    display: none;
+  }
+
+  /* --- MAIN VIDEO --- */
+  .main-video-image {
+    height: 120px;
+    width: 280px;
+  }
+
+  .main-video-title {
+    font-size: 2.4rem;
+  }
+
+  .main-controls-wrapper--play,
+  .main-controls-wrapper--more-info {
+    width: calc(40% - 16px);
+  }
+
+  .main-controls-wrapper--play i,
+  .main-controls-wrapper--more-info i {
+    font-size: 24px;
+  }
+
+  /* --- MOVIE CARDS --- */
+  .movie-card--details--icons-container .material-icons:nth-child(3),
+  .movie-card--details--icons-container .material-icons:nth-child(4) {
+    display: none;
+  }
+
+  /* --- FOOTER --- */
+  .footer {
+    padding: 36px 0 60px 0;
+  }
+
+  .footer--questions-text,
+  .footer--links-container,
+  .footer--social-media-icons {
+    display: none;
+  }
+
+  .languages-social-media-container .select-container::before {
+    top: calc(50% - 8px);
+    left: 10px;
+    font-size: 1.6rem;
+  }
+
+  .languages-social-media-container select {
+    font-size: 1.4rem;
+    padding: 12px 24px 12px 36px;
+  }
+
+  /* --- PORTAL --- */
+
+  .portal-main-container-background {
+    width: 100%;
+  }
+
+  .portal-video-image {
+    margin-bottom: 12px;
+  }
+
+  .portal-video-duration {
+    margin: 12px 0;
+  }
+
+  .portal-video-duration > p {
+    font-size: 1.2rem;
+  }
+
+  .portal-video-actions > button {
+    padding: 4px 12px;
+    font-size: 1.2rem;
+    gap: 4px;
+  }
+
+  .portal-video-actions > button > .material-icons {
+    font-size: 2.4rem;
+  }
+
+  .portal-video-actions > .material-icons,
+  .portal-video-button > .material-icons {
+    font-size: 1.8rem;
+  }
+
+  .portal-episodes--title h3 {
+    font-size: 2rem;
+  }
+
+  .portal-episodes--title select {
+    font-size: 1.4rem;
+    padding: 8px 12px;
+  }
+
+  .episode-card {
+    gap: 12px;
+    padding: 24px 0px;
+    grid-template-columns: 4px 116px 1fr;
+  }
+
+  .episode-card h4 {
+    font-size: 2rem;
+  }
+
+  .episode-card--title {
+    font-size: 1.4rem;
+  }
+
+  .episode-card--duration,
+  .episode-card--description {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-video-image {
+    height: 100px;
+    width: 234px;
+  }
+
+  .main-controls-wrapper {
+    flex-direction: column;
+  }
+
+  /* --- PORTAL --- */
+  .portal-main-container .close-portal {
+    top: 8px;
+    right: 8px;
+    font-size: 2.8rem;
+  }
+
+  .portal-video-image {
+    height: 44px;
+  }
+
+  .portal-video-button {
+    right: 1.6rem;
+    bottom: 1.2rem;
+  }
+
+  .portal-description-container,
+  .portal-episodes-container {
+    padding: 16px;
+  }
+
+  .portal-description-synopsis > .tv-ma-text {
+    display: none;
+  }
+
+  .portal-description-synopsis > p {
+    font-size: 1.4rem;
+  }
+
+  .episode-card {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .episode-card picture {
+    display: none;
+  }
+
+  .portal-about > ul > li {
+    font-size: 1.2rem;
+    line-height: 16px;
   }
 }
